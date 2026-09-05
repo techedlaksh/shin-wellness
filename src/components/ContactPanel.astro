@@ -1,0 +1,34 @@
+---
+import { whatsappUrl, type WhatsappMessageKey } from "../data/site";
+
+type Props = {
+  messageKey?: WhatsappMessageKey;
+};
+
+const { messageKey = "contact" } = Astro.props;
+const prompts = [
+  "I would like to join a gathering.",
+  "I am interested in an online practice.",
+  "I would like to learn more about Shin Wellness.",
+  "I am interested in a private group session.",
+  "I have a question about Saebyuk's approach.",
+];
+---
+
+<section class="contact-panel section-band">
+  <div class="section-inner contact-grid">
+    <div>
+      <p class="eyebrow">Begin with a conversation</p>
+      <h2>You do not need to know exactly which practice is right for you.</h2>
+      <p>
+        Tell Saebyuk what brought you here, and she will share what is currently available.
+      </p>
+      <a class="button" href={whatsappUrl(messageKey)} target="_blank" rel="noreferrer">
+        Message Saebyuk on WhatsApp
+      </a>
+    </div>
+    <div class="prompt-list" aria-label="Conversation prompts">
+      {prompts.map((prompt) => <span>{prompt}</span>)}
+    </div>
+  </div>
+</section>

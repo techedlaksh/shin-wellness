@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Soft abstract gathering image placeholder</title>
+  <desc id="desc">A quiet abstract composition reserved for future Shin Wellness gathering photography.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d7ded3"/>
+      <stop offset="0.46" stop-color="#f3eee4"/>
+      <stop offset="1" stop-color="#c4d5d2"/>
+    </linearGradient>
+    <radialGradient id="warm" cx="0.48" cy="0.32" r="0.55">
+      <stop offset="0" stop-color="#f7cfa8" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#f7cfa8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect width="1200" height="900" fill="url(#warm)"/>
+  <path d="M141 638c102-69 208-99 318-89 111 11 184 58 297 62 105 4 202-28 303-94v247H141z" fill="#365855" opacity="0.82"/>
+  <path d="M242 626c50-83 124-123 221-119 96 4 155 51 245 50 74-1 140-33 196-95 28 38 58 91 89 160H242z" fill="#f1e8da" opacity="0.88"/>
+  <circle cx="442" cy="374" r="64" fill="#b45f4d" opacity="0.72"/>
+  <circle cx="604" cy="338" r="84" fill="#527c76" opacity="0.72"/>
+  <circle cx="766" cy="385" r="58" fill="#d9a15f" opacity="0.76"/>
+  <path d="M324 704c132-38 257-40 376-5s218 32 297-8" fill="none" stroke="#f6f0e8" stroke-width="22" stroke-linecap="round" opacity="0.75"/>
+</svg>

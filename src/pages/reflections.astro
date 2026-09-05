@@ -1,0 +1,29 @@
+---
+import ContactPanel from "../components/ContactPanel.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { reflections } from "../data/reflections";
+---
+
+<BaseLayout title="Reflections">
+  <section class="page-hero">
+    <p class="eyebrow">Reflections</p>
+    <h1>Notes on movement, stillness, and inner work.</h1>
+    <p>
+      Short reflections from the Shin Wellness approach, offered as gentle entry points rather than
+      instructions to fix yourself.
+    </p>
+  </section>
+
+  <section class="section-inner card-grid">
+    {
+      reflections.map((reflection) => (
+        <article class="info-card">
+          <h2>{reflection.title}</h2>
+          <p>{reflection.excerpt}</p>
+        </article>
+      ))
+    }
+  </section>
+
+  <ContactPanel messageKey="contact" />
+</BaseLayout>

@@ -1,0 +1,55 @@
+---
+import { navItems, site, whatsappUrl } from "../data/site";
+import "../styles/global.css";
+
+type Props = {
+  title: string;
+  description?: string;
+};
+
+const {
+  title,
+  description = "Shin Wellness brings together Alignment Yoga, meditation, embodied awareness, and psychologically informed inner work.",
+} = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title} | {site.name}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Shin Wellness home">
+        <span class="brand-mark">Shin</span>
+        <span>Wellness</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        {
+          navItems.map((item) => (
+            <a href={item.href} aria-current={currentPath === item.href ? "page" : undefined}>
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+      <a class="button button-small" href={whatsappUrl("home")} target="_blank" rel="noreferrer">
+        Contact Saebyuk
+      </a>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div>
+        <strong>{site.name}</strong>
+        <p>Movement for the body. Space for the mind. A practice for the whole person.</p>
+      </div>
+      <a href={whatsappUrl("contact")} target="_blank" rel="noreferrer">Begin a conversation</a>
+    </footer>
+  </body>
+</html>

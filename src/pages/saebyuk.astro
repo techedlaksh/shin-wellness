@@ -1,0 +1,84 @@
+---
+import ContactPanel from "../components/ContactPanel.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { qualifications, site } from "../data/site";
+---
+
+<BaseLayout title="Saebyuk">
+  <section class="page-hero media-page-hero">
+    <div>
+      <p class="eyebrow">Meet Saebyuk</p>
+      <h1>A warm, thoughtful practitioner bringing professional learning into embodied practice.</h1>
+      <p>
+        Saebyuk Shin is a trained play therapist with formal psychotherapy education completed
+        through a Korean programme. Her work explores the relationship between the body, emotional
+        awareness, movement, meditation, and reflective inner work.
+      </p>
+    </div>
+    <img src={site.profileImage} alt="Portrait placeholder for Saebyuk Shin" />
+  </section>
+
+  <section class="section-inner split-section">
+    <div>
+      <p class="eyebrow">Her professional path</p>
+      <h2>Professional credibility with a human pace.</h2>
+    </div>
+    <div>
+      <p>
+        Through Shin Wellness, Saebyuk brings these practices together in a warm and accessible
+        format that allows people to slow down, reconnect with themselves, and experience personal
+        reflection without pressure or performance.
+      </p>
+      <p>
+        Her approach is informed by professional psychological training while remaining grounded in
+        human connection, mindful movement, and everyday practice.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-band">
+    <div class="section-inner split-section">
+      <div>
+        <p class="eyebrow">Why Shin Wellness exists</p>
+        <h2>A space for movement, self-awareness, emotional reflection, and connection together.</h2>
+      </div>
+      <div>
+        <p>
+          Shin Wellness emerged from Saebyuk's desire to create a thoughtful practice where people
+          can explore inner experience through both the mind and body.
+        </p>
+        <p>
+          She does not force personal disclosure, does not treat wellness as a performance, welcomes
+          beginners, and allows the practice to evolve with the people who gather.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-inner">
+    <p class="eyebrow">Qualifications</p>
+    <h2>Official qualification details to confirm before publishing</h2>
+    <div class="qualification-table" role="table" aria-label="Saebyuk qualification placeholders">
+      <div class="qualification-row qualification-head" role="row">
+        <span>Exact title</span>
+        <span>Organization</span>
+        <span>Country</span>
+        <span>Year</span>
+        <span>Status</span>
+      </div>
+      {
+        qualifications.map((item) => (
+          <div class="qualification-row" role="row">
+            <span>{item.title}</span>
+            <span>{item.organization}</span>
+            <span>{item.country}</span>
+            <span>{item.year}</span>
+            <span>{item.status}</span>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <ContactPanel messageKey="about" />
+</BaseLayout>
