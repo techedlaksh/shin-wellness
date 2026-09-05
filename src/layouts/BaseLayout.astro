@@ -1,17 +1,24 @@
 ---
-import { navItems, site, whatsappUrl } from "../data/site";
+import { navItems, site } from "../data/site";
 import "../styles/global.css";
 
 type Props = {
   title: string;
   description?: string;
+  socialImage?: string;
 };
 
 const {
   title,
   description = "Shin Wellness brings together Alignment Yoga, meditation, embodied awareness, and psychologically informed inner work.",
+  socialImage = "/og.png",
 } = Astro.props;
 const currentPath = Astro.url.pathname;
+const origin = import.meta.env.PROD ? "__SITE_ORIGIN__" : Astro.url.origin;
+const pageUrl = `${origin}${currentPath}`;
+const socialImageUrl = `${origin}${socialImage}`;
+const isActive = (href: string) =>
+  href === "/" ? currentPath === href : currentPath === href || currentPath.startsWith(`${href}/`);
 ---
 
 <!doctype html>
@@ -20,36 +27,86 @@ const currentPath = Astro.url.pathname;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#f3efe6" />
+    <link rel="canonical" href={pageUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={`${title} | ${site.name}`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | ${site.name}`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageUrl} />
     <title>{title} | {site.name}</title>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <a class="brand" href="/" aria-label="Shin Wellness home">
-        <span class="brand-mark">Shin</span>
-        <span>Wellness</span>
+        <span class="brand-mark" aria-hidden="true">S</span>
+        <span class="brand-name">Shin <em>Wellness</em></span>
       </a>
-      <nav class="site-nav" aria-label="Primary navigation">
+
+      <nav class="site-nav desktop-nav" aria-label="Primary navigation">
         {
           navItems.map((item) => (
-            <a href={item.href} aria-current={currentPath === item.href ? "page" : undefined}>
+            <a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>
               {item.label}
             </a>
           ))
         }
       </nav>
-      <a class="button button-small" href={whatsappUrl("home")} target="_blank" rel="noreferrer">
-        Contact Saebyuk
-      </a>
+
+      <a class="header-cta" href="/contact">Begin a conversation <span aria-hidden="true">↗</span></a>
+
+      <details class="mobile-menu">
+        <summary aria-label="Open navigation">
+          <span>Menu</span>
+          <span class="menu-icon" aria-hidden="true"></span>
+        </summary>
+        <nav aria-label="Mobile navigation">
+          <a href="/" aria-current={currentPath === "/" ? "page" : undefined}>Home</a>
+          {
+            navItems.map((item) => (
+              <a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>
+                {item.label}
+              </a>
+            ))
+          }
+          <a class="mobile-contact" href="/contact">Begin a conversation</a>
+        </nav>
+      </details>
     </header>
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <footer class="site-footer">
-      <div>
-        <strong>{site.name}</strong>
-        <p>Movement for the body. Space for the mind. A practice for the whole person.</p>
+      <div class="footer-brand">
+        <a class="brand" href="/" aria-label="Shin Wellness home">
+          <span class="brand-mark" aria-hidden="true">S</span>
+          <span class="brand-name">Shin <em>Wellness</em></span>
+        </a>
+        <p>Movement for the body.<br />Space for the mind.</p>
       </div>
-      <a href={whatsappUrl("contact")} target="_blank" rel="noreferrer">Begin a conversation</a>
+      <div class="footer-nav">
+        <p class="footer-label">Explore</p>
+        <a href="/practice">The Practice</a>
+        <a href="/gatherings">Gatherings</a>
+        <a href="/saebyuk">Saebyuk</a>
+      </div>
+      <div class="footer-nav">
+        <p class="footer-label">Continue</p>
+        <a href="/reflections">Reflections</a>
+        <a href="/past-gatherings">Past Gatherings</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <div class="footer-closing">
+        <p>Come as you are.</p>
+        <a class="text-link" href="/contact">Begin a conversation</a>
+      </div>
+      <p class="footer-fineprint">© {new Date().getFullYear()} Shin Wellness</p>
     </footer>
   </body>
 </html>
