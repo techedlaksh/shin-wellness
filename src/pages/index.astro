@@ -1,95 +1,176 @@
 ---
-import ContactPanel from "../components/ContactPanel.astro";
 import PillarDiagram from "../components/PillarDiagram.astro";
 import ScopeStatement from "../components/ScopeStatement.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { site, whatsappUrl } from "../data/site";
+import { currentOpportunities } from "../data/gatherings";
+import { whatsappUrl } from "../data/site";
+
+const practiceModes = [
+  "Alignment Yoga",
+  "Meditation",
+  "Embodied awareness",
+  "Inner work",
+];
+
+const opportunityMessageKeys = ["contact", "digital", "privateGroup"] as const;
 ---
 
-<BaseLayout title="A space to move, reflect, and reconnect">
-  <section class="hero">
-    <div class="hero-copy">
-      <p class="eyebrow">Shin Wellness</p>
-      <h1>A space to move, reflect, and reconnect with yourself.</h1>
-      <p class="hero-lede">
+<BaseLayout
+  title="A space to move, reflect, and reconnect"
+  description="Shin Wellness is a thoughtful embodied practice bringing together Alignment Yoga, meditation, awareness, and guided inner reflection with Saebyuk Shin."
+>
+  <section class="home-hero" aria-labelledby="home-title">
+    <div class="home-hero-copy">
+      <p class="eyebrow">Shin Wellness · An embodied practice</p>
+      <h1 id="home-title">A space to move, reflect, and reconnect with yourself.</h1>
+      <p class="home-hero-lede">
         Alignment Yoga, meditation, embodied awareness, and psychologically informed inner work
-        guided by Saebyuk Shin.
+        guided with warmth by Saebyuk Shin.
       </p>
       <div class="button-row">
         <a class="button" href={whatsappUrl("home")} target="_blank" rel="noreferrer">
-          Contact Saebyuk
+          Contact Saebyuk <span aria-hidden="true">↗</span>
         </a>
-        <a class="button button-secondary" href="/practice">Explore the practice</a>
+        <a class="button button-secondary" href="/practice">
+          Explore the practice <span aria-hidden="true">→</span>
+        </a>
       </div>
-      <p class="small-note">
-        Private gatherings, evolving programs, and practices you can carry into everyday life.
-      </p>
+      <p class="small-note">Private gatherings, evolving programs, and practices for everyday life.</p>
     </div>
-    <div class="hero-media">
-      <img src={site.heroImage} alt="A calm visual representing an intimate Shin Wellness gathering" />
+
+    <div class="dawn-composition" aria-hidden="true">
+      <div class="dawn-frame">
+        <span class="dawn-sun"></span>
+        <span class="dawn-horizon dawn-horizon-one"></span>
+        <span class="dawn-horizon dawn-horizon-two"></span>
+        <span class="dawn-orbit dawn-orbit-one"></span>
+        <span class="dawn-orbit dawn-orbit-two"></span>
+        <span class="dawn-point dawn-point-one"></span>
+        <span class="dawn-point dawn-point-two"></span>
+      </div>
+      <p class="dawn-note">Movement · Stillness · Reflection</p>
     </div>
   </section>
 
-  <section class="section-inner split-section">
+  <div class="practice-strip" aria-label="Shin Wellness practice modes">
+    <span class="practice-strip-label">The practice moves through</span>
     <div>
-      <p class="eyebrow">Another way to listen</p>
-      <h2>Sometimes the mind has been working for so long that thinking harder no longer helps.</h2>
+      {practiceModes.map((mode, index) => (
+        <span><small>{String(index + 1).padStart(2, "0")}</small>{mode}</span>
+      ))}
     </div>
-    <div>
-      <p>
-        Shin Wellness offers another way to listen through movement, stillness, awareness, and
+  </div>
+
+  <section class="home-listen section-inner" aria-labelledby="listen-title">
+    <div class="section-number" aria-hidden="true">01</div>
+    <div class="home-listen-heading">
+      <p class="eyebrow">Another way to listen</p>
+      <h2 id="listen-title">Sometimes thinking harder no longer helps.</h2>
+    </div>
+    <div class="home-listen-copy">
+      <p class="large-copy">
+        Shin Wellness offers another way to listen—through movement, stillness, awareness, and
         guided reflection.
       </p>
       <ul class="check-list">
-        <li>You may feel disconnected from your body.</li>
-        <li>You may be moving through a period of uncertainty or change.</li>
-        <li>You may want to understand yourself without turning everything into a problem to solve.</li>
-        <li>You may simply need a space where nothing is expected from you.</li>
+        <li>You feel disconnected from your body.</li>
+        <li>You are moving through uncertainty or change.</li>
+        <li>You want to understand yourself without turning everything into a problem to solve.</li>
+        <li>You simply need a space where nothing is expected from you.</li>
       </ul>
-      <p class="strong-line">You do not need to arrive with an explanation. You can begin with an experience.</p>
+      <p class="strong-line">You do not need an explanation. You can begin with an experience.</p>
     </div>
   </section>
 
-  <section class="section-band">
+  <section class="home-practice section-band" aria-labelledby="practice-title">
     <div class="section-inner">
-      <p class="eyebrow">The practice</p>
-      <h2>Movement for the body. Space for the mind. A practice for the whole person.</h2>
+      <div class="section-intro">
+        <div>
+          <p class="eyebrow">The practice</p>
+          <h2 id="practice-title">A practice for the whole person.</h2>
+        </div>
+        <p>
+          Four pathways meet in one grounded experience. Enter through whichever feels most
+          available today.
+        </p>
+      </div>
       <PillarDiagram />
+      <a class="text-link practice-link" href="/practice">Explore how the practice feels <span aria-hidden="true">→</span></a>
     </div>
   </section>
 
-  <section class="section-inner split-section">
-    <div>
-      <p class="eyebrow">Guided by Saebyuk</p>
-      <h2>An embodied wellness practice informed by yoga, meditation, psychotherapy, play therapy, and guided inner work.</h2>
-    </div>
-    <div>
+  <section class="home-gatherings section-inner" aria-labelledby="gatherings-title">
+    <div class="section-number" aria-hidden="true">02</div>
+    <div class="section-intro">
+      <div>
+        <p class="eyebrow">Ways to begin</p>
+        <h2 id="gatherings-title">Come as you are. Begin where you are.</h2>
+      </div>
       <p>
-        Shin Wellness brings together Alignment Yoga, meditation, embodied awareness, and
-        psychologically informed inner work through intimate gatherings and evolving digital
-        practices.
+        Current opportunities are shared personally so each experience can remain thoughtful,
+        private, and responsive.
       </p>
-      <a class="text-link" href="/saebyuk">Meet Saebyuk</a>
+    </div>
+    <div class="opportunity-grid">
+      {
+        currentOpportunities.map((item, index) => (
+          <article class="opportunity-card">
+            <span class="opportunity-number">{String(index + 1).padStart(2, "0")}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <a
+              class="text-link"
+              href={whatsappUrl(opportunityMessageKeys[index])}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {item.cta} <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+        ))
+      }
     </div>
   </section>
 
-  <section class="section-inner">
+  <section class="home-guide" aria-labelledby="guide-title">
+    <div class="guide-visual" aria-hidden="true">
+      <span class="guide-disc"></span>
+      <span class="guide-arc"></span>
+      <span class="guide-line"></span>
+      <span class="guide-dot"></span>
+    </div>
+    <div class="guide-copy">
+      <p class="eyebrow">Guided by Saebyuk</p>
+      <h2 id="guide-title">Professional learning, held at a human pace.</h2>
+      <p class="large-copy">
+        Saebyuk's embodied wellness practice is informed by yoga, meditation, psychotherapy, play
+        therapy, and guided inner work.
+      </p>
+      <p>
+        Her approach makes room for the body, emotions, curiosity, and connection—without pressure
+        to perform or disclose more than feels right.
+      </p>
+      <a class="text-link" href="/saebyuk">Meet Saebyuk <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <section class="home-scope section-inner">
     <ScopeStatement />
   </section>
 
-  <ContactPanel messageKey="home" />
-
-  <section class="final-invitation">
-    <div class="section-inner">
-      <h2>Something brought you here. You can begin there.</h2>
+  <section class="home-invitation" aria-labelledby="invitation-title">
+    <div class="invitation-orbit" aria-hidden="true"></div>
+    <div class="home-invitation-copy">
+      <p class="eyebrow">Begin with a conversation</p>
+      <h2 id="invitation-title">Something brought you here. You can begin there.</h2>
       <p>
-        Whether you are interested in movement, meditation, inner reflection, or simply finding a
-        more grounded relationship with yourself, Saebyuk would be glad to hear from you.
+        You do not need to know which practice is right for you. Tell Saebyuk what brought you here,
+        and she will share what is currently available.
       </p>
-      <a class="button" href={whatsappUrl("home")} target="_blank" rel="noreferrer">
-        Contact Saebyuk
+      <a class="button button-light" href={whatsappUrl("home")} target="_blank" rel="noreferrer">
+        Message Saebyuk on WhatsApp <span aria-hidden="true">↗</span>
       </a>
-      <p class="small-note">Opens a private WhatsApp conversation.</p>
+      <span class="small-note">Opens a private WhatsApp conversation.</span>
     </div>
   </section>
 </BaseLayout>

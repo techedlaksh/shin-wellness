@@ -25,8 +25,8 @@ const currentPath = Astro.url.pathname;
   <body>
     <header class="site-header">
       <a class="brand" href="/" aria-label="Shin Wellness home">
-        <span class="brand-mark">Shin</span>
-        <span>Wellness</span>
+        <span class="brand-mark" aria-hidden="true">S</span>
+        <span class="brand-name"><strong>Shin</strong> Wellness</span>
       </a>
       <nav class="site-nav" aria-label="Primary navigation">
         {
@@ -38,18 +38,42 @@ const currentPath = Astro.url.pathname;
         }
       </nav>
       <a class="button button-small" href={whatsappUrl("home")} target="_blank" rel="noreferrer">
-        Contact Saebyuk
+        Begin a conversation
       </a>
+      <details class="nav-drawer">
+        <summary>Menu</summary>
+        <nav aria-label="Mobile navigation">
+          {
+            navItems.map((item) => (
+              <a href={item.href} aria-current={currentPath === item.href ? "page" : undefined}>
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </details>
     </header>
     <main>
       <slot />
     </main>
     <footer class="site-footer">
-      <div>
-        <strong>{site.name}</strong>
-        <p>Movement for the body. Space for the mind. A practice for the whole person.</p>
+      <div class="footer-brand">
+        <a class="brand" href="/" aria-label="Shin Wellness home">
+          <span class="brand-mark" aria-hidden="true">S</span>
+          <span class="brand-name"><strong>Shin</strong> Wellness</span>
+        </a>
+        <p>Movement for the body. Space for the mind.<br />A practice for the whole person.</p>
       </div>
-      <a href={whatsappUrl("contact")} target="_blank" rel="noreferrer">Begin a conversation</a>
+      <nav aria-label="Footer navigation">
+        <a href="/practice">The Practice</a>
+        <a href="/gatherings">Gatherings</a>
+        <a href="/saebyuk">Saebyuk</a>
+        <a href="/reflections">Reflections</a>
+      </nav>
+      <div class="footer-contact">
+        <span>Curious where to begin?</span>
+        <a href={whatsappUrl("contact")} target="_blank" rel="noreferrer">Talk with Saebyuk <span aria-hidden="true">↗</span></a>
+      </div>
     </footer>
   </body>
 </html>
