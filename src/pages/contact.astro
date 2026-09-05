@@ -1,0 +1,21 @@
+---
+import ContactPanel from "../components/ContactPanel.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { whatsappUrl } from "../data/site";
+---
+
+<BaseLayout title="Contact">
+  <section class="page-hero">
+    <p class="eyebrow">Contact</p>
+    <h1>Begin with a conversation</h1>
+    <p>
+      You do not need to know exactly which practice is right for you. Tell Saebyuk what brought you
+      here, and she will share what is currently available.
+    </p>
+    <a class="button" href={whatsappUrl("contact")} target="_blank" rel="noreferrer">
+      Message Saebyuk on WhatsApp
+    </a>
+  </section>
+
+  <ContactPanel messageKey="contact" />
+</BaseLayout>

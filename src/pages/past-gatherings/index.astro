@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { pastGatherings } from "../../data/gatherings";
+---
+
+<BaseLayout title="Past Gatherings">
+  <section class="page-hero">
+    <p class="eyebrow">Past Gatherings</p>
+    <h1>The practice, as it has unfolded</h1>
+    <p>
+      These reflections show how Shin Wellness has already existed as a real human experience while
+      keeping participant privacy and gathering details protected.
+    </p>
+  </section>
+
+  <section class="section-inner gathering-grid">
+    {
+      pastGatherings.map((gathering) => (
+        <article class="gathering-card">
+          <img src={gathering.image} alt={`Visual impression for ${gathering.title}`} />
+          <div>
+            <p class="eyebrow">{gathering.date}</p>
+            <h2>{gathering.title}</h2>
+            <p>{gathering.summary}</p>
+            <a class="text-link" href={`/past-gatherings/${gathering.slug}`}>Read the reflection</a>
+          </div>
+        </article>
+      ))
+    }
+  </section>
+</BaseLayout>

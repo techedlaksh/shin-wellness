@@ -1,0 +1,50 @@
+---
+import ContactPanel from "../../components/ContactPanel.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { pastGatherings } from "../../data/gatherings";
+import { whatsappUrl } from "../../data/site";
+
+export function getStaticPaths() {
+  return pastGatherings.map((gathering) => ({
+    params: { slug: gathering.slug },
+    props: { gathering },
+  }));
+}
+
+const { gathering } = Astro.props;
+---
+
+<BaseLayout title={gathering.title}>
+  <section class="page-hero">
+    <p class="eyebrow">{gathering.date}</p>
+    <h1>{gathering.title}</h1>
+    <p>{gathering.theme}</p>
+  </section>
+
+  <section class="section-inner detail-layout">
+    <img class="detail-image" src={gathering.image} alt={`Visual impression for ${gathering.title}`} />
+    <article>
+      <h2>Session structure</h2>
+      <ul class="check-list">
+        {gathering.structure.map((item: string) => <li>{item}</li>)}
+      </ul>
+      <h2>Reflection from Saebyuk</h2>
+      <p>{gathering.reflection}</p>
+      <h2>Anonymous participant reflection</h2>
+      <blockquote>{gathering.participant}</blockquote>
+      <h2>How the practice evolved afterward</h2>
+      <p>{gathering.evolution}</p>
+    </article>
+  </section>
+
+  <section class="section-band centered-section">
+    <div class="section-inner">
+      <h2>Would you like to experience a future gathering?</h2>
+      <a class="button" href={whatsappUrl("pastGathering")} target="_blank" rel="noreferrer">
+        Ask Saebyuk on WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <ContactPanel messageKey="pastGathering" />
+</BaseLayout>

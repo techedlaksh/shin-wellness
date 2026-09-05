@@ -1,0 +1,12 @@
+---
+import { pillars } from "../data/site";
+---
+
+<div class="pillar-diagram" aria-label="Four connected Shin Wellness practice pillars">
+  {pillars.map((pillar, index) => (
+    <article class={`pillar pillar-${index + 1}`}>
+      <h3>{pillar.title}</h3>
+      <p>{pillar.text}</p>
+    </article>
+  ))}
+</div>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" role="img" aria-labelledby="title desc">
+  <title id="title">Saebyuk portrait placeholder</title>
+  <desc id="desc">A calm abstract portrait placeholder reserved for Saebyuk's approved photograph.</desc>
+  <defs>
+    <linearGradient id="portrait-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e5ded2"/>
+      <stop offset="1" stop-color="#a8c0bb"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1100" fill="url(#portrait-bg)"/>
+  <circle cx="450" cy="350" r="128" fill="#365855" opacity="0.88"/>
+  <path d="M244 913c35-230 108-346 218-349 113-4 186 112 219 349H244z" fill="#b45f4d" opacity="0.82"/>
+  <path d="M257 768c120 61 250 63 389 7" fill="none" stroke="#f5efe7" stroke-width="26" stroke-linecap="round" opacity="0.8"/>
+</svg>

@@ -1,0 +1,51 @@
+---
+import ContactPanel from "../components/ContactPanel.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { currentOpportunities } from "../data/gatherings";
+import { whatsappUrl } from "../data/site";
+---
+
+<BaseLayout title="Gather With Shin">
+  <section class="page-hero">
+    <p class="eyebrow">Gatherings</p>
+    <h1>Gather With Shin</h1>
+    <p>
+      Current opportunities are shared personally so the practice can remain thoughtful, private,
+      and responsive to the people involved.
+    </p>
+  </section>
+
+  <section class="section-inner card-grid">
+    {
+      currentOpportunities.map((item) => (
+        <article class="info-card">
+          <h2>{item.title}</h2>
+          <p>{item.text}</p>
+          <a class="text-link" href={whatsappUrl(item.title === "Online practices" ? "digital" : "contact")} target="_blank" rel="noreferrer">
+            {item.cta}
+          </a>
+        </article>
+      ))
+    }
+  </section>
+
+  <section class="section-band">
+    <div class="section-inner split-section">
+      <div>
+        <p class="eyebrow">A thoughtful community</p>
+        <h2>A thoughtful community begins with thoughtful introductions.</h2>
+      </div>
+      <div>
+        <p>
+          Shin Wellness grows through real conversations. Contact Saebyuk to learn about current
+          gatherings, community practices, and ways to take part.
+        </p>
+        <a class="button" href={whatsappUrl("contact")} target="_blank" rel="noreferrer">
+          Introduce yourself to Saebyuk
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <ContactPanel messageKey="contact" />
+</BaseLayout>

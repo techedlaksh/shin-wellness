@@ -1,0 +1,47 @@
+---
+import ContactPanel from "../components/ContactPanel.astro";
+import PillarDiagram from "../components/PillarDiagram.astro";
+import ScopeStatement from "../components/ScopeStatement.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="The Practice">
+  <section class="page-hero">
+    <p class="eyebrow">The Practice</p>
+    <h1>Come as you are. Begin with a conversation.</h1>
+    <p>
+      Shin Wellness brings movement, meditation, embodied awareness, and reflective inner work into
+      a steady practice for people who want to reconnect without pressure or performance.
+    </p>
+  </section>
+
+  <section class="section-inner">
+    <PillarDiagram />
+  </section>
+
+  <section class="section-band">
+    <div class="section-inner split-section">
+      <div>
+        <p class="eyebrow">How it feels</p>
+        <h2>A warm structure, not a demand to disclose.</h2>
+      </div>
+      <div>
+        <p>
+          Saebyuk's approach welcomes beginners and allows each person to engage with the practice
+          from where they are. Movement can be gentle. Stillness can be brief. Reflection can remain
+          private.
+        </p>
+        <p>
+          The work values emotional and physical safety, and it recognizes that different people
+          need different ways of returning to themselves.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-inner">
+    <ScopeStatement />
+  </section>
+
+  <ContactPanel messageKey="digital" />
+</BaseLayout>
