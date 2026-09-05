@@ -12,6 +12,9 @@ const {
   description = "Shin Wellness brings together Alignment Yoga, meditation, embodied awareness, and psychologically informed inner work.",
 } = Astro.props;
 const currentPath = Astro.url.pathname;
+const pageTitle = `${title} | ${site.name}`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).toString();
+const socialImageUrl = new URL("/og.png", Astro.site ?? Astro.url.origin).toString();
 ---
 
 <!doctype html>
@@ -20,7 +23,22 @@ const currentPath = Astro.url.pathname;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <title>{title} | {site.name}</title>
+    <meta name="theme-color" content="#F4EFE6" />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Shin Wellness — A space to move, reflect, and reconnect." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageUrl} />
+    <title>{pageTitle}</title>
   </head>
   <body>
     <header class="site-header">
