@@ -8,7 +8,8 @@
   --aubergine-deep: #322435;
   --sage: #829487;
   --sage-soft: #c9d2ca;
-  --coral: #c9654f;
+  --coral: #a84a3a;
+  --coral-art: #c9654f;
   --coral-soft: #e6b09f;
   --white: #fffdf7;
   --line: rgba(29, 36, 34, 0.2);
@@ -453,7 +454,7 @@ p {
 .orbit-dot-two {
   right: 22%;
   bottom: 10%;
-  background: var(--coral);
+  background: var(--coral-art);
 }
 
 .art-caption {
@@ -605,7 +606,7 @@ p {
 .practice-symbol-3 {
   width: 4.7rem;
   border-radius: 999px 0 999px 0;
-  background: var(--coral);
+  background: var(--coral-art);
 }
 
 .practice-symbol-4::before,
