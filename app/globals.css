@@ -2023,3 +2023,185 @@ svg {
 .newsletter-copy .eyebrow {
   font-size: 9px;
 }
+
+/* Give desktop layouts a readable scale without enlarging the mobile design. */
+@media (min-width: 901px) {
+  .container {
+    width: min(1400px, calc(100% - clamp(64px, 5vw, 96px)));
+  }
+
+  .hero {
+    gap: 40px;
+  }
+
+  .hero-copy > p {
+    font-size: 18px;
+    max-width: 530px;
+  }
+
+  .botanical-art {
+    max-width: 600px;
+  }
+
+  .hero-actions {
+    gap: 30px;
+  }
+
+  .button {
+    min-height: 54px;
+    padding: 16px 26px;
+    font-size: 15px;
+  }
+
+  .site-header nav {
+    margin-left: 0;
+    gap: 36px;
+  }
+
+  .site-header nav a,
+  .text-link,
+  .text-button,
+  .explore-card .text-button {
+    font-size: 15px;
+  }
+
+  .header-cta {
+    min-height: 48px;
+    padding: 13px 24px;
+  }
+
+  .hero-footnote,
+  .card-footnote,
+  .sessions-note,
+  .signup-note,
+  .site-footer > span {
+    font-size: 12px;
+  }
+
+  .eyebrow,
+  .hero-copy .eyebrow,
+  .pill,
+  .resource-meta,
+  .coming-pill,
+  .upcoming-number,
+  .offering-detail,
+  .explore-card .eyebrow,
+  .newsletter-copy .eyebrow {
+    font-size: 11px;
+  }
+
+  .values-inner {
+    font-size: 18px;
+    min-height: 78px;
+  }
+
+  .section-heading > p,
+  .section-heading > div > p {
+    font-size: 16px;
+    max-width: 420px;
+  }
+
+  .session-card {
+    padding: 36px 40px 28px;
+  }
+
+  .session-description,
+  .benefits,
+  .purchase-message,
+  .resource-content > p,
+  .upcoming-card > p,
+  .explore-card p,
+  .newsletter-copy > p,
+  .signup-dialog > p,
+  .signup-success p {
+    font-size: 16px;
+  }
+
+  .price > span,
+  .site-footer > p,
+  .form-error {
+    font-size: 14px;
+  }
+
+  .benefits {
+    gap: 16px;
+  }
+
+  .resource-content {
+    padding: 30px 32px;
+  }
+
+  .resource-content > p {
+    max-width: 510px;
+  }
+
+  .resource-content h3 {
+    font-size: 29px;
+  }
+
+  .resource-meta {
+    flex-wrap: wrap;
+  }
+
+  .upcoming-card {
+    padding: 30px;
+  }
+
+  .upcoming-card h3 {
+    font-size: 29px;
+    max-width: 320px;
+  }
+
+  .explore-card {
+    padding: 28px;
+    gap: 24px;
+  }
+
+  .explore-card h3 {
+    font-size: 27px;
+  }
+
+  .newsletter-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 64px;
+  }
+
+  .newsletter-copy h2 {
+    font-size: 46px;
+  }
+
+  .signup-input-row input {
+    font-size: 16px;
+    min-height: 54px;
+    padding-inline: 22px;
+  }
+
+  .signup-input-row .button {
+    font-size: 14px;
+    padding-inline: 22px;
+  }
+
+  .signup-note {
+    max-width: 540px;
+  }
+
+  .signup-dialog .signup-note {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1350px) {
+  .newsletter-form-wrap .signup-input-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .newsletter-form-wrap .signup-input-row .button {
+    align-self: flex-start;
+  }
+
+  .explore-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

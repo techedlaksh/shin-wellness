@@ -8,6 +8,7 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
   page.on("pageerror", (error) => errors.push(error.message));
   for (const [name, width, height] of [
     ["desktop", 1440, 1000],
+    ["compact-desktop", 1000, 900],
     ["tablet", 768, 1024],
     ["mobile", 390, 844],
     ["small-mobile", 320, 740],
@@ -28,6 +29,16 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
         .locator(".hero-copy")
         .evaluate((element) => getComputedStyle(element).animationName),
     ).toBe("none");
+    if (width > 900) {
+      await expect(page.locator(".hero-copy > p")).toHaveCSS(
+        "font-size",
+        "18px",
+      );
+      await expect(page.locator(".hero-actions .button")).toHaveCSS(
+        "font-size",
+        "15px",
+      );
+    }
     await page.screenshot({ path: `.context/${name}.png`, fullPage: true });
     if (name === "desktop" || name === "mobile")
       await page.screenshot({ path: `.context/${name}-viewport.png` });
