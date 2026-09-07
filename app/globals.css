@@ -6581,3 +6581,363 @@ body .newsletter-section {
     min-height: 100px;
   }
 }
+
+/* Twelfth critic pass: "one thing at a time" becomes the organizing idea. */
+body .experience-section {
+  padding: 142px 0 132px;
+  background: var(--ivory);
+  color: var(--moss);
+}
+
+body .experience-inner {
+  display: block;
+  width: min(1120px, calc(100% - 96px));
+}
+
+body .experience-copy {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+body .experience-copy .eyebrow {
+  color: var(--moss);
+  font-size: 12px;
+}
+
+body .experience-copy h2 {
+  max-width: none;
+  margin-top: 32px;
+  font-size: clamp(84px, 8.5vw, 128px);
+  line-height: 0.88;
+}
+
+body .experience-copy h2 em {
+  color: #7e9076;
+  font-weight: 400;
+}
+
+body .experience-lede {
+  max-width: 640px;
+  margin: 42px auto 0;
+  color: #30483f;
+  font-size: 19px;
+}
+
+body .experience-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 78px;
+  border-top: 1px solid #8d998d;
+  border-bottom: 1px solid #8d998d;
+}
+
+body .experience-steps li,
+body .experience-steps li:first-child {
+  display: block;
+  padding: 32px 34px 35px;
+  border: 0;
+}
+
+body .experience-steps li + li {
+  border-left: 1px solid #8d998d;
+}
+
+body .experience-steps li > span {
+  display: block;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+body .experience-steps li > div {
+  display: block;
+}
+
+body .experience-steps strong {
+  display: block;
+  margin-top: 35px;
+  color: var(--moss);
+  font-size: 32px;
+}
+
+body .experience-steps p {
+  margin-top: 15px;
+  color: #415249;
+  font-size: 16px;
+}
+
+body .sessions-section {
+  padding-top: 70px;
+  padding-bottom: 82px;
+}
+
+body .sessions-section .section-heading {
+  margin-bottom: 58px;
+}
+
+body .sessions-section .section-heading h2 {
+  font-size: clamp(72px, 6.6vw, 96px);
+}
+
+body .session-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border: 0;
+}
+
+body .session-card,
+body .single-session,
+body .pack-session {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+}
+
+body .single-session {
+  min-height: 390px;
+  padding: 50px 54px 44px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-rows: 1fr auto;
+  column-gap: 90px;
+  background: #dfe4da;
+  border-top: 2px solid var(--moss);
+}
+
+body .single-session .session-heading-row {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  display: block;
+  min-height: 0;
+}
+
+body .single-session h3 {
+  max-width: 560px;
+  font-size: 61px;
+}
+
+body .single-session .session-description {
+  max-width: 500px;
+  font-size: 17px;
+}
+
+body .single-session .price {
+  margin-top: 52px;
+  text-align: left;
+  font-size: 65px;
+}
+
+body .single-session .benefits {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+  margin: 3px 0 36px;
+  font-size: 17px;
+}
+
+body .single-session .purchase-action {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: end;
+}
+
+body .single-session .card-footnote,
+body .pack-session .card-footnote {
+  display: none;
+}
+
+body .pack-session {
+  min-height: 190px;
+  padding: 35px 34px;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr minmax(220px, 0.55fr);
+  gap: 46px;
+  align-items: center;
+  border-bottom: 1px solid #9ca79e;
+}
+
+body .pack-session .session-heading-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  min-height: 0;
+  gap: 20px;
+  align-items: start;
+}
+
+body .pack-session h3 {
+  font-size: 34px;
+}
+
+body .pack-session .session-description {
+  margin-top: 11px;
+  font-size: 15px;
+}
+
+body .pack-session .price {
+  margin: 0;
+  text-align: right;
+  font-size: 40px;
+}
+
+body .pack-session .benefits {
+  margin: 0;
+  font-size: 14px;
+}
+
+body .pack-session .purchase-action {
+  width: 100%;
+  margin: 0;
+}
+
+.practice-copy blockquote {
+  max-width: 570px;
+  margin-top: 50px;
+  font-size: clamp(41px, 3.7vw, 56px);
+  line-height: 1;
+}
+
+.practice-copy > p {
+  margin-top: 46px;
+}
+
+body .newsletter-section {
+  padding: 92px 0 96px;
+  background: #202f29;
+  border-top: 1px solid #ffffff24;
+}
+
+body .newsletter-copy h2 {
+  font-size: clamp(56px, 5.3vw, 78px);
+}
+
+@media (max-width: 1000px) {
+  body .experience-copy h2 {
+    font-size: 92px;
+  }
+
+  body .single-session {
+    column-gap: 52px;
+  }
+
+  body .pack-session {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  body .pack-session .purchase-action {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 800px) {
+  body .experience-inner {
+    display: block;
+  }
+
+  body .experience-steps {
+    grid-template-columns: 1fr;
+  }
+
+  body .experience-steps li + li {
+    border-left: 0;
+    border-top: 1px solid #8d998d;
+  }
+
+  body .single-session {
+    grid-template-columns: 1fr;
+    row-gap: 38px;
+  }
+
+  body .single-session .session-heading-row,
+  body .single-session .benefits,
+  body .single-session .purchase-action {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  body .pack-session {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  body .pack-session .purchase-action {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  body .experience-section {
+    padding-block: 92px 84px;
+  }
+
+  body .experience-inner {
+    width: calc(100% - 36px);
+  }
+
+  body .experience-copy h2 {
+    font-size: clamp(66px, 20vw, 82px);
+  }
+
+  body .experience-lede {
+    font-size: 17px;
+  }
+
+  body .experience-steps {
+    margin-top: 55px;
+  }
+
+  body .experience-steps li,
+  body .experience-steps li:first-child {
+    padding: 26px 8px 28px;
+  }
+
+  body .experience-steps strong {
+    margin-top: 15px;
+    font-size: 27px;
+  }
+
+  body .sessions-section {
+    padding-block: 66px 96px;
+  }
+
+  body .sessions-section .section-heading h2 {
+    font-size: 58px;
+  }
+
+  body .single-session {
+    padding: 35px 28px 30px;
+  }
+
+  body .single-session h3 {
+    font-size: 43px;
+  }
+
+  body .single-session .price {
+    margin-top: 34px;
+    font-size: 51px;
+  }
+
+  body .single-session .benefits {
+    margin: 0 0 20px;
+  }
+
+  body .pack-session {
+    padding: 34px 20px;
+    gap: 28px;
+  }
+
+  body .pack-session .session-heading-row {
+    grid-template-columns: 1fr;
+  }
+
+  body .pack-session .price {
+    text-align: left;
+  }
+
+  .practice-copy blockquote {
+    font-size: 42px;
+  }
+}

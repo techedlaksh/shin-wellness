@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Arrow } from "@/components/artwork";
 import {
-  InterestButton,
   PurchaseButton,
   SignupForm,
 } from "@/components/signup";
@@ -21,7 +20,7 @@ export default function Home() {
         <nav aria-label="Main navigation">
           <a href="#experience">How it works</a>
           <a href="#sessions">Sessions</a>
-          <a href="#little-things">Resources</a>
+          <a href="#practice">Meet Shin</a>
         </nav>
         <a className="button button-outline header-cta" href="#sessions">
           Book one session
@@ -84,31 +83,34 @@ export default function Home() {
           <div className="container experience-inner">
             <div className="experience-copy">
               <span className="eyebrow">WHAT HAPPENS IN THE HOUR</span>
-              <h2 id="experience-title">A useful hour has a simple shape.</h2>
+              <h2 id="experience-title">
+                One thing<br />
+                <em>at a time.</em>
+              </h2>
               <p className="experience-lede">
-                Tell us what is stuck—physically or mentally. We spend the hour
-                getting specific, trying what helps, and deciding what to do next.
+                Bring the knot, not your whole life story. We spend the hour
+                getting specific, trying what helps, and choosing what comes next.
               </p>
             </div>
             <ol className="experience-steps">
               <li>
                 <span>01</span>
                 <div>
-                  <strong>Name the friction</strong>
+                  <strong>Name it</strong>
                   <p>What hurts, loops, or keeps getting postponed?</p>
                 </div>
               </li>
               <li>
                 <span>02</span>
                 <div>
-                  <strong>Try the shift</strong>
+                  <strong>Work it</strong>
                   <p>Work the tension or burnout pattern in real time.</p>
                 </div>
               </li>
               <li>
                 <span>03</span>
                 <div>
-                  <strong>Make it usable</strong>
+                  <strong>Take it with you</strong>
                   <p>Leave with one action that fits your actual week.</p>
                 </div>
               </li>
@@ -124,7 +126,7 @@ export default function Home() {
           <div className="section-heading">
             <div>
               <span className="eyebrow">PERSONAL SESSIONS</span>
-              <h2 id="sessions-title">Choose the pace.</h2>
+              <h2 id="sessions-title">Begin with one.</h2>
             </div>
             <p>
               Choose one focused hour or a week of daily continuity. Every
@@ -183,7 +185,11 @@ export default function Home() {
           </p>
         </section>
 
-        <section className="practice-section" aria-labelledby="practice-title">
+        <section
+          className="practice-section"
+          id="practice"
+          aria-labelledby="practice-title"
+        >
           <div className="container practice-inner">
             <figure className="practice-portrait">
               <Image
@@ -208,11 +214,7 @@ export default function Home() {
             <div className="practice-copy">
               <span className="eyebrow">FOUNDER &amp; PRACTITIONER</span>
               <h2 id="practice-title">Meet Shin.</h2>
-              <blockquote>
-                No performance.<br />
-                No perfect routine.<br />
-                Just an honest next step.
-              </blockquote>
+              <blockquote>Attention before advice.</blockquote>
               <p>
                 The practice is intentionally one-to-one. Shin holds the thread,
                 notices what changes, and helps make the next step fit the life
@@ -221,50 +223,6 @@ export default function Home() {
               <a className="text-link" href="#sessions">
                 Choose your session <span>↑</span>
               </a>
-            </div>
-          </div>
-        </section>
-
-        <section
-          className="little-section section"
-          id="little-things"
-          aria-labelledby="little-title"
-        >
-          <div className="container">
-            <div className="section-heading">
-              <div>
-                <span className="eyebrow">FREE RESOURCES</span>
-                <h2 id="little-title">On the side.</h2>
-              </div>
-              <p>
-                Free, quiet, and made to be used.
-              </p>
-            </div>
-            <div className="resource-grid">
-              <article className="resource-card">
-                <div className="resource-content">
-                  <div className="resource-meta">
-                    <span>FOR YOUR EARS</span>
-                    <span>FREE · COMING SOON</span>
-                  </div>
-                  <h3>A 50-minute listening mix.</h3>
-                  <InterestButton interest="playlist">
-                    Tell me when it drops
-                  </InterestButton>
-                </div>
-              </article>
-              <article className="resource-card">
-                <div className="resource-content">
-                  <div className="resource-meta">
-                    <span>FOR YOUR SCREEN</span>
-                    <span>FREE · COMING SOON</span>
-                  </div>
-                  <h3>Original phone wallpapers.</h3>
-                  <InterestButton interest="wallpapers">
-                    Save me a copy
-                  </InterestButton>
-                </div>
-              </article>
             </div>
           </div>
         </section>
