@@ -146,6 +146,17 @@ export default function Home() {
                 </div>
               </li>
             </ol>
+            <figure className="experience-detail">
+              <Image
+                src="/session-conversation.png"
+                alt="Two people in conversation, one listening while the other gestures"
+                width={1672}
+                height={941}
+                sizes="(max-width: 600px) calc(100vw - 86px), calc(100vw - 248px)"
+                loading="eager"
+              />
+              <figcaption>Specific attention. No preset script.</figcaption>
+            </figure>
           </div>
         </section>
 
@@ -249,7 +260,7 @@ export default function Home() {
                     <span>FOR YOUR EARS</span>
                     <span>FREE · COMING SOON</span>
                   </div>
-                  <h3>Fifty minutes without a productivity agenda.</h3>
+                  <h3>A 50-minute listening mix.</h3>
                   <p>
                     For the commute home, a quiet morning, or any stretch of
                     time that does not need optimizing.
@@ -265,7 +276,7 @@ export default function Home() {
                     <span>FOR YOUR SCREEN</span>
                     <span>FREE · COMING SOON</span>
                   </div>
-                  <h3>Words that survive the second glance.</h3>
+                  <h3>Original phone wallpapers.</h3>
                   <p>
                     Original phone wallpapers without slogans, streaks, or
                     another habit to maintain.
@@ -282,21 +293,11 @@ export default function Home() {
         <section
           className="upcoming-section section container"
           id="coming-soon"
-          aria-labelledby="upcoming-title"
+          aria-label="Future offerings"
         >
-          <div className="section-heading">
-            <div>
-              <span className="eyebrow">ON THE HORIZON</span>
-              <h2 id="upcoming-title">Not ready yet. Deliberately.</h2>
-            </div>
-            <p>
-              These are sketches, not launches. Join only the line for the one
-              you would genuinely use.
-            </p>
-          </div>
           <details className="future-details">
             <summary>
-              Browse five ideas in development <span aria-hidden="true">+</span>
+              Follow a future offering <span aria-hidden="true">+</span>
             </summary>
             <div className="upcoming-index" aria-label="Upcoming offerings">
               {upcoming.map((item) => (
