@@ -83,38 +83,46 @@ export default function Home() {
           <div className="container experience-inner">
             <div className="experience-copy">
               <span className="eyebrow">WHAT HAPPENS IN THE HOUR</span>
-              <h2 id="experience-title">
-                One thing<br />
-                <em>at a time.</em>
-              </h2>
+              <h2 id="experience-title">One thing at a time.</h2>
               <p className="experience-lede">
                 Bring the knot, not your whole life story. We spend the hour
                 getting specific, trying what helps, and choosing what comes next.
               </p>
             </div>
-            <ol className="experience-steps">
-              <li>
-                <span>01</span>
-                <div>
-                  <strong>Name it</strong>
-                  <p>What hurts, loops, or keeps getting postponed?</p>
-                </div>
-              </li>
-              <li>
-                <span>02</span>
-                <div>
-                  <strong>Work it</strong>
-                  <p>Work the tension or burnout pattern in real time.</p>
-                </div>
-              </li>
-              <li>
-                <span>03</span>
-                <div>
-                  <strong>Take it with you</strong>
-                  <p>Leave with one action that fits your actual week.</p>
-                </div>
-              </li>
-            </ol>
+            <div className="experience-body">
+              <figure className="process-photo">
+                <Image
+                  src="/session-detail.png"
+                  alt="A close view of a shoulder release beside a laptop and handwritten session note"
+                  width={1536}
+                  height={1024}
+                  sizes="(max-width: 700px) calc(100vw - 36px), 42vw"
+                />
+              </figure>
+              <ol className="experience-steps">
+                <li>
+                  <span>01</span>
+                  <div>
+                    <strong>Name it</strong>
+                    <p>What hurts, loops, or keeps getting postponed?</p>
+                  </div>
+                </li>
+                <li>
+                  <span>02</span>
+                  <div>
+                    <strong>Work it</strong>
+                    <p>Work the tension or burnout pattern in real time.</p>
+                  </div>
+                </li>
+                <li>
+                  <span>03</span>
+                  <div>
+                    <strong>Take it with you</strong>
+                    <p>Leave with one action that fits your actual week.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
           </div>
         </section>
 
@@ -221,18 +229,11 @@ export default function Home() {
                 meet. The hour moves between guided movement, close attention,
                 and a written next step you can actually use.
               </p>
-              <dl className="practice-facts">
-                <div>
-                  <dt>FORMAT</dt>
-                  <dd>Private · Online · One-to-one</dd>
-                </div>
-                <div>
-                  <dt>FOCUS</dt>
-                  <dd>Tension · Overload · Burnout</dd>
-                </div>
-              </dl>
+              <p className="practice-proof">
+                Every session is led by Shin—no hand-offs, no rotating practitioner.
+              </p>
               <a className="text-link" href="#sessions">
-                Choose your session <span>↑</span>
+                Book a private hour <span>↑</span>
               </a>
             </div>
           </div>
