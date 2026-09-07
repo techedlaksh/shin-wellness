@@ -328,9 +328,23 @@ export default function Home() {
             </div>
 
             <div className="making-journal">
-              <div className="upcoming-grid">
-                {upcoming.map((item) => (
-                  <article className="upcoming-card" key={item.interest}>
+              <article className="upcoming-card featured-future">
+                <div className="upcoming-copy">
+                  <span className="offering-detail">{upcoming[0].detail}</span>
+                  <h3>{upcoming[0].title}</h3>
+                  <p>{upcoming[0].description}</p>
+                </div>
+                <InterestButton interest={upcoming[0].interest}>
+                  Keep me posted
+                </InterestButton>
+              </article>
+
+              <div className="future-index">
+                {upcoming.slice(1).map((item) => (
+                  <article
+                    className="upcoming-card future-row"
+                    key={item.interest}
+                  >
                     <div className="upcoming-copy">
                       <span className="offering-detail">{item.detail}</span>
                       <h3>{item.title}</h3>
@@ -341,10 +355,8 @@ export default function Home() {
                     </InterestButton>
                   </article>
                 ))}
-              </div>
 
-              <div className="explore-grid">
-                <article className="explore-card retreat-card">
+                <article className="explore-card retreat-card future-row future-side-note">
                   <div className="mini-landscape" aria-hidden="true">
                     <span className="landscape-sun" />
                     <span className="landscape-hill hill-one" />
@@ -362,7 +374,7 @@ export default function Home() {
                   </div>
                 </article>
 
-                <article className="explore-card finds-card">
+                <article className="explore-card finds-card future-row future-side-note">
                   <div className="finds-illustration" aria-hidden="true">
                     <Sprout />
                     <span>
