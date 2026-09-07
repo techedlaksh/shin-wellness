@@ -1,0 +1,4 @@
+{"type":"message","agent":"design_critic_2","status":"failed","text":"No delivered response"}
+{"type":"agent_message","agent":"design_critic_2","message":{"role":"assistant","content":"Aesthetic read: deliberately restrained.\n\nBiggest gaps:\n1. Hierarchy needs work.\n\nHighest-leverage move: clarify the opening composition.\n\nScore: 7.4/10"}}
+{"type":"agent_message","agent":"design_critic_2","message":{"role":"assistant","content":"Aesthetic read: deliberately restrained.\n\nBiggest gaps:\n1. Hierarchy needs work.\n\nHighest-leverage move: clarify the opening composition.\n\nScore: 7.4/10"}}
+{"type":"agent_message","agent":"design_critic_3","message":{"role":"assistant","content":"Review failed before a score was delivered."}}
