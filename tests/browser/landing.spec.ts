@@ -30,9 +30,9 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
         .evaluate((element) => getComputedStyle(element).animationName),
     ).toBe("none");
     if (width > 900) {
-      await expect(page.locator(".hero-copy > p")).toHaveCSS(
+      await expect(page.locator(".hero-service")).toHaveCSS(
         "font-size",
-        "18px",
+        "30px",
       );
       await expect(page.locator(".hero-copy > .button")).toHaveCSS(
         "font-size",
@@ -46,7 +46,7 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
   await expect(
     page.getByRole("heading", {
       level: 2,
-      name: "Your seven-session reset.",
+      name: "Seven sessions. Seven areas of focus.",
     }),
   ).toBeVisible();
   const sessionTopics = page.locator(".journey-list > li");
@@ -71,7 +71,7 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
     }),
   ).toHaveAttribute("href", "https://checkout.example.com/pack");
   await page.locator(".hero-copy > a").click();
-  await expect(page).toHaveURL(/#sessions$/);
+  await expect(page).toHaveURL(/#focus$/);
   expect(errors).toEqual([]);
 });
 

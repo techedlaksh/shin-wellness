@@ -6,8 +6,8 @@ import {
   SignupForm,
 } from "@/components/signup";
 import { checkoutUrl } from "@/lib/offerings";
-import heroImage from "@/public/shin-reset-hero-v2.png";
-import journeyImage from "@/public/seven-session-reset.png";
+import heroImage from "@/public/shin-reset-practice-v3.png";
+import journeyImage from "@/public/seven-session-practice-v2.png";
 
 const sessionTopics = [
   {
@@ -84,7 +84,7 @@ export default function Home() {
           <Image
             className="hero-image"
             src={heroImage}
-            alt="A woman resting comfortably beside a sunlit window"
+            alt="A woman practicing a gentle seated neck stretch"
             fill
             priority
             placeholder="blur"
@@ -92,21 +92,98 @@ export default function Home() {
           />
           <div className="container hero-inner">
             <div className="hero-copy">
-              <span className="eyebrow">PERSONAL SUPPORT FOR BODY AND MIND</span>
+              <span className="eyebrow">ONE-TO-ONE WELLNESS SESSIONS</span>
               <h1 id="hero-title">
                 Shin
                 <br />
                 Wellness.
               </h1>
-              <p>
-                A little space to pause, reset, and feel more like yourself
-                again.
+              <p className="hero-service">
+                Physical reset.
+                <br />
+                Burnout prevention.
               </p>
-              <a className="button button-dark" href="#sessions">
-                Choose your session
+              <p className="hero-summary">
+                Start with one session, or choose seven sessions over seven
+                days.
+              </p>
+              <a className="button button-dark" href="#focus">
+                Explore sessions
                 <Arrow />
               </a>
             </div>
+          </div>
+        </section>
+
+        <section
+          className="focus-section"
+          id="focus"
+          aria-labelledby="focus-title"
+        >
+          <div className="container focus-inner">
+            <figure className="focus-photo">
+              <Image
+                src={journeyImage}
+                alt="A woman practicing a supported hamstring stretch"
+                placeholder="blur"
+                sizes="(max-width: 800px) 100vw, 55vw"
+              />
+            </figure>
+            <div className="focus-copy">
+              <span className="section-label">One-to-one sessions</span>
+              <h2 id="focus-title">
+                One-to-one attention. Space for what you need.
+              </h2>
+              <p className="focus-intro">
+                Each session centers on a physical focus or support for rest
+                and fatigue.
+              </p>
+              <div className="focus-areas">
+                <article>
+                  <h3>Physical reset</h3>
+                  <p>
+                    Neck and shoulders, chest opening, lower back, hamstrings,
+                    and core strength.
+                  </p>
+                </article>
+                <article>
+                  <h3>Burnout prevention</h3>
+                  <p>Insomnia and rest, fatigue, and time to recenter.</p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          className="journey-section"
+          id="seven-session-reset"
+          aria-labelledby="journey-title"
+        >
+          <div className="container journey-heading">
+            <span className="section-label">
+              Seven sessions / seven days / $350 USD
+            </span>
+            <h2 id="journey-title">Seven sessions. Seven areas of focus.</h2>
+            <p>
+              Work through every area in sequence, with one personal session
+              each day.
+            </p>
+          </div>
+          <div className="container journey-program">
+            <ol className="journey-list">
+              {sessionTopics.map((topic) => (
+                <li key={topic.number}>
+                  <span className="journey-number">{topic.number}</span>
+                  <h3>{topic.title}</h3>
+                  <p>{topic.description}</p>
+                </li>
+              ))}
+            </ol>
+            <a className="text-link journey-cta" href="#sessions">
+              View session options
+              <Arrow diagonal />
+            </a>
           </div>
         </section>
 
@@ -116,11 +193,11 @@ export default function Home() {
           aria-labelledby="sessions-title"
         >
           <div className="container offers-heading">
-            <span className="eyebrow">START WHERE YOU ARE</span>
-            <h2 id="sessions-title">Choose your reset.</h2>
+            <span className="pricing-mark" aria-hidden="true" />
+            <h2 id="sessions-title">Choose your sessions.</h2>
             <p>
-              Begin with one focused session or give yourself seven days of
-              consistent care.
+              Begin with one focused session or book the complete seven-day
+              sequence.
             </p>
           </div>
 
@@ -128,101 +205,51 @@ export default function Home() {
             <article className="offer-choice offer-single">
               <div className="offer-inner">
                 <div className="offer-topline">
-                  <span>ONE FOCUSED SESSION</span>
+                  <span>Focused support</span>
                   <span>01 / 02</span>
                 </div>
-                <h3>The personal reset</h3>
-                <p className="offer-lead">Your space to exhale and recenter.</p>
+                <h3>One session</h3>
+                <p className="offer-lead">
+                  Choose physical reset or burnout prevention.
+                </p>
                 <div className="offer-price">
-                  $60 <span>/ one session</span>
+                  $60 <span>USD / session</span>
                 </div>
                 <ul className="benefits">
-                  <li>One-to-one attention, centered around you</li>
-                  <li>Choose physical reset or burnout prevention</li>
-                  <li>A focused place to pause and reconnect</li>
+                  <li>One-to-one attention centered on your focus</li>
+                  <li>One dedicated session</li>
                 </ul>
                 <PurchaseButton
                   url={checkoutUrl(process.env.CHECKOUT_SINGLE_URL)}
                 />
-                <p className="offer-footnote">A gentle place to begin.</p>
               </div>
             </article>
 
             <article className="offer-choice offer-pack">
               <div className="offer-inner">
                 <div className="offer-topline">
-                  <span>SEVEN DAYS OF CONTINUITY</span>
+                  <span>Complete sequence</span>
                   <span>02 / 02</span>
                 </div>
-                <h3>Seven days, for you</h3>
+                <h3>Seven-session pack</h3>
                 <p className="offer-lead">
-                  Make a little room for yourself, every day.
+                  Seven personal sessions over seven days.
                 </p>
                 <div className="offer-price">
-                  $350 <span>/ seven-session pack</span>
+                  $350 <span>USD / seven sessions</span>
                 </div>
                 <ul className="benefits">
-                  <li>Seven personal sessions over seven days</li>
-                  <li>A steady rhythm for slowing down and resetting</li>
-                  <li>Support that makes room for everyday life</li>
+                  <li>All seven areas of focus</li>
+                  <li>One session each day</li>
                 </ul>
                 <PurchaseButton
                   url={checkoutUrl(process.env.CHECKOUT_PACK_URL)}
                   pack
                 />
-                <p className="offer-footnote">
-                  One small commitment to yourself.
-                </p>
               </div>
             </article>
           </div>
-          <p className="pricing-note">All prices in USD.</p>
-        </section>
-
-        <section
-          className="journey-section"
-          id="seven-session-reset"
-          aria-labelledby="journey-title"
-        >
-          <div className="container journey-heading">
-            <span className="eyebrow">INSIDE THE SEVEN-SESSION RESET</span>
-            <h2 id="journey-title">Your seven-session reset.</h2>
-            <p>
-              Seven focused sessions create a supportive rhythm for the parts
-              of you that need care.
-            </p>
-          </div>
-
-          <div className="container journey-layout">
-            <figure className="journey-photo">
-              <Image
-                src={journeyImage}
-                alt="A woman seated comfortably in a calm, sunlit room"
-                placeholder="blur"
-                sizes="(max-width: 700px) 100vw, 42vw"
-              />
-              <figcaption>
-                <span>SEVEN DAYS</span>
-                A little room to return to yourself.
-              </figcaption>
-            </figure>
-
-            <div className="journey-program">
-              <ol className="journey-list">
-                {sessionTopics.map((topic) => (
-                  <li key={topic.number}>
-                    <span className="journey-number">{topic.number}</span>
-                    <h3>{topic.title}</h3>
-                    <p>{topic.description}</p>
-                  </li>
-                ))}
-              </ol>
-              <a className="button button-dark journey-cta" href="#sessions">
-                Choose the seven-day pack
-                <Arrow diagonal />
-              </a>
-            </div>
-          </div>
+          <p className="pricing-note">Secure checkout opens in a new tab.</p>
         </section>
 
         <section
@@ -231,15 +258,14 @@ export default function Home() {
           aria-labelledby="little-title"
         >
           <div className="container little-heading">
-            <span className="eyebrow">FOR THE IN-BETWEEN</span>
-            <h2 id="little-title">Small things for softer days.</h2>
+            <h2 id="little-title">Between sessions.</h2>
           </div>
           <div className="container resource-grid">
             <article className="resource-card">
               <ResourceArt type="playlist" />
               <div className="resource-content">
-                <span className="resource-kicker">PLAYLIST / FREE</span>
-                <h3>A soundtrack for slowing down.</h3>
+                <span className="resource-kicker">Playlist / free</span>
+                <h3>The slow down club playlist.</h3>
                 <p>
                   For deep breaths, slow mornings, and finding your own rhythm.
                 </p>
@@ -251,9 +277,9 @@ export default function Home() {
             <article className="resource-card">
               <ResourceArt type="wallpapers" />
               <div className="resource-content">
-                <span className="resource-kicker">WALLPAPERS / FREE</span>
-                <h3>A little joy for your screen.</h3>
-                <p>Gentle reminders for one small pause in your day.</p>
+                <span className="resource-kicker">Wallpapers / free</span>
+                <h3>Wallpapers for your screen.</h3>
+                <p>Visual reminders to pause during the day.</p>
                 <InterestButton interest="wallpapers">
                   Save me a little joy
                 </InterestButton>
@@ -262,25 +288,25 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="closing-section" aria-labelledby="closing-title">
-          <div className="container closing-inner">
-            <span>READY WHEN YOU ARE</span>
-            <h2 id="closing-title">Make time for your reset.</h2>
-            <a className="button button-light" href="#sessions">
-              Choose your session
-              <Arrow />
-            </a>
-          </div>
-        </section>
       </main>
 
       <footer className="site-footer" id="stay-in-touch">
-        <div className="container footer-newsletter">
-          <div>
-            <span className="eyebrow">A NOTE FROM SHIN, NOW AND THEN</span>
-            <h2>A softer corner of your inbox.</h2>
+        <div className="container closing-main">
+          <div className="closing-booking">
+            <h2>Choose one session or the full sequence.</h2>
+            <p>$60 for one session. $350 for seven.</p>
+            <a className="text-link" href="#sessions">
+              Choose your sessions
+              <Arrow diagonal />
+            </a>
           </div>
-          <SignupForm />
+          <div className="footer-newsletter">
+            <div>
+              <span className="eyebrow">NOTES FROM SHIN</span>
+              <h2>Launch updates and new resources.</h2>
+            </div>
+            <SignupForm />
+          </div>
         </div>
         <div className="container footer-inner">
           <a className="wordmark" href="#" aria-label="Shin Wellness home">
