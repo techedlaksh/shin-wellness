@@ -8,3 +8,5 @@ node_modules/
 .conductor/
 test-results/
 playwright-report/
+__pycache__/
+*.py[cod]
