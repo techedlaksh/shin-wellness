@@ -161,9 +161,9 @@ export default function Home() {
               </h2>
             </div>
             <p>
-              When life feels a bit too full, you deserve a space that’s just
-              yours. Personal support to help you slow down and find your
-              footing.
+              Choose one focus for a personal reset, or move through all seven
+              across a week. Your focus and schedule are confirmed after
+              checkout.
             </p>
           </div>
           <div className="session-grid">
@@ -174,7 +174,8 @@ export default function Home() {
               </div>
               <h3>The personal reset</h3>
               <p className="session-description">
-                One session. Choose the focus your body needs today.
+                One focused session, shaped around what your body needs that
+                day.
               </p>
               <div className="price">
                 $60<span>/ one session</span>
@@ -182,8 +183,8 @@ export default function Home() {
               <div className="session-rule" />
               <ul className="benefits">
                 <li>1:1 attention, centered around you</li>
-                <li>Choose one of seven session focuses</li>
-                <li>A little space to pause and reconnect</li>
+                <li>Choose one focus from the shared menu</li>
+                <li>Begin with the support that feels most useful</li>
               </ul>
               <PurchaseButton
                 url={checkoutUrl(process.env.CHECKOUT_SINGLE_URL)}
@@ -199,32 +200,52 @@ export default function Home() {
               </div>
               <h3>Seven days, for you</h3>
               <p className="session-description">
-                Every focus, thoughtfully ordered around you.
+                Seven sessions. Every focus, thoughtfully ordered around you.
               </p>
               <div className="price">
                 $350<span>/ seven-day pack</span>
               </div>
               <div className="session-rule" />
-              <p className="session-focus-intro">
-                All seven focuses are included. Shin will shape their order
-                around what you need, with one focus explored each day.
-              </p>
-              <ol className="session-focus-list" role="list">
-                {sessionFocuses.map((focus) => (
-                  <li key={focus.title}>
-                    <div>
-                      <strong>{focus.title}</strong>
-                      <span>{focus.description}</span>
-                    </div>
-                  </li>
-                ))}
-              </ol>
+              <ul className="benefits">
+                <li>All seven focuses, with one explored each day</li>
+                <li>A sequence tailored by Shin around what you need</li>
+                <li>Daily continuity, without pressure to rush</li>
+              </ul>
               <PurchaseButton
                 url={checkoutUrl(process.env.CHECKOUT_PACK_URL)}
                 pack
               />
               <p className="card-footnote">One small commitment to yourself.</p>
             </article>
+          </div>
+          <div className="focus-menu">
+            <div className="focus-menu-intro">
+              <span className="eyebrow">THE SHARED FOCUS MENU</span>
+              <h3>
+                One menu.
+                <br />
+                <em>Two ways in.</em>
+              </h3>
+              <p>
+                Start with the focus that speaks to today, or explore the full
+                sequence over seven sessions.
+              </p>
+              <span className="focus-menu-note">
+                PERSONAL RESET · CHOOSE ONE
+                <br />
+                SEVEN DAYS · EXPLORE ALL SEVEN
+              </span>
+            </div>
+            <ol className="session-focus-list" role="list">
+              {sessionFocuses.map((focus) => (
+                <li key={focus.title}>
+                  <div>
+                    <strong>{focus.title}</strong>
+                    <span>{focus.description}</span>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </div>
           <p className="sessions-note">
             All prices in USD. A softer start is still a start.

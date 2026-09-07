@@ -66,15 +66,16 @@ test("session cards explain the selectable focus and tailored seven-day sequence
   const sevenDayPack = page.locator(".pack-session");
 
   await expect(singleSession).toContainText(
-    "Choose the focus your body needs today",
+    "One focused session, shaped around what your body needs that day",
   );
   await expect(singleSession).toContainText(
-    "Choose one of seven session focuses",
+    "Choose one focus from the shared menu",
   );
   await expect(sevenDayPack).toContainText(
-    "Shin will shape their order around what you need",
+    "A sequence tailored by Shin around what you need",
   );
-  await expect(sevenDayPack.locator(".session-focus-list > li")).toHaveCount(7);
+  const focusMenu = page.locator(".focus-menu");
+  await expect(focusMenu.locator(".session-focus-list > li")).toHaveCount(7);
 
   for (const focus of [
     "Neck & shoulders",
@@ -85,7 +86,7 @@ test("session cards explain the selectable focus and tailored seven-day sequence
     "Insomnia",
     "Fatigue",
   ]) {
-    await expect(sevenDayPack.getByText(focus, { exact: true })).toBeVisible();
+    await expect(focusMenu.getByText(focus, { exact: true })).toBeVisible();
   }
 });
 

@@ -177,7 +177,9 @@ export function InterestButton({
         aria-haspopup="dialog"
       >
         {children}
-        <Arrow diagonal />
+        <span className="interest-mark" aria-hidden="true">
+          +
+        </span>
       </button>
       {open && (
         <dialog

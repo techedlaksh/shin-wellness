@@ -64,7 +64,13 @@ export function BotanicalArt() {
         <path d="M79 578V260a213 213 0 0 1 426 0v318Z" fill="#e5dfd3" />
         <g clipPath="url(#garden-arch)">
           <path fill="#ddd9c7" d="M0 0h550v600H0z" />
-          <circle cx="352" cy="190" r="72" fill="#edb996" />
+          <circle
+            className="garden-sun"
+            cx="352"
+            cy="190"
+            r="72"
+            fill="#edb996"
+          />
           <path
             d="M0 378c156-163 239-122 328-28S504 300 560 325v290H0Z"
             fill="#aeb4a0"
@@ -78,18 +84,20 @@ export function BotanicalArt() {
             fill="#5b7363"
           />
           <path
+            className="garden-path"
             d="M218 620c64-95 175-102 133-152s-108-76-83-114"
             fill="none"
             stroke="#e8d9b9"
             strokeWidth="39"
           />
           <path
+            className="garden-stem"
             d="M302 603C217 477 207 345 183 216"
             fill="none"
             stroke="#34483f"
             strokeWidth="7"
           />
-          <g fill="#34483f">
+          <g className="garden-leaves" fill="#34483f">
             <path d="M189 257c-76-1-106-76-91-114 58 9 91 47 91 114Z" />
             <path d="M190 268c-17-69 17-106 63-133 20 61 0 117-63 133Z" />
             <path d="M213 348c-75-7-133-53-135-99 75-6 121 37 135 99Z" />
