@@ -17,7 +17,7 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
     await page.goto("/");
     await page.evaluate(() => document.fonts.ready);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-      "A little spaceto feel likeyourself again.",
+      "Untangle what’sweighing on you.",
     );
     expect(
       await page.evaluate(
@@ -53,7 +53,7 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
       name: "Buy the 7-day pack (opens checkout in a new tab)",
     }),
   ).toHaveAttribute("href", "https://checkout.example.com/pack");
-  await page.getByRole("link", { name: "Find your reset" }).click();
+  await page.getByRole("link", { name: "Book a focused hour" }).click();
   await expect(page).toHaveURL(/#sessions$/);
   expect(errors).toEqual([]);
 });
