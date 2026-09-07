@@ -304,7 +304,10 @@ def restore(root: Path, run_dir: Path, target: str) -> str:
             candidate = root / path
             if candidate.is_file() or candidate.is_symlink():
                 candidate.unlink()
-    marker = root / ".git" / f"design-archive-{manifest['runId']}.json"
+    marker = Path(git(root, "rev-parse", "--git-path", f"design-archive-{manifest['runId']}.json"))
+    if not marker.is_absolute():
+        marker = root / marker
+    marker.parent.mkdir(parents=True, exist_ok=True)
     marker.write_text(json.dumps({"target": target, "sourceCommit": source, "restoredAt": now()}) + "\n", encoding="utf-8")
     return label
 
