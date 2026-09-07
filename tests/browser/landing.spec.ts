@@ -95,7 +95,7 @@ test("offering dialog traps focus, closes with Escape, and restores focus", asyn
 }) => {
   await page.goto("/");
   const trigger = page.getByRole("button", {
-    name: "Send me the reading list",
+    name: "Notify me when it’s ready",
   });
   await trigger.click();
   const dialog = page.getByRole("dialog");
@@ -227,7 +227,7 @@ test("page and signup dialog pass automated accessibility checks", async ({
     .analyze();
   expect(pageResults.violations).toEqual([]);
   await page
-    .getByRole("button", { name: "Send me the reading list" })
+    .getByRole("button", { name: "Notify me when it’s ready" })
     .click();
   const dialogResults = await new AxeBuilder({ page })
     .withTags(["wcag2a", "wcag2aa", "wcag21aa"])

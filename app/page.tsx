@@ -258,7 +258,7 @@ export default function Home() {
           aria-labelledby="little-title"
         >
           <div className="container">
-            <div className="section-heading">
+            <div className="section-heading resource-heading">
               <div>
                 <span className="eyebrow">
                   02 / LITTLE THINGS, LOVINGLY MADE
@@ -274,38 +274,38 @@ export default function Home() {
                 screen. Small pockets of good, coming your way.
               </p>
             </div>
-            <div className="resource-grid">
-              <article className="resource-card">
+            <div className="resource-spread">
+              <article className="resource-story resource-story-books">
                 <ResourceArt type="books" />
                 <div className="resource-content">
-                  <div className="resource-meta">
-                    <span>FOR YOUR NIGHTSTAND</span>
-                    <span className="coming-pill">COMING SOON · FREE</span>
-                  </div>
+                  <span className="resource-index">01 / THE SOFT SHELF</span>
+                  <span className="resource-availability">
+                    READING LIST · FREE AT LAUNCH
+                  </span>
                   <h3>A few good pages for slowing down.</h3>
                   <p>
                     Thoughtful book recommendations for gentler habits, steadier
                     days, and coming back to yourself.
                   </p>
                   <InterestButton interest="books">
-                    Send me the reading list
+                    Notify me when it’s ready
                   </InterestButton>
                 </div>
               </article>
-              <article className="resource-card">
+              <article className="resource-story resource-story-wallpapers">
                 <ResourceArt type="wallpapers" />
                 <div className="resource-content">
-                  <div className="resource-meta">
-                    <span>FOR YOUR EVERYDAY</span>
-                    <span className="coming-pill">COMING SOON · FREE</span>
-                  </div>
-                  <h3>A little joy for your screen.</h3>
+                  <span className="resource-index">02 / SMALL REMINDERS</span>
+                  <span className="resource-availability">
+                    PHONE WALLPAPERS · FREE AT LAUNCH
+                  </span>
+                  <h3>A softer note for your screen.</h3>
                   <p>
-                    Cute wallpapers with gentle reminders. Because even your
-                    phone could use a softer side.
+                    Illustrated reminders for the screen you see every day,
+                    made to bring the pace down a notch.
                   </p>
                   <InterestButton interest="wallpapers">
-                    Save me a little joy
+                    Notify me when they’re ready
                   </InterestButton>
                 </div>
               </article>
