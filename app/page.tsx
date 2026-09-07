@@ -92,11 +92,11 @@ export default function Home() {
             <div className="experience-body">
               <figure className="process-photo">
                 <Image
-                  src="/session-detail.png"
-                  alt="A close view of a shoulder release beside a laptop and handwritten session note"
-                  width={1536}
-                  height={1024}
-                  sizes="(max-width: 700px) calc(100vw - 36px), 42vw"
+                  src="/process-note.png"
+                  alt="A practitioner writing a next step on a session note card"
+                  width={1122}
+                  height={1402}
+                  sizes="(max-width: 700px) calc(100vw - 36px), 36vw"
                 />
               </figure>
               <ol className="experience-steps">
@@ -169,7 +169,7 @@ export default function Home() {
               <div className="session-heading-row">
                 <div>
                   <span className="offer-kicker">CONTINUE THE WORK</span>
-                  <h3>Seven steady days</h3>
+                  <h3>Seven-day continuation</h3>
                   <p className="session-description">
                     Daily attention for a change that needs steady momentum.
                   </p>

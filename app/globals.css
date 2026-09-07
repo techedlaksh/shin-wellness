@@ -7592,3 +7592,197 @@ body .pack-session {
     font-size: 19px !important;
   }
 }
+
+/* Fifteenth critic pass: a distinct session artifact and quieter hierarchy. */
+body .experience-section {
+  padding: 88px 0 94px;
+  background: #e8e8e0;
+}
+
+body .experience-inner {
+  display: grid;
+  grid-template-columns: 0.72fr 1.28fr;
+  grid-template-rows: auto 1fr;
+  gap: 44px 76px;
+}
+
+body .experience-copy {
+  grid-column: 2;
+  grid-row: 1;
+  display: block;
+  max-width: 700px;
+}
+
+body .experience-copy h2 {
+  max-width: 690px;
+  font-size: clamp(62px, 5.5vw, 82px);
+}
+
+body .experience-lede {
+  max-width: 650px;
+  margin-top: 24px;
+  font-size: 18px;
+}
+
+.experience-body {
+  display: contents;
+}
+
+.process-photo {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  min-height: 590px;
+  border: 0;
+}
+
+.process-photo img {
+  object-position: center center;
+}
+
+body .experience-steps {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: end;
+  border: 0;
+  border-top: 1px solid #8d998d;
+}
+
+body .experience-steps li,
+body .experience-steps li:first-child {
+  grid-template-columns: 42px 1fr;
+  gap: 22px;
+  padding: 22px 0 24px;
+}
+
+body .experience-steps li > div {
+  grid-column: 2;
+  display: block;
+}
+
+body .experience-steps strong {
+  font-size: 32px;
+}
+
+body .experience-steps p {
+  margin-top: 8px;
+  font-size: 17px;
+}
+
+body .sessions-section .section-heading {
+  display: block;
+  max-width: 780px;
+  margin-bottom: 52px;
+}
+
+body .sessions-section .section-heading h2 {
+  font-size: clamp(68px, 6.2vw, 90px);
+}
+
+body .sessions-section .section-heading > p {
+  max-width: 640px;
+  margin-top: 22px;
+  font-size: 18px;
+}
+
+body .pack-session {
+  min-height: 320px;
+}
+
+body .pack-session .purchase-action .button {
+  width: auto;
+  min-width: 220px;
+}
+
+body .session-card .button {
+  font-size: 15px;
+}
+
+.offer-kicker {
+  font-size: 14px;
+}
+
+body .newsletter-inner {
+  grid-template-columns: 1fr 0.9fr;
+  align-items: end;
+}
+
+body .newsletter-copy h2 {
+  max-width: 620px;
+  font-family: var(--font-serif), serif;
+  font-size: clamp(41px, 3.8vw, 56px);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+body .newsletter-copy > p {
+  font-size: 16px;
+}
+
+@media (max-width: 900px) {
+  body .experience-inner {
+    gap: 38px 48px;
+  }
+
+  .process-photo {
+    min-height: 540px;
+  }
+}
+
+@media (max-width: 700px) {
+  body .experience-inner {
+    display: block;
+  }
+
+  body .experience-copy {
+    max-width: none;
+  }
+
+  .experience-body {
+    display: block;
+  }
+
+  .process-photo {
+    min-height: 112vw;
+    margin-top: 38px;
+  }
+
+  body .experience-steps {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  body .experience-section {
+    padding-block: 68px 74px;
+  }
+
+  body .experience-copy h2 {
+    font-size: 52px;
+  }
+
+  .process-photo {
+    min-height: 108vw;
+  }
+
+  body .experience-steps li,
+  body .experience-steps li:first-child {
+    grid-template-columns: 34px 1fr;
+    padding-block: 21px 23px;
+  }
+
+  body .experience-steps strong {
+    font-size: 27px;
+  }
+
+  body .sessions-section .section-heading h2 {
+    font-size: 58px;
+  }
+
+  body .newsletter-inner {
+    grid-template-columns: 1fr;
+  }
+
+  body .newsletter-copy h2 {
+    font-size: 38px;
+  }
+}
