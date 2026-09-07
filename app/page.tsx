@@ -5,40 +5,7 @@ import {
   PurchaseButton,
   SignupForm,
 } from "@/components/signup";
-import { checkoutUrl, type Interest } from "@/lib/offerings";
-
-const upcoming: {
-  interest: Interest;
-  number: string;
-  title: string;
-  description: string;
-  detail: string;
-}[] = [
-  {
-    interest: "routine",
-    number: "01",
-    title: "Build emotional range in seven days.",
-    description:
-      "A practical PDF routine for noticing emotions without being run by them.",
-    detail: "7-DAY PDF ROUTINE · $29",
-  },
-  {
-    interest: "checkins",
-    number: "02",
-    title: "A weekly point of return.",
-    description:
-      "Four 30-minute check-ins to reflect, adjust, and decide what comes next.",
-    detail: "4-WEEK PROGRAM · $99",
-  },
-  {
-    interest: "coaching",
-    number: "03",
-    title: "Habits built for real life.",
-    description:
-      "Personal coaching with CBT-informed tools and a plan that can flex.",
-    detail: "HABIT COACHING",
-  },
-];
+import { checkoutUrl } from "@/lib/offerings";
 
 export default function Home() {
   return (
@@ -146,17 +113,6 @@ export default function Home() {
                 </div>
               </li>
             </ol>
-            <figure className="experience-detail">
-              <Image
-                src="/session-conversation.png"
-                alt="Two people in conversation, one listening while the other gestures"
-                width={1672}
-                height={941}
-                sizes="(max-width: 600px) calc(100vw - 86px), calc(100vw - 248px)"
-                loading="eager"
-              />
-              <figcaption>Specific attention. No preset script.</figcaption>
-            </figure>
           </div>
         </section>
 
@@ -227,6 +183,35 @@ export default function Home() {
           </p>
         </section>
 
+        <section className="practice-section" aria-labelledby="practice-title">
+          <div className="container practice-inner">
+            <figure className="practice-portrait">
+              <Image
+                src="/practitioner-portrait.png"
+                alt="A seated wellness practitioner looking attentively toward the camera"
+                width={1122}
+                height={1402}
+                sizes="(max-width: 700px) calc(100vw - 36px), 42vw"
+                loading="eager"
+              />
+            </figure>
+            <div className="practice-copy">
+              <span className="eyebrow">ONE PRACTITIONER, NOT A PLATFORM</span>
+              <h2 id="practice-title">
+                You won’t have to start from zero each time.
+              </h2>
+              <p>
+                Shin is intentionally one-to-one. The person listening holds
+                the thread, notices what changes, and helps make the next step
+                fit the life you are actually living.
+              </p>
+              <a className="text-link" href="#sessions">
+                Choose your session <span>↑</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
         <section
           className="little-section section"
           id="little-things"
@@ -291,61 +276,6 @@ export default function Home() {
         </section>
 
         <section
-          className="upcoming-section section container"
-          id="coming-soon"
-          aria-label="Future offerings"
-        >
-          <details className="future-details">
-            <summary>
-              Follow a future offering <span aria-hidden="true">+</span>
-            </summary>
-            <div className="upcoming-index" aria-label="Upcoming offerings">
-              {upcoming.map((item) => (
-                <article className="future-row" key={item.interest}>
-                  <span className="future-number">{item.number}</span>
-                  <div className="future-title">
-                    <span className="eyebrow offering-detail">{item.detail}</span>
-                    <h3>{item.title}</h3>
-                  </div>
-                  <p className="future-description">{item.description}</p>
-                  <InterestButton interest={item.interest}>
-                    Keep me posted
-                  </InterestButton>
-                </article>
-              ))}
-              <article className="future-row future-row-secondary">
-                <span className="future-number">04</span>
-                <div className="future-title">
-                  <span className="eyebrow offering-detail">CURATED STAYS</span>
-                  <h3>Somewhere to simply be.</h3>
-                </div>
-                <p className="future-description">
-                  Restorative stays selected for setting, pace, and care.
-                </p>
-                <InterestButton interest="retreats">
-                  Daydream with us
-                </InterestButton>
-              </article>
-              <article className="future-row future-row-secondary">
-                <span className="future-number">05</span>
-                <div className="future-title">
-                  <span className="eyebrow offering-detail">
-                    TESTED &amp; KEPT
-                  </span>
-                  <h3>Useful things, passed along.</h3>
-                </div>
-                <p className="future-description">
-                  Objects and practices we have tried and kept.
-                </p>
-                <InterestButton interest="recommendations">
-                  Send me the edit
-                </InterestButton>
-              </article>
-            </div>
-          </details>
-        </section>
-
-        <section
           className="newsletter-section"
           id="stay-in-touch"
           aria-labelledby="newsletter-title"
@@ -360,7 +290,14 @@ export default function Home() {
               </p>
             </div>
             <div className="newsletter-form-wrap">
-              <SignupForm />
+              <a className="button button-light final-book" href="#sessions">
+                Start with one focused hour
+                <Arrow diagonal />
+              </a>
+              <details className="newsletter-details">
+                <summary>Prefer updates? Join the email list</summary>
+                <SignupForm />
+              </details>
             </div>
           </div>
         </section>

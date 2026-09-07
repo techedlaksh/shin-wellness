@@ -100,19 +100,8 @@ test("every offering sends its interest, blocks in-flight resubmission, and conf
     await route.fulfill({ status: 200, json: { ok: true } });
   });
   await page.goto("/");
-  await page
-    .locator(".future-details")
-    .evaluate((details) => ((details as HTMLDetailsElement).open = true));
   const buttons = page.locator("button[aria-haspopup='dialog']");
-  const interests = [
-    "playlist",
-    "wallpapers",
-    "routine",
-    "checkins",
-    "coaching",
-    "retreats",
-    "recommendations",
-  ];
+  const interests = ["playlist", "wallpapers"];
   for (let i = 0; i < interests.length; i++) {
     await buttons.nth(i).click();
     const dialog = page.getByRole("dialog");
@@ -161,6 +150,9 @@ test("signup preserves input on failure and allows a successful retry", async ({
     );
   });
   await page.goto("/#stay-in-touch");
+  await page
+    .locator(".newsletter-details")
+    .evaluate((details) => ((details as HTMLDetailsElement).open = true));
   const email = page.getByRole("textbox", { name: "Email address" });
   await email.fill("reader@example.com");
   await page.getByRole("button", { name: "Keep me in the loop" }).click();
@@ -177,6 +169,9 @@ test("unconfigured real API never reports an email as saved", async ({
   page,
 }) => {
   await page.goto("/#stay-in-touch");
+  await page
+    .locator(".newsletter-details")
+    .evaluate((details) => ((details as HTMLDetailsElement).open = true));
   await page
     .getByRole("textbox", { name: "Email address" })
     .fill("reader@example.com");

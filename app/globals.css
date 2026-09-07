@@ -5030,3 +5030,317 @@ body .future-details summary {
     font-size: 20px;
   }
 }
+
+/* Eighth critic pass: visible ownership, balanced services, decisive close. */
+body .eyebrow,
+body .pill,
+body .resource-meta,
+body .newsletter-copy .eyebrow {
+  font-size: 11px;
+}
+
+body .experience-section {
+  padding-bottom: 98px;
+}
+
+body .experience-inner {
+  grid-template-columns: 0.82fr 1.18fr;
+  grid-template-rows: auto;
+  padding-block: 72px;
+}
+
+body .experience-copy,
+body .experience-steps {
+  grid-row: 1;
+}
+
+body .experience-copy h2 {
+  font-size: clamp(58px, 4.8vw, 70px);
+}
+
+body .experience-steps li {
+  grid-template-columns: 38px 170px 1fr;
+  padding-block: 20px;
+}
+
+body .pack-session {
+  min-height: 330px;
+  padding: 45px 52px 40px;
+  display: grid;
+  grid-template-columns: minmax(320px, 0.92fr) minmax(380px, 1.08fr);
+  grid-template-rows: auto auto 1fr auto;
+  column-gap: 78px;
+}
+
+body .pack-session .card-topline {
+  grid-column: 1;
+  grid-row: 1;
+  margin-bottom: 27px;
+}
+
+body .pack-session h3 {
+  grid-column: 1;
+  grid-row: 2;
+  font-size: 38px;
+}
+
+body .pack-session .session-description {
+  grid-column: 1;
+  grid-row: 3;
+  font-size: 16px;
+}
+
+body .pack-session .price {
+  grid-column: 1;
+  grid-row: 4;
+  margin-top: 26px;
+  font-size: 50px;
+}
+
+body .pack-session .benefits {
+  grid-column: 2;
+  grid-row: 2 / span 2;
+  align-self: start;
+  margin: 0;
+  padding-top: 24px;
+  border-top: 1px solid #263c3330;
+  font-size: 15px;
+}
+
+body .pack-session .purchase-action {
+  grid-column: 2;
+  grid-row: 4;
+  align-self: end;
+}
+
+body .pack-session .card-footnote {
+  display: none;
+}
+
+.practice-section {
+  padding: 0 0 124px;
+}
+
+.practice-inner {
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  min-height: 680px;
+}
+
+.practice-portrait {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.practice-portrait img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 42%;
+  filter: saturate(0.82) contrast(1.04);
+}
+
+.practice-copy {
+  padding: 82px 88px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #dfa887;
+  color: var(--moss);
+}
+
+.practice-copy h2 {
+  max-width: 650px;
+  margin-top: 28px;
+  font-size: clamp(56px, 5vw, 74px);
+  line-height: 1.04;
+  letter-spacing: -0.05em;
+}
+
+.practice-copy > p {
+  max-width: 560px;
+  margin-top: 30px;
+  color: #263c33;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.practice-copy .text-link {
+  margin-top: 34px;
+  align-self: flex-start;
+}
+
+body .little-section {
+  padding-block: 78px 100px;
+}
+
+body .resource-photo {
+  height: min(390px, 32vw);
+}
+
+body .resource-grid {
+  width: calc(100% - 160px);
+  margin-top: -62px;
+}
+
+body .resource-content {
+  min-height: 225px;
+  padding: 34px 38px;
+}
+
+body .resource-meta {
+  margin-bottom: 26px;
+}
+
+body .resource-content h3 {
+  font-size: 31px;
+}
+
+body .resource-content > p {
+  font-size: 14px;
+}
+
+body .newsletter-section {
+  padding-block: 92px;
+}
+
+body .newsletter-copy h2 {
+  font-size: 58px;
+}
+
+.newsletter-form-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.final-book {
+  width: 100%;
+  min-height: 62px;
+  justify-content: space-between;
+  padding-inline: 27px;
+  font-size: 16px;
+}
+
+.newsletter-details {
+  width: 100%;
+  margin-top: 18px;
+  color: #d4dccd;
+}
+
+.newsletter-details summary {
+  cursor: pointer;
+  list-style: none;
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.newsletter-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.newsletter-details[open] summary {
+  margin-bottom: 18px;
+}
+
+@media (max-width: 1000px) {
+  body .pack-session {
+    grid-template-columns: 0.9fr 1.1fr;
+    column-gap: 45px;
+  }
+
+  .practice-copy {
+    padding: 65px 55px;
+  }
+}
+
+@media (max-width: 800px) {
+  body .experience-inner {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  body .experience-copy {
+    grid-row: 1;
+  }
+
+  body .experience-steps {
+    grid-row: 2;
+  }
+
+  body .pack-session {
+    display: flex;
+  }
+
+  body .pack-session .card-footnote {
+    display: block;
+  }
+
+  .practice-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .practice-portrait {
+    height: 720px;
+  }
+}
+
+@media (max-width: 600px) {
+  body .experience-inner {
+    padding-block: 55px;
+  }
+
+  body .experience-copy h2 {
+    font-size: 43px;
+  }
+
+  body .pack-session {
+    min-height: 0;
+    padding: 32px 25px;
+  }
+
+  .practice-section {
+    padding-bottom: 76px;
+  }
+
+  .practice-portrait {
+    height: 112vw;
+  }
+
+  .practice-copy {
+    padding: 49px 25px 54px;
+  }
+
+  .practice-copy h2 {
+    font-size: 43px;
+  }
+
+  .practice-copy > p {
+    font-size: 14px;
+  }
+
+  body .resource-photo {
+    height: 65vw;
+  }
+
+  body .resource-grid {
+    width: calc(100% - 20px);
+    margin-top: -36px;
+  }
+
+  body .resource-content {
+    min-height: 0;
+    padding: 31px 15px;
+  }
+
+  body .newsletter-section {
+    padding-block: 72px;
+  }
+
+  body .newsletter-copy h2 {
+    font-size: 44px;
+  }
+}
