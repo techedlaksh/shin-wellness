@@ -6,6 +6,44 @@ import {
 } from "@/components/signup";
 import { checkoutUrl } from "@/lib/offerings";
 
+const sessionThemes = [
+  {
+    title: "Neck & shoulders",
+    description:
+      "Gentle movement for neck and shoulder tension, with space to explore a more open posture.",
+  },
+  {
+    title: "Chest opening",
+    description:
+      "Explore chest-opening movement and make time for comfortable, unhurried breathing.",
+  },
+  {
+    title: "Lower back",
+    description:
+      "Gentle movement focused on ease and mobility around the lower back.",
+  },
+  {
+    title: "Hamstring flexibility",
+    description:
+      "Explore hamstring flexibility, especially if you spend much of the day sitting.",
+  },
+  {
+    title: "Core strength",
+    description:
+      "A focused practice for core strength, balance, and a steadier sense of support.",
+  },
+  {
+    title: "Rest & relaxation",
+    description:
+      "A slower session to help you settle, unwind, and feel more grounded.",
+  },
+  {
+    title: "Energy & clarity",
+    description:
+      "A gentle reset for days when you feel tired or mentally foggy.",
+  },
+] as const;
+
 export default function Home() {
   return (
     <>
@@ -22,7 +60,7 @@ export default function Home() {
           <a href="#sessions">Sessions</a>
           <a href="#practice">Meet Shin</a>
         </nav>
-        <a className="button button-outline header-cta" href="#sessions">
+        <a className="button button-outline header-cta" href="#book">
           Book one session
           <Arrow diagonal />
         </a>
@@ -40,19 +78,19 @@ export default function Home() {
           />
           <div className="hero-shade" aria-hidden="true" />
           <div className="hero-copy">
-            <span className="eyebrow">PRIVATE ONLINE WELLBEING</span>
+            <span className="eyebrow">PRIVATE GUIDED MOVEMENT</span>
             <h1 id="hero-title">
-              Untangle what’s
+              Choose what your
               <br />
-              <em>weighing on you.</em>
+              <em>body needs today.</em>
             </h1>
             <p>
-              One-to-one sessions for physical reset and burnout prevention.
-              Bring what feels heavy; leave with one practical way forward.
+              One-to-one sessions for tension, mobility, strength, rest, and
+              energy. Pick one focus and begin there.
             </p>
             <div className="hero-actions">
               <a className="button button-dark" href="#sessions">
-                Book a focused hour
+                Explore the sessions
                 <Arrow />
               </a>
               <a className="text-link" href="#experience">
@@ -60,8 +98,7 @@ export default function Home() {
               </a>
             </div>
             <div className="hero-footnote">
-              Physical reset&nbsp;&nbsp;·&nbsp;&nbsp; Burnout prevention&nbsp;&nbsp;·&nbsp;&nbsp;
-              Practical next steps
+              Movement&nbsp;&nbsp;·&nbsp;&nbsp; Breath&nbsp;&nbsp;·&nbsp;&nbsp; Rest
             </div>
           </div>
         </section>
@@ -70,7 +107,8 @@ export default function Home() {
           <div className="container values-inner">
             <span className="values-kicker">THE SHIN APPROACH</span>
             <span>Private, one-to-one care</span>
-            <span>Choose your focus</span>
+            <span>Seven focused themes</span>
+            <span>Choose session by session</span>
             <span>Begin with a single hour</span>
           </div>
         </div>
@@ -83,10 +121,11 @@ export default function Home() {
           <div className="container experience-inner">
             <div className="experience-copy">
               <span className="eyebrow">WHAT HAPPENS IN THE HOUR</span>
-              <h2 id="experience-title">One thing at a time.</h2>
+              <h2 id="experience-title">Choose. Practise. Notice.</h2>
               <p className="experience-lede">
-                Bring the knot, not your whole life story. We spend the hour
-                getting specific, trying what helps, and choosing what comes next.
+                Each session starts with what you need that day. Shin guides
+                the practice, adapts it with you, and makes room to notice what
+                feels different.
               </p>
             </div>
             <div className="experience-body">
@@ -103,22 +142,22 @@ export default function Home() {
                 <li>
                   <span>01</span>
                   <div>
-                    <strong>Name it</strong>
-                    <p>What hurts, loops, or keeps getting postponed?</p>
+                    <strong>Choose a focus</strong>
+                    <p>Start with one of the seven themes—or repeat what helped.</p>
                   </div>
                 </li>
                 <li>
                   <span>02</span>
                   <div>
-                    <strong>Work it</strong>
-                    <p>Work the tension or burnout pattern in real time.</p>
+                    <strong>Practise with Shin</strong>
+                    <p>Move at a pace that feels attentive, supported, and yours.</p>
                   </div>
                 </li>
                 <li>
                   <span>03</span>
                   <div>
-                    <strong>Take it with you</strong>
-                    <p>Leave with one action that fits your actual week.</p>
+                    <strong>Notice how you feel</strong>
+                    <p>Pause, check in, and decide what your body needs next.</p>
                   </div>
                 </li>
               </ol>
@@ -127,18 +166,48 @@ export default function Home() {
         </section>
 
         <section
-          className="sessions-section container section"
+          className="focus-section"
           id="sessions"
-          aria-labelledby="sessions-title"
+          aria-labelledby="focus-title"
+        >
+          <div className="container focus-inner">
+            <div className="focus-intro">
+              <span className="eyebrow">SEVEN SESSION THEMES</span>
+              <h2 id="focus-title">Choose what you need today.</h2>
+              <p>
+                Each theme offers a different focus. Start with the one that
+                feels most relevant, change focus next time, or return to the
+                same practice.
+              </p>
+            </div>
+            <div className="focus-list">
+              {sessionThemes.map((session) => (
+                <article className="focus-item" key={session.title}>
+                  <h3>{session.title}</h3>
+                  <p>{session.description}</p>
+                </article>
+              ))}
+            </div>
+            <p className="focus-note">
+              These are flexible themes, not a required sequence. You choose
+              the focus session by session.
+            </p>
+          </div>
+        </section>
+
+        <section
+          className="sessions-section container section"
+          id="book"
+          aria-labelledby="booking-title"
         >
           <div className="section-heading">
             <div>
               <span className="eyebrow">PERSONAL SESSIONS</span>
-              <h2 id="sessions-title">Begin with one.</h2>
+              <h2 id="booking-title">Choose your pace.</h2>
             </div>
             <p>
-              Choose one focused hour or a week of daily continuity. Every
-              session is private and shaped around the issue in front of you.
+              Begin with one focused hour or choose a week of daily practice.
+              Your theme can change from one session to the next.
             </p>
           </div>
           <div className="session-grid">
@@ -148,7 +217,7 @@ export default function Home() {
                   <span className="offer-kicker">START HERE</span>
                   <h3>One focused hour</h3>
                   <p className="session-description">
-                    Release tension, clear the noise, and choose your next step.
+                    Choose one of the seven themes for a private guided practice.
                   </p>
                 </div>
                 <div className="price">
@@ -156,9 +225,9 @@ export default function Home() {
                 </div>
               </div>
               <ul className="benefits">
-                <li>1:1 attention, centered around you</li>
-                <li>Physical reset or burnout prevention</li>
-                <li>One clear action to take with you</li>
+                <li>One-to-one attention with Shin</li>
+                <li>A focus chosen around what you need today</li>
+                <li>Movement adapted to your pace</li>
               </ul>
               <PurchaseButton
                 url={checkoutUrl(process.env.CHECKOUT_SINGLE_URL)}
@@ -171,7 +240,7 @@ export default function Home() {
                   <span className="offer-kicker">CONTINUE THE WORK</span>
                   <h3>Seven-day continuation</h3>
                   <p className="session-description">
-                    Daily attention for a change that needs steady momentum.
+                    Seven private sessions with room to repeat or change focus each day.
                   </p>
                 </div>
                 <div className="price">
@@ -180,8 +249,8 @@ export default function Home() {
               </div>
               <ul className="benefits">
                 <li>Seven personal sessions over seven days</li>
-                <li>Daily reflection and course correction</li>
-                <li>A plan that adapts as life unfolds</li>
+                <li>Choose from any of the seven themes</li>
+                <li>Repeat the practices that feel useful</li>
               </ul>
               <PurchaseButton
                 url={checkoutUrl(process.env.CHECKOUT_PACK_URL)}
@@ -225,14 +294,14 @@ export default function Home() {
               <span className="eyebrow">FOUNDER &amp; PRACTITIONER</span>
               <h2 id="practice-title">Meet Shin.</h2>
               <p>
-                Shin works where physical tension, overload, and decision fatigue
-                meet. The hour moves between guided movement, close attention,
-                and a written next step you can actually use.
+                Shin guides one-to-one movement sessions shaped around how your
+                body feels that day. Together, you choose a focus and move
+                through it with care and close attention.
               </p>
               <p className="practice-proof">
                 Every session is led by Shin—no hand-offs, no rotating practitioner.
               </p>
-              <a className="text-link" href="#sessions">
+              <a className="text-link" href="#book">
                 Book a private hour <span>↑</span>
               </a>
             </div>
@@ -249,8 +318,8 @@ export default function Home() {
               <span className="eyebrow">OCCASIONAL NOTES</span>
               <h2 id="newsletter-title">Session dates + field notes.</h2>
               <p>
-                Practical resets, new availability, and the occasional useful
-                thing. Sent only when there is something worth opening.
+                Gentle practices, new availability, and the occasional useful
+                note. Sent only when there is something worth opening.
               </p>
             </div>
             <div className="newsletter-form-wrap">
@@ -265,7 +334,7 @@ export default function Home() {
           shin<span className="wordmark-dot">✳</span>
           <span className="wordmark-sub">WELLNESS</span>
         </a>
-        <p>Private online support, on your own terms.</p>
+        <p>Private guided movement, one focus at a time.</p>
         <span>© {new Date().getFullYear()} Shin Wellness</span>
         <a className="back-top" href="#" aria-label="Back to top">
           ↑

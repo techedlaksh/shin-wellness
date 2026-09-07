@@ -7786,3 +7786,138 @@ body .newsletter-copy > p {
     font-size: 38px;
   }
 }
+
+/* Flexible session-theme menu. */
+.focus-section {
+  padding: 104px 0 96px;
+  background: var(--moss);
+  color: var(--ivory);
+}
+
+.focus-inner {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1.28fr);
+  column-gap: clamp(58px, 8vw, 118px);
+  align-items: start;
+}
+
+.focus-intro {
+  position: sticky;
+  top: 40px;
+}
+
+.focus-intro .eyebrow {
+  color: #c9d4c3;
+}
+
+.focus-intro h2 {
+  max-width: 520px;
+  margin-top: 24px;
+  color: var(--ivory);
+  font-size: clamp(56px, 5.2vw, 78px);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.focus-intro > p {
+  max-width: 480px;
+  margin-top: 30px;
+  color: #d6ddd2;
+  font-size: 17px;
+  line-height: 1.72;
+}
+
+.focus-list {
+  border-top: 1px solid #ffffff52;
+}
+
+.focus-item {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.82fr) minmax(0, 1.18fr);
+  gap: 34px;
+  align-items: baseline;
+  padding: 28px 0 31px;
+  border-bottom: 1px solid #ffffff52;
+}
+
+.focus-item h3 {
+  color: var(--ivory);
+  font-size: clamp(27px, 2.3vw, 35px);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+}
+
+.focus-item p {
+  color: #d6ddd2;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.focus-note {
+  grid-column: 2;
+  max-width: 660px;
+  margin-top: 26px;
+  color: #bfcabd;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 900px) {
+  .focus-section {
+    padding-block: 84px 82px;
+  }
+
+  .focus-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .focus-intro {
+    position: static;
+    max-width: 690px;
+  }
+
+  .focus-list {
+    margin-top: 52px;
+  }
+
+  .focus-note {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .focus-section {
+    padding-block: 68px 70px;
+  }
+
+  .focus-section .container {
+    width: calc(100% - 36px);
+  }
+
+  .focus-intro h2 {
+    font-size: 50px;
+  }
+
+  .focus-intro > p {
+    margin-top: 24px;
+    font-size: 16px;
+  }
+
+  .focus-list {
+    margin-top: 40px;
+  }
+
+  .focus-item {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding-block: 23px 25px;
+  }
+
+  .focus-item h3 {
+    font-size: 29px;
+  }
+
+  .focus-item p {
+    font-size: 14px;
+  }
+}

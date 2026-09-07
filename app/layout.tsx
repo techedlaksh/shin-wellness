@@ -17,12 +17,13 @@ const serif = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Shin Wellness — A little space for you",
+  title: "Shin Wellness — Guided movement for what you need today",
   description:
-    "A softer approach to everyday wellbeing. Explore personal reset sessions, mindful routines, and little things that help you feel like yourself again.",
+    "Private guided movement sessions for tension, mobility, strength, rest, and energy. Choose from seven flexible themes and begin with one focused hour.",
   openGraph: {
-    title: "Shin Wellness — A little space for you",
-    description: "Personal support. Small rituals. Wellbeing at your own pace.",
+    title: "Shin Wellness — Guided movement for what you need today",
+    description:
+      "Seven flexible session themes. Private guidance, at your pace.",
     type: "website",
   },
 };
