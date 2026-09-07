@@ -34,7 +34,7 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
         "font-size",
         "18px",
       );
-      await expect(page.locator(".hero-actions .button")).toHaveCSS(
+      await expect(page.locator(".hero-copy > .button")).toHaveCSS(
         "font-size",
         "15px",
       );
@@ -46,7 +46,7 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
   await expect(
     page.getByRole("heading", {
       level: 2,
-      name: "Seven places to begin feeling at home in your body.",
+      name: "Your seven-session reset.",
     }),
   ).toBeVisible();
   const sessionTopics = page.locator(".journey-list > li");
@@ -70,7 +70,7 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
       name: "Buy the 7-day pack (opens checkout in a new tab)",
     }),
   ).toHaveAttribute("href", "https://checkout.example.com/pack");
-  await page.getByRole("link", { name: "Find your reset" }).click();
+  await page.locator(".hero-copy > a").click();
   await expect(page).toHaveURL(/#sessions$/);
   expect(errors).toEqual([]);
 });
@@ -104,7 +104,7 @@ test("offering dialog traps focus, closes with Escape, and restores focus", asyn
   await expect(trigger).toBeFocused();
 });
 
-test("every offering sends its interest, blocks in-flight resubmission, and confirms saved state", async ({
+test("visible resources send their interest, block in-flight resubmission, and confirm saved state", async ({
   page,
 }) => {
   const payloads: Record<string, string>[] = [];
@@ -118,15 +118,7 @@ test("every offering sends its interest, blocks in-flight resubmission, and conf
   });
   await page.goto("/");
   const buttons = page.locator("button[aria-haspopup='dialog']");
-  const interests = [
-    "playlist",
-    "wallpapers",
-    "routine",
-    "checkins",
-    "coaching",
-    "retreats",
-    "recommendations",
-  ];
+  const interests = ["playlist", "wallpapers"];
   for (let i = 0; i < interests.length; i++) {
     await buttons.nth(i).click();
     const dialog = page.getByRole("dialog");

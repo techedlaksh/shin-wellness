@@ -5,41 +5,9 @@ import {
   PurchaseButton,
   SignupForm,
 } from "@/components/signup";
-import { checkoutUrl, type Interest } from "@/lib/offerings";
-import heroImage from "@/public/shin-reset-hero.png";
-
-const upcoming: {
-  interest: Interest;
-  number: string;
-  title: string;
-  description: string;
-  detail: string;
-}[] = [
-  {
-    interest: "routine",
-    number: "01",
-    title: "Emotional balance",
-    description:
-      "A gentle, 7-day routine to get to know your emotions and make space for them.",
-    detail: "7-DAY PDF ROUTINE / $29",
-  },
-  {
-    interest: "checkins",
-    number: "02",
-    title: "Weekly check-ins",
-    description:
-      "Four weekly, 30-minute conversations to reflect, reconnect, and find your next small step.",
-    detail: "4-WEEK PROGRAM / $99",
-  },
-  {
-    interest: "coaching",
-    number: "03",
-    title: "Habit coaching",
-    description:
-      "Personal coaching with CBT-informed tools to build habits that fit your real life.",
-    detail: "PERSONAL COACHING",
-  },
-];
+import { checkoutUrl } from "@/lib/offerings";
+import heroImage from "@/public/shin-reset-hero-v2.png";
+import journeyImage from "@/public/seven-session-reset.png";
 
 const sessionTopics = [
   {
@@ -116,7 +84,7 @@ export default function Home() {
           <Image
             className="hero-image"
             src={heroImage}
-            alt="A woman gently stretching her shoulder in a sunlit room"
+            alt="A woman resting comfortably beside a sunlit window"
             fill
             priority
             placeholder="blur"
@@ -134,21 +102,11 @@ export default function Home() {
                 A little space to pause, reset, and feel more like yourself
                 again.
               </p>
-              <div className="hero-actions">
-                <a className="button button-dark" href="#sessions">
-                  Find your reset
-                  <Arrow />
-                </a>
-                <a className="text-link" href="#seven-session-reset">
-                  Explore seven sessions
-                  <Arrow diagonal />
-                </a>
-              </div>
+              <a className="button button-dark" href="#sessions">
+                Choose your session
+                <Arrow />
+              </a>
             </div>
-            <p className="hero-note">
-              <span>01</span>
-              One-to-one care, at your pace.
-            </p>
           </div>
         </section>
 
@@ -159,10 +117,10 @@ export default function Home() {
         >
           <div className="container offers-heading">
             <span className="eyebrow">START WHERE YOU ARE</span>
-            <h2 id="sessions-title">Choose the support that fits today.</h2>
+            <h2 id="sessions-title">Choose your reset.</h2>
             <p>
-              No perfect routine required. Begin with one focused reset or give
-              yourself seven days of consistent care.
+              Begin with one focused session or give yourself seven days of
+              consistent care.
             </p>
           </div>
 
@@ -226,30 +184,44 @@ export default function Home() {
           id="seven-session-reset"
           aria-labelledby="journey-title"
         >
+          <div className="container journey-heading">
+            <span className="eyebrow">INSIDE THE SEVEN-SESSION RESET</span>
+            <h2 id="journey-title">Your seven-session reset.</h2>
+            <p>
+              Seven focused sessions create a supportive rhythm for the parts
+              of you that need care.
+            </p>
+          </div>
+
           <div className="container journey-layout">
-            <div className="journey-intro">
-              <span className="eyebrow">INSIDE THE SEVEN-SESSION RESET</span>
-              <h2 id="journey-title">
-                Seven places to begin feeling at home in your body.
-              </h2>
-              <p>
-                Each session brings a different focus. Together, they create a
-                clear, supportive rhythm for the parts of you that need care.
-              </p>
-              <a className="text-link" href="#sessions">
+            <figure className="journey-photo">
+              <Image
+                src={journeyImage}
+                alt="A woman seated comfortably in a calm, sunlit room"
+                placeholder="blur"
+                sizes="(max-width: 700px) 100vw, 42vw"
+              />
+              <figcaption>
+                <span>SEVEN DAYS</span>
+                A little room to return to yourself.
+              </figcaption>
+            </figure>
+
+            <div className="journey-program">
+              <ol className="journey-list">
+                {sessionTopics.map((topic) => (
+                  <li key={topic.number}>
+                    <span className="journey-number">{topic.number}</span>
+                    <h3>{topic.title}</h3>
+                    <p>{topic.description}</p>
+                  </li>
+                ))}
+              </ol>
+              <a className="button button-dark journey-cta" href="#sessions">
                 Choose the seven-day pack
                 <Arrow diagonal />
               </a>
             </div>
-            <ol className="journey-list">
-              {sessionTopics.map((topic) => (
-                <li key={topic.number}>
-                  <span className="journey-number">{topic.number}</span>
-                  <h3>{topic.title}</h3>
-                  <p>{topic.description}</p>
-                </li>
-              ))}
-            </ol>
           </div>
         </section>
 
@@ -259,19 +231,17 @@ export default function Home() {
           aria-labelledby="little-title"
         >
           <div className="container little-heading">
-            <span className="eyebrow">SMALL THINGS, LOVINGLY MADE</span>
-            <h2 id="little-title">A little good for the in-between moments.</h2>
-            <p>Free, thoughtful things for slower mornings and softer days.</p>
+            <span className="eyebrow">FOR THE IN-BETWEEN</span>
+            <h2 id="little-title">Small things for softer days.</h2>
           </div>
           <div className="container resource-grid">
             <article className="resource-card">
               <ResourceArt type="playlist" />
               <div className="resource-content">
-                <span className="resource-kicker">FOR YOUR EARS / FREE</span>
+                <span className="resource-kicker">PLAYLIST / FREE</span>
                 <h3>A soundtrack for slowing down.</h3>
                 <p>
-                  A feel-good playlist for deep breaths, slow mornings, and
-                  finding your own rhythm.
+                  For deep breaths, slow mornings, and finding your own rhythm.
                 </p>
                 <InterestButton interest="playlist">
                   Tell me when it drops
@@ -281,14 +251,9 @@ export default function Home() {
             <article className="resource-card">
               <ResourceArt type="wallpapers" />
               <div className="resource-content">
-                <span className="resource-kicker">
-                  FOR YOUR EVERYDAY / FREE
-                </span>
+                <span className="resource-kicker">WALLPAPERS / FREE</span>
                 <h3>A little joy for your screen.</h3>
-                <p>
-                  Wallpapers with gentle reminders, for one small pause in the
-                  middle of your day.
-                </p>
+                <p>Gentle reminders for one small pause in your day.</p>
                 <InterestButton interest="wallpapers">
                   Save me a little joy
                 </InterestButton>
@@ -297,73 +262,26 @@ export default function Home() {
           </div>
         </section>
 
-        <section
-          className="future-section"
-          id="coming-soon"
-          aria-labelledby="future-title"
-        >
-          <div className="container future-heading">
-            <span className="eyebrow">WHAT IS GROWING</span>
-            <h2 id="future-title">More support, in its own time.</h2>
-            <p>
-              The sessions are here now. These smaller ideas are being shaped
-              with care for what comes next.
-            </p>
-          </div>
-          <div className="container future-list">
-            {upcoming.map((item) => (
-              <article key={item.interest}>
-                <span className="future-number">{item.number}</span>
-                <div>
-                  <span className="resource-kicker">{item.detail}</span>
-                  <h3>{item.title}</h3>
-                </div>
-                <p>{item.description}</p>
-                <InterestButton interest={item.interest}>
-                  Keep me posted
-                </InterestButton>
-              </article>
-            ))}
-          </div>
-          <div className="container future-extras">
-            <article>
-              <span className="resource-kicker">CURATED WELLNESS STAYS</span>
-              <h3>Somewhere to simply be.</h3>
-              <p>Wellness stays around the world, curated from Airbnb.</p>
-              <InterestButton interest="retreats">
-                Daydream with us
-              </InterestButton>
-            </article>
-            <article>
-              <span className="resource-kicker">TRIED, LOVED, SHARED</span>
-              <h3>Good things, passed along.</h3>
-              <p>Thoughtful wellness finds and recommendations.</p>
-              <InterestButton interest="recommendations">
-                Send me the good stuff
-              </InterestButton>
-            </article>
-          </div>
-        </section>
-
-        <section
-          className="newsletter-section"
-          id="stay-in-touch"
-          aria-labelledby="newsletter-title"
-        >
-          <div className="container newsletter-inner">
-            <div>
-              <span className="eyebrow">A NOTE FROM SHIN, NOW AND THEN</span>
-              <h2 id="newsletter-title">A softer corner of your inbox.</h2>
-              <p>
-                Fresh offerings, small rituals, and good things in the making.
-              </p>
-            </div>
-            <SignupForm />
+        <section className="closing-section" aria-labelledby="closing-title">
+          <div className="container closing-inner">
+            <span>READY WHEN YOU ARE</span>
+            <h2 id="closing-title">Make time for your reset.</h2>
+            <a className="button button-light" href="#sessions">
+              Choose your session
+              <Arrow />
+            </a>
           </div>
         </section>
       </main>
 
-      <footer className="site-footer">
+      <footer className="site-footer" id="stay-in-touch">
+        <div className="container footer-newsletter">
+          <div>
+            <span className="eyebrow">A NOTE FROM SHIN, NOW AND THEN</span>
+            <h2>A softer corner of your inbox.</h2>
+          </div>
+          <SignupForm />
+        </div>
         <div className="container footer-inner">
           <a className="wordmark" href="#" aria-label="Shin Wellness home">
             shin<span aria-hidden="true">*</span>
