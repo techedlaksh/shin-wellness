@@ -150,9 +150,6 @@ test("signup preserves input on failure and allows a successful retry", async ({
     );
   });
   await page.goto("/#stay-in-touch");
-  await page
-    .locator(".newsletter-details")
-    .evaluate((details) => ((details as HTMLDetailsElement).open = true));
   const email = page.getByRole("textbox", { name: "Email address" });
   await email.fill("reader@example.com");
   await page.getByRole("button", { name: "Keep me in the loop" }).click();
@@ -169,9 +166,6 @@ test("unconfigured real API never reports an email as saved", async ({
   page,
 }) => {
   await page.goto("/#stay-in-touch");
-  await page
-    .locator(".newsletter-details")
-    .evaluate((details) => ((details as HTMLDetailsElement).open = true));
   await page
     .getByRole("textbox", { name: "Email address" })
     .fill("reader@example.com");

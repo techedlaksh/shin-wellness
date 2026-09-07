@@ -124,7 +124,7 @@ export default function Home() {
           <div className="section-heading">
             <div>
               <span className="eyebrow">PERSONAL SESSIONS</span>
-              <h2 id="sessions-title">One hour. One issue. A clearer next step.</h2>
+              <h2 id="sessions-title">Choose the pace.</h2>
             </div>
             <p>
               Choose one focused hour or a week of daily continuity. Every
@@ -133,17 +133,17 @@ export default function Home() {
           </div>
           <div className="session-grid">
             <article className="session-card single-session">
-              <div className="card-topline">
-                <span className="pill">ONE FOCUSED HOUR</span>
+              <div className="session-heading-row">
+                <div>
+                  <h3>One focused hour</h3>
+                  <p className="session-description">
+                    Release tension, clear the noise, and choose your next step.
+                  </p>
+                </div>
+                <div className="price">
+                  $60<span>one session</span>
+                </div>
               </div>
-              <h3>The personal reset</h3>
-              <p className="session-description">
-                Release tension, clear the noise, and choose your next step.
-              </p>
-              <div className="price">
-                $60<span>/ one session</span>
-              </div>
-              <div className="session-rule" />
               <ul className="benefits">
                 <li>1:1 attention, centered around you</li>
                 <li>Physical reset or burnout prevention</li>
@@ -155,17 +155,17 @@ export default function Home() {
               <p className="card-footnote">Best for a focused reset.</p>
             </article>
             <article className="session-card pack-session">
-              <div className="card-topline">
-                <span className="pill">DAILY CONTINUITY</span>
+              <div className="session-heading-row">
+                <div>
+                  <h3>Seven steady days</h3>
+                  <p className="session-description">
+                    Daily attention for a change that needs steady momentum.
+                  </p>
+                </div>
+                <div className="price">
+                  $350<span>seven-day pack</span>
+                </div>
               </div>
-              <h3>Seven days of support</h3>
-              <p className="session-description">
-                Daily attention for a change that needs steady momentum.
-              </p>
-              <div className="price">
-                $350<span>/ seven-day pack</span>
-              </div>
-              <div className="session-rule" />
               <ul className="benefits">
                 <li>Seven personal sessions over seven days</li>
                 <li>Daily reflection and course correction</li>
@@ -198,6 +198,9 @@ export default function Home() {
             <div className="practice-copy">
               <span className="eyebrow">FOUNDER &amp; PRACTITIONER</span>
               <h2 id="practice-title">Meet Shin.</h2>
+              <blockquote>
+                No performance. No perfect routine. Just an honest next step.
+              </blockquote>
               <p>
                 The practice is intentionally one-to-one. Shin holds the thread,
                 notices what changes, and helps make the next step fit the life
@@ -219,23 +222,12 @@ export default function Home() {
             <div className="section-heading">
               <div>
                 <span className="eyebrow">FREE RESOURCES</span>
-                <h2 id="little-title">Free resources for between sessions.</h2>
+                <h2 id="little-title">Something useful, between sessions.</h2>
               </div>
               <p>
-                Two free tools, made to be used rather than admired.
+                Two small things in the works. Free, quiet, and made to be used.
               </p>
             </div>
-            <figure className="resource-photo">
-              <Image
-                src="/resource-still-life.png"
-                alt="A forest-green record, headphones, and a phone on a sunlit stone table"
-                width={1536}
-                height={1024}
-                sizes="(max-width: 600px) calc(100vw - 36px), calc(100vw - 96px)"
-                loading="eager"
-              />
-              <figcaption>Listen or look—no streak to maintain.</figcaption>
-            </figure>
             <div className="resource-grid">
               <article className="resource-card">
                 <div className="resource-content">
@@ -244,10 +236,6 @@ export default function Home() {
                     <span>FREE · COMING SOON</span>
                   </div>
                   <h3>A 50-minute listening mix.</h3>
-                  <p>
-                    For the commute home, a quiet morning, or any stretch of
-                    time that does not need optimizing.
-                  </p>
                   <InterestButton interest="playlist">
                     Tell me when it drops
                   </InterestButton>
@@ -260,10 +248,6 @@ export default function Home() {
                     <span>FREE · COMING SOON</span>
                   </div>
                   <h3>Original phone wallpapers.</h3>
-                  <p>
-                    Original phone wallpapers without slogans, streaks, or
-                    another habit to maintain.
-                  </p>
                   <InterestButton interest="wallpapers">
                     Save me a copy
                   </InterestButton>
@@ -281,21 +265,14 @@ export default function Home() {
           <div className="container newsletter-inner">
             <div className="newsletter-copy">
               <span className="eyebrow">OCCASIONAL NOTES</span>
-              <h2 id="newsletter-title">Occasional notes from Shin.</h2>
+              <h2 id="newsletter-title">A quieter inbox.</h2>
               <p>
-                New session dates, original resources, and field notes—sent
-                only when there is something worth your attention.
+                New session dates, original resources, and field notes—only
+                when there is something worth opening.
               </p>
             </div>
             <div className="newsletter-form-wrap">
-              <a className="button button-light final-book" href="#sessions">
-                Start with one focused hour
-                <Arrow diagonal />
-              </a>
-              <details className="newsletter-details">
-                <summary>Prefer updates? Join the email list</summary>
-                <SignupForm />
-              </details>
+              <SignupForm />
             </div>
           </div>
         </section>
