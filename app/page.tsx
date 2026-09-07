@@ -8,14 +8,12 @@ import { checkoutUrl, type Interest } from "@/lib/offerings";
 
 const upcoming: {
   interest: Interest;
-  number: string;
   title: string;
   description: string;
   detail: string;
 }[] = [
   {
     interest: "routine",
-    number: "01",
     title: "A little more emotional balance.",
     description:
       "A gentle, 7-day routine to get to know your emotions and make space for them.",
@@ -23,7 +21,6 @@ const upcoming: {
   },
   {
     interest: "checkins",
-    number: "02",
     title: "A steady hand, week by week.",
     description:
       "Weekly 30-minute check-ins. A space to reflect, reconnect, and find your next small step.",
@@ -31,7 +28,6 @@ const upcoming: {
   },
   {
     interest: "coaching",
-    number: "03",
     title: "Small habits. Meaningful shifts.",
     description:
       "Personal coaching with CBT-informed tools to build habits that fit your real life.",
@@ -160,7 +156,7 @@ export default function Home() {
         >
           <div className="container section-intro sessions-intro">
             <div>
-              <span className="eyebrow">01 / A SPACE JUST FOR YOU</span>
+              <span className="eyebrow">A SPACE JUST FOR YOU</span>
               <h2 id="sessions-title">
                 Let’s start with <em>a little reset.</em>
               </h2>
@@ -235,7 +231,7 @@ export default function Home() {
                 <h3>Meet your body where it is.</h3>
                 <p>
                   Choose one focus for a personal reset, or explore all seven
-                  across the pack.
+                  across the pack. Open any focus to learn a little more.
                 </p>
               </div>
               <ol className="session-focus-list" role="list">
@@ -244,10 +240,12 @@ export default function Home() {
                     <span className="focus-number" aria-hidden="true">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <div>
-                      <strong>{focus.title}</strong>
-                      <span>{focus.description}</span>
-                    </div>
+                    <details>
+                      <summary>
+                        <strong>{focus.title}</strong>
+                      </summary>
+                      <p>{focus.description}</p>
+                    </details>
                   </li>
                 ))}
               </ol>
@@ -264,7 +262,7 @@ export default function Home() {
           aria-labelledby="little-title"
         >
           <div className="container resource-intro">
-            <span className="eyebrow">02 / LITTLE THINGS, LOVINGLY MADE</span>
+            <span className="eyebrow">LITTLE THINGS, LOVINGLY MADE</span>
             <h2 id="little-title">
               Good for your day. <em>Free for you.</em>
             </h2>
@@ -316,7 +314,7 @@ export default function Home() {
         >
           <div className="container making-layout">
             <div className="making-intro">
-              <span className="eyebrow">03 / IN THE MAKING</span>
+              <span className="eyebrow">IN THE MAKING</span>
               <h2 id="upcoming-title">
                 More ways to <em>come back to you.</em>
               </h2>
@@ -330,14 +328,9 @@ export default function Home() {
             </div>
 
             <div className="making-journal">
-              <div className="journal-heading" aria-hidden="true">
-                <span>What’s taking shape</span>
-                <span>Shin Wellness · Field notes</span>
-              </div>
               <div className="upcoming-grid">
                 {upcoming.map((item) => (
                   <article className="upcoming-card" key={item.interest}>
-                    <span className="upcoming-number">{item.number}</span>
                     <div className="upcoming-copy">
                       <span className="offering-detail">{item.detail}</span>
                       <h3>{item.title}</h3>

@@ -21,7 +21,11 @@ export function Arrow({ diagonal = false }: { diagonal?: boolean }) {
   return (
     <svg className="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path
-        d={diagonal ? "M6.5 17.5 17.7 6.3M8 6.3h9.7V16" : "M4.5 12h14m-5.5-5 5.5 5-5.5 5"}
+        d={
+          diagonal
+            ? "M6.5 17.5 17.7 6.3M8 6.3h9.7V16"
+            : "M4.5 12h14m-5.5-5 5.5 5-5.5 5"
+        }
         stroke="currentColor"
         strokeWidth="1.4"
         strokeLinecap="round"
@@ -33,7 +37,7 @@ export function Arrow({ diagonal = false }: { diagonal?: boolean }) {
 
 export function BotanicalArt() {
   return (
-    <figure className="botanical-art">
+    <figure className="botanical-art botanical-specimen">
       <svg
         className="botanical-canvas"
         viewBox="0 0 660 700"
@@ -41,90 +45,133 @@ export function BotanicalArt() {
         aria-labelledby="botanical-title"
       >
         <title id="botanical-title">
-          A hand-drawn botanical growing through a sunlit arch and soft hills
+          A hand-drawn flowering vine with softly veined leaves
         </title>
         <defs>
-          <clipPath id="field-window">
-            <path d="M143 634 128 251C126 117 222 50 363 55c141 5 232 102 225 236l-17 343Z" />
-          </clipPath>
-          <filter id="soft-grain" x="-15%" y="-15%" width="130%" height="130%">
+          <filter id="specimen-line" x="-12%" y="-12%" width="124%" height="124%">
             <feTurbulence
               type="fractalNoise"
-              baseFrequency=".55"
-              numOctaves="4"
-              seed="9"
+              baseFrequency=".014"
+              numOctaves="2"
+              seed="17"
+              result="line-noise"
+            />
+            <feDisplacementMap
+              in="SourceGraphic"
+              in2="line-noise"
+              scale="3.5"
+              xChannelSelector="R"
+              yChannelSelector="G"
+            />
+          </filter>
+          <filter id="specimen-grain" x="-15%" y="-15%" width="130%" height="130%">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency=".6"
+              numOctaves="3"
+              seed="8"
             />
             <feColorMatrix type="saturate" values="0" />
             <feComponentTransfer>
-              <feFuncA type="linear" slope=".08" />
+              <feFuncA type="linear" slope=".07" />
             </feComponentTransfer>
           </filter>
         </defs>
 
         <path
-          d="M161 648 146 266C142 132 232 67 365 70c134 3 217 94 208 228l-21 350Z"
-          fill="#ded9ca"
-          opacity=".65"
+          d="M134 630c2-178-9-337 57-441C243 106 334 61 446 78c103 16 157 94 155 203"
+          fill="none"
+          stroke="#b7c0ae"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeDasharray="2 8"
         />
-        <g clipPath="url(#field-window)">
-          <path fill="#e9e1d2" d="M92 27h535v638H92z" />
+        <path
+          d="M180 591C258 491 370 463 489 511c49 20 86 11 122-17"
+          fill="none"
+          stroke="#dfaa8d"
+          strokeWidth="10"
+          strokeLinecap="round"
+          opacity=".48"
+        />
+        <path
+          d="M249 115c71-59 203-71 291-6 83 61 74 168 4 223-65 51-172 68-260 31-104-43-116-181-35-248Z"
+          fill="#e2e6d9"
+          opacity=".86"
+        />
+        <path
+          d="M401 56c27-20 69-11 87 15 17 24 10 59-14 76-27 19-65 8-81-19-14-24-10-54 8-72Z"
+          fill="#e7b194"
+        />
+        <path
+          d="M211 86h404v520H211Z"
+          fill="#f7f3ea"
+          opacity=".16"
+          filter="url(#specimen-grain)"
+        />
+
+        <g filter="url(#specimen-line)" stroke="#34483f" strokeLinecap="round" strokeLinejoin="round">
           <path
-            d="M89 437c87-91 178-117 275-79 101 39 169 14 277-74v389H89Z"
-            fill="#aab49d"
-          />
-          <path
-            d="M66 543c96-112 210-121 314-52 99 66 175 55 288-25v230H66Z"
-            fill="#718675"
-          />
-          <path
-            d="M303 695c-19-79 28-129 83-172 70-56 47-104 10-137"
+            d="M477 661c-10-91-4-183-29-267-23-79-59-137-102-197"
             fill="none"
-            stroke="#f4ecd9"
-            strokeWidth="34"
-            strokeLinecap="round"
+            strokeWidth="4.5"
           />
-          <circle cx="461" cy="191" r="71" fill="#e7b294" />
-          <path fill="#f7f3ea" opacity=".22" filter="url(#soft-grain)" d="M80 25h560v665H80z" />
-        </g>
+          <path d="M450 492c-49-34-100-46-156-35" fill="none" strokeWidth="2" />
+          <path d="M443 401c41-49 88-73 143-71" fill="none" strokeWidth="2" />
+          <path d="M411 324c-53-26-103-28-151-6" fill="none" strokeWidth="2" />
+          <path d="M370 239c34-44 71-66 111-67" fill="none" strokeWidth="2" />
 
-        <g className="botanical-stem" fill="none" stroke="#34483f">
           <path
-            d="M303 665c4-111-21-220-12-325 7-83 45-155 98-223"
-            strokeWidth="5"
-            strokeLinecap="round"
+            d="M451 495c-60 19-127 8-170-40 40-48 117-55 170 40Z"
+            fill="#a9b7a3"
+            strokeWidth="2.2"
           />
-          <path d="M295 495c-48-61-105-81-174-66" strokeWidth="2" />
-          <path d="M292 442c52-46 106-58 160-35" strokeWidth="2" />
-          <path d="M296 365c-50-53-98-63-151-38" strokeWidth="2" />
-          <path d="M310 304c55-31 100-29 139 5" strokeWidth="2" />
-          <path d="M332 240c-32-42-58-58-99-62" strokeWidth="2" />
-          <path d="M356 178c39-12 67-4 88 18" strokeWidth="2" />
-        </g>
+          <path d="M447 492c-54-19-108-30-160-36M420 482c-18-18-38-29-60-36M388 474c-19-13-38-20-58-22" fill="none" strokeWidth="1" />
 
-        <g className="botanical-leaves" fill="#34483f">
-          <path d="M292 502c-71-2-127-27-169-72 76-15 134 8 169 72Z" />
-          <path d="M292 447c41-58 93-72 158-40-41 51-92 65-158 40Z" />
-          <path d="M297 371c-68 4-119-11-152-44 59-29 111-14 152 44Z" />
-          <path d="M310 309c42-39 88-39 139 0-46 35-92 35-139 0Z" />
-          <path d="M334 244c-50-5-84-27-101-65 52-8 87 14 101 65Z" />
-          <path d="M356 180c29-31 58-26 88 16-35 20-65 15-88-16Z" />
-          <path d="M388 119c-12 39-7 76 15 111 26-39 21-78-15-111Z" />
-        </g>
+          <path
+            d="M442 405c26-61 91-97 154-74 8 64-65 113-154 74Z"
+            fill="#bcc6b2"
+            strokeWidth="2.2"
+          />
+          <path d="M445 401c49-27 96-49 145-66M477 384c15-19 34-34 57-45M513 366c13-14 29-24 47-31" fill="none" strokeWidth="1" />
 
-        <g fill="none" stroke="#73836f" strokeWidth="1.2" opacity=".72">
-          <path d="M129 431c66 8 117 32 162 69M448 409c-66 8-109 21-155 36M149 328c57 6 100 20 147 41M445 309c-60-2-95 0-133 0M235 180c43 14 72 32 99 61M441 195c-31-9-55-14-84-14" />
+          <path
+            d="M413 327c-83 17-158-8-208-72 62-45 154-17 208 72Z"
+            fill="#8fa28f"
+            strokeWidth="2.2"
+          />
+          <path d="M409 324c-66-24-131-46-196-65M373 312c-26-18-54-32-84-41M328 295c-25-14-51-24-78-29" fill="none" strokeWidth="1" />
+
+          <path
+            d="M372 243c14-53 61-89 116-73 12 54-39 101-116 73Z"
+            fill="#c6cdbd"
+            strokeWidth="2.2"
+          />
+          <path d="M375 239c36-25 70-46 106-65M398 226c12-15 28-28 45-38" fill="none" strokeWidth="1" />
+
+          <path d="M347 200c-8-38-5-69 9-95" fill="none" strokeWidth="2" />
+          <g fill="#e7b194" strokeWidth="1.8">
+            <path d="M356 107c-30-7-44-26-35-47 23-9 43 8 35 47Z" />
+            <path d="M357 106c-4-32 9-52 34-53 18 18 7 45-34 53Z" />
+            <path d="M355 108c29-15 54-8 61 15-12 24-40 19-61-15Z" />
+            <path d="M353 109c22 22 21 47 0 60-26-6-28-35 0-60Z" />
+            <path d="M352 107c-24 20-49 18-59-5 9-24 38-23 59 5Z" />
+          </g>
+          <circle cx="354" cy="108" r="10" fill="#7b8e76" strokeWidth="1.5" />
+          <path d="M351 105c-13-11-25-18-38-23M357 103c7-14 16-25 28-33M360 111c15 2 27 7 37 15M352 115c-5 13-6 25-3 36" fill="none" strokeWidth="1" />
+
+          <path d="M480 571c36-25 70-30 102-16" fill="none" strokeWidth="1.6" />
+          <path d="M579 555c-21-13-38-10-51 9 20 12 37 8 51-9Z" fill="#d6dccf" strokeWidth="1.4" />
         </g>
 
         <path
-          className="loose-line"
-          d="M86 130c43-18 62-7 70 33M537 502c32 19 47 46 42 81"
+          d="M97 166c31-29 66-32 104-10M114 143c-8 28-3 50 16 65M557 424c28-26 56-28 84-6"
           fill="none"
-          stroke="#8a947d"
-          strokeWidth="1.5"
+          stroke="#7f8f7a"
+          strokeWidth="1.4"
           strokeLinecap="round"
         />
-        <circle cx="93" cy="126" r="4" fill="#9f91b2" />
-        <circle cx="586" cy="579" r="5" fill="#d59b80" />
+        <circle cx="96" cy="166" r="4" fill="#9b88ad" />
       </svg>
 
       <figcaption className="art-note">
