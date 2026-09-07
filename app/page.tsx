@@ -55,12 +55,12 @@ export default function Home() {
           <span className="wordmark-sub">WELLNESS</span>
         </a>
         <nav aria-label="Main navigation">
-          <a href="#sessions">Your reset</a>
-          <a href="#little-things">The little things</a>
-          <a href="#coming-soon">What’s growing</a>
+          <a href="#sessions">Sessions</a>
+          <a href="#little-things">Free resources</a>
+          <a href="#coming-soon">In the works</a>
         </nav>
         <a className="button button-outline header-cta" href="#sessions">
-          Book a session
+          Book your reset
           <Arrow diagonal />
         </a>
       </header>
@@ -92,19 +92,18 @@ export default function Home() {
               </a>
             </div>
             <div className="hero-footnote">
-              <span className="mini-orbit">✧</span> Small steps. Soft landings.
-              A little more you.
+              <span className="mini-orbit">01</span>
+              One-to-one care for physical reset and burnout prevention.
             </div>
           </div>
           <BotanicalArt />
         </section>
         <div className="values-strip">
           <div className="container values-inner">
-            <span>Less doing. More being.</span>
-            <span className="strip-star">✳</span>
-            <span>Care that meets you where you are.</span>
-            <span className="strip-star">✳</span>
-            <span>Your pace is a good pace.</span>
+            <span className="values-kicker">THE SHIN APPROACH</span>
+            <span>Private, one-to-one sessions</span>
+            <span>Choose your focus</span>
+            <span>Begin with a single hour</span>
           </div>
         </div>
 
@@ -123,9 +122,9 @@ export default function Home() {
               </h2>
             </div>
             <p>
-              When life feels a bit too full, you deserve a space that’s just
-              yours. Personal support to help you slow down and find your
-              footing.
+              Choose the support that fits today: one focused hour, or a week
+              of daily continuity. Every session is private and shaped around
+              what you need.
             </p>
           </div>
           <div className="session-grid">
@@ -136,7 +135,7 @@ export default function Home() {
               </div>
               <h3>The personal reset</h3>
               <p className="session-description">
-                One session. Your space to exhale.
+                A focused hour to release tension and find your next step.
               </p>
               <div className="price">
                 $60<span>/ one session</span>
@@ -144,13 +143,13 @@ export default function Home() {
               <div className="session-rule" />
               <ul className="benefits">
                 <li>1:1 attention, centered around you</li>
-                <li>Choose physical reset or burnout prevention</li>
-                <li>A little space to pause and reconnect</li>
+                <li>Physical reset or burnout prevention</li>
+                <li>Leave with one clear, practical next step</li>
               </ul>
               <PurchaseButton
                 url={checkoutUrl(process.env.CHECKOUT_SINGLE_URL)}
               />
-              <p className="card-footnote">A gentle place to begin.</p>
+              <p className="card-footnote">Best for a focused reset.</p>
             </article>
             <article className="session-card pack-session">
               <div className="card-topline">
@@ -161,7 +160,7 @@ export default function Home() {
               </div>
               <h3>Seven days, for you</h3>
               <p className="session-description">
-                Make a little room for yourself, every day.
+                Daily support for a change that needs steady attention.
               </p>
               <div className="price">
                 $350<span>/ seven-day pack</span>
@@ -169,18 +168,18 @@ export default function Home() {
               <div className="session-rule" />
               <ul className="benefits">
                 <li>Seven personal sessions over seven days</li>
-                <li>A consistent space to slow down and reset</li>
-                <li>Support that makes room for your everyday life</li>
+                <li>Build momentum with daily reflection</li>
+                <li>Adapt the plan as real life unfolds</li>
               </ul>
               <PurchaseButton
                 url={checkoutUrl(process.env.CHECKOUT_PACK_URL)}
                 pack
               />
-              <p className="card-footnote">One small commitment to yourself.</p>
+              <p className="card-footnote">Best for building continuity.</p>
             </article>
           </div>
           <p className="sessions-note">
-            All prices in USD. A softer start is still a start.
+            All prices in USD. Sessions are held online.
           </p>
         </section>
 
@@ -202,8 +201,8 @@ export default function Home() {
                 </h2>
               </div>
               <p>
-                Sometimes it’s a song. Sometimes it’s a tiny reminder on your
-                screen. Small pockets of good, coming your way.
+                Two small resets for the spaces between sessions: something to
+                listen to and something to keep in view.
               </p>
             </div>
             <div className="resource-grid">
@@ -216,8 +215,8 @@ export default function Home() {
                   </div>
                   <h3>A soundtrack for slowing down.</h3>
                   <p>
-                    A feel-good playlist for deep breaths, slow mornings, and
-                    finding your own rhythm.
+                    A warm, unhurried mix for the commute home, a quiet morning,
+                    or ten minutes with nowhere else to be.
                   </p>
                   <InterestButton interest="playlist">
                     Tell me when it drops
@@ -233,8 +232,8 @@ export default function Home() {
                   </div>
                   <h3>A little joy for your screen.</h3>
                   <p>
-                    Cute wallpapers with gentle reminders. Because even your
-                    phone could use a softer side.
+                    A set of original phone wallpapers with reminders worth
+                    seeing more than once.
                   </p>
                   <InterestButton interest="wallpapers">
                     Save me a little joy
@@ -262,16 +261,14 @@ export default function Home() {
               </h2>
             </div>
             <div>
-              <span className="coming-pill upcoming-badge">
-                <span /> GROWING WITH CARE
-              </span>
+              <span className="upcoming-aside">NEXT, NOT NOW</span>
               <p>
-                Thoughtful tools and experiences are taking shape. Join the list
-                for whatever speaks to you.
+                A considered preview of what comes after the sessions. Follow
+                only the idea you would genuinely use.
               </p>
             </div>
           </div>
-          <div className="upcoming-grid">
+          <div className="upcoming-grid" aria-label="Upcoming offerings">
             {upcoming.map((item) => (
               <article className="upcoming-card" key={item.interest}>
                 <div className="upcoming-card-top">
@@ -291,6 +288,10 @@ export default function Home() {
               </article>
             ))}
           </div>
+          <div className="explore-heading">
+            <span>FURTHER AFIELD</span>
+            <p>Two slower ideas, still at the sketchbook stage.</p>
+          </div>
           <div className="explore-grid">
             <article className="explore-card retreat-card">
               <div className="mini-landscape" aria-hidden="true">
@@ -303,7 +304,7 @@ export default function Home() {
                   A CHANGE OF SCENERY · COMING SOON
                 </span>
                 <h3>Somewhere to simply be.</h3>
-                <p>Wellness stays around the world, curated from Airbnb.</p>
+                <p>Restorative stays selected for setting, pace, and care.</p>
                 <InterestButton interest="retreats">
                   Daydream with us
                 </InterestButton>
@@ -323,7 +324,7 @@ export default function Home() {
                   TRIED, LOVED, SHARED · COMING SOON
                 </span>
                 <h3>Good things, passed along.</h3>
-                <p>Thoughtful wellness finds and recommendations.</p>
+                <p>Objects and practices we have tried and kept.</p>
                 <InterestButton interest="recommendations">
                   Send me the good stuff
                 </InterestButton>
@@ -346,8 +347,8 @@ export default function Home() {
                 <em>more wellbeing.</em>
               </h2>
               <p>
-                Fresh offerings, small rituals, and good things in the making.
-                <br />A softer corner of your inbox.
+                New session dates, original resources, and occasional field
+                notes. Sent only when there is something worth sharing.
               </p>
             </div>
             <div className="newsletter-form-wrap">
@@ -365,7 +366,7 @@ export default function Home() {
           shin<span className="wordmark-dot">✳</span>
           <span className="wordmark-sub">WELLNESS</span>
         </a>
-        <p>A little more present. A little more you.</p>
+        <p>Space to reset, on your own terms.</p>
         <span>© {new Date().getFullYear()} Shin Wellness</span>
         <a className="back-top" href="#" aria-label="Back to top">
           ↑
