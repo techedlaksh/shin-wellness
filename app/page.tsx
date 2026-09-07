@@ -70,7 +70,7 @@ export default function Home() {
             alt="A person seated in a deep green chair beside a sunlit window"
             fill
             priority
-            sizes="100vw"
+            sizes="(max-width: 600px) 100vw, 53vw"
           />
           <div className="hero-shade" aria-hidden="true" />
           <div className="hero-copy">
@@ -118,33 +118,33 @@ export default function Home() {
             <div className="experience-copy">
               <span className="eyebrow">WHAT HAPPENS IN THE HOUR</span>
               <h2 id="experience-title">
-                Arrive as you are. Leave with a way forward.
+                We work the problem, not a wellness script.
               </h2>
               <p className="experience-lede">
-                No performance, no perfect routine. We begin with what feels
-                most present and make the time useful from there.
+                Tell us what is stuck—physically or mentally. We spend the hour
+                getting specific, trying what helps, and deciding what to do next.
               </p>
             </div>
             <ol className="experience-steps">
               <li>
                 <span>01</span>
                 <div>
-                  <strong>Settle in</strong>
-                  <p>Name what is taking up the most space right now.</p>
+                  <strong>Name the friction</strong>
+                  <p>What hurts, loops, or keeps getting postponed?</p>
                 </div>
               </li>
               <li>
                 <span>02</span>
                 <div>
-                  <strong>Choose the focus</strong>
-                  <p>Work with the tension or burnout pattern at hand.</p>
+                  <strong>Try the shift</strong>
+                  <p>Work the tension or burnout pattern in real time.</p>
                 </div>
               </li>
               <li>
                 <span>03</span>
                 <div>
-                  <strong>Carry one thing forward</strong>
-                  <p>Finish with an action that fits your actual week.</p>
+                  <strong>Make it usable</strong>
+                  <p>Leave with one action that fits your actual week.</p>
                 </div>
               </li>
             </ol>
@@ -159,7 +159,7 @@ export default function Home() {
           <div className="section-heading">
             <div>
               <span className="eyebrow">PERSONAL SESSIONS</span>
-              <h2 id="sessions-title">Start with the support you need now.</h2>
+              <h2 id="sessions-title">One hour. One issue. A clearer next step.</h2>
             </div>
             <p>
               Choose one focused hour or a week of daily continuity. Every
@@ -227,11 +227,10 @@ export default function Home() {
             <div className="section-heading">
               <div>
                 <span className="eyebrow">FREE RESOURCES</span>
-                <h2 id="little-title">Useful in the spaces between.</h2>
+                <h2 id="little-title">Take the playlist. Keep the reminder.</h2>
               </div>
               <p>
-                Original tools for the moments between sessions: one to listen
-                to, one to keep in view.
+                Two free tools, made to be used rather than admired.
               </p>
             </div>
             <div className="resource-grid">
@@ -242,10 +241,10 @@ export default function Home() {
                     <span>FOR YOUR EARS</span>
                     <span>FREE · COMING SOON</span>
                   </div>
-                  <h3>A soundtrack for changing pace.</h3>
+                  <h3>Fifty minutes without a productivity agenda.</h3>
                   <p>
-                    An unhurried mix for the commute home, a quiet morning, or
-                    ten minutes with nowhere else to be.
+                    For the commute home, a quiet morning, or any stretch of
+                    time that does not need optimizing.
                   </p>
                   <InterestButton interest="playlist">
                     Tell me when it drops
@@ -259,10 +258,10 @@ export default function Home() {
                     <span>FOR YOUR SCREEN</span>
                     <span>FREE · COMING SOON</span>
                   </div>
-                  <h3>Reminders worth seeing twice.</h3>
+                  <h3>Words that survive the second glance.</h3>
                   <p>
-                    A set of original phone wallpapers with words that still
-                    mean something after the first glance.
+                    Original phone wallpapers without slogans, streaks, or
+                    another habit to maintain.
                   </p>
                   <InterestButton interest="wallpapers">
                     Save me a copy
@@ -281,11 +280,11 @@ export default function Home() {
           <div className="section-heading">
             <div>
               <span className="eyebrow">ON THE HORIZON</span>
-              <h2 id="upcoming-title">A short index of what comes next.</h2>
+              <h2 id="upcoming-title">Not ready yet. Deliberately.</h2>
             </div>
             <p>
-              Follow only the idea you would genuinely use. We will write when
-              it is ready, not while it is merely being planned.
+              These are sketches, not launches. Join only the line for the one
+              you would genuinely use.
             </p>
           </div>
           <div className="upcoming-index" aria-label="Upcoming offerings">
@@ -338,13 +337,13 @@ export default function Home() {
             <div className="newsletter-copy">
               <span className="eyebrow">OCCASIONAL NOTES</span>
               <h2 id="newsletter-title">
-                An inbox note
+                No content calendar.
                 <br />
-                <em>worth opening.</em>
+                <em>Just useful notes.</em>
               </h2>
               <p>
-                New session dates, original resources, and field notes. Sent
-                only when there is something worth sharing.
+                New session dates, original resources, and field notes—sent
+                only when there is something worth your attention.
               </p>
             </div>
             <div className="newsletter-form-wrap">
