@@ -40,6 +40,10 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
         return image.complete && image.naturalWidth > 0 && image.naturalHeight > 0;
       }),
     ).toBe(true);
+    await expect(page.locator("[data-reveal]").first()).toHaveCSS(
+      "opacity",
+      "1",
+    );
     if (width > 900) {
       await expect(page.locator(".hero-copy > p")).toHaveCSS(
         "font-size",
@@ -148,6 +152,11 @@ test("hero depth follows the pointer and returns to rest with motion enabled", a
     )
     .toEqual({ tiltX: "0deg", tiltY: "0deg" });
   await page.screenshot({ path: ".context/hero-depth-rest.png" });
+
+  const futurePanel = page.locator(".future-panel");
+  await futurePanel.scrollIntoViewIfNeeded();
+  await expect(futurePanel).toHaveClass(/is-visible/);
+  await expect(futurePanel).toHaveCSS("opacity", "1");
 });
 
 test("session cards explain the selectable focus and tailored seven-day sequence", async ({

@@ -52,7 +52,6 @@ export function ResourceArt({ type }: { type: "books" | "wallpapers" }) {
             <Sprout className="book-sprout" />
           </div>
         </div>
-        <span className="book-star">✦</span>
       </div>
     );
   return (
@@ -81,7 +80,6 @@ export function ResourceArt({ type }: { type: "books" | "wallpapers" }) {
         </span>
         <div className="wallpaper-flower">✿</div>
       </div>
-      <span className="wallpaper-star">✧</span>
     </div>
   );
 }

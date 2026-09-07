@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Arrow, ResourceArt, Sprout } from "@/components/artwork";
 import { HeroVisual } from "@/components/hero-visual";
+import { PageMotion } from "@/components/page-motion";
 import {
   InterestButton,
   PurchaseButton,
@@ -15,7 +16,6 @@ const upcoming: {
   title: string;
   description: string;
   detail: string;
-  icon: string;
 }[] = [
   {
     interest: "routine",
@@ -24,7 +24,6 @@ const upcoming: {
     description:
       "A gentle, 7-day routine to get to know your emotions and make space for them.",
     detail: "7-DAY PDF ROUTINE · $29",
-    icon: "☷",
   },
   {
     interest: "checkins",
@@ -33,7 +32,6 @@ const upcoming: {
     description:
       "Weekly 30-minute check-ins. A space to reflect, reconnect, and find your next small step.",
     detail: "4-WEEK PROGRAM · $99",
-    icon: "◷",
   },
   {
     interest: "coaching",
@@ -42,7 +40,6 @@ const upcoming: {
     description:
       "Personal coaching with CBT-informed tools to build habits that fit your real life.",
     detail: "HABIT COACHING",
-    icon: "↗",
   },
 ];
 
@@ -87,6 +84,7 @@ const sessionFocuses = [
 export default function Home() {
   return (
     <>
+      <PageMotion />
       <a className="skip-link" href="#main">
         Skip to content
       </a>
@@ -133,8 +131,7 @@ export default function Home() {
               </a>
             </div>
             <div className="hero-footnote">
-              <span className="mini-orbit">✧</span> Small steps. Soft landings.
-              A little more you.
+              Small steps. Soft landings. A little more you.
             </div>
           </div>
           <HeroVisual />
@@ -142,9 +139,7 @@ export default function Home() {
         <div className="values-strip">
           <div className="container values-inner">
             <span>Less doing. More being.</span>
-            <span className="strip-star">✳</span>
             <span>Care that meets you where you are.</span>
-            <span className="strip-star">✳</span>
             <span>Your pace is a good pace.</span>
           </div>
         </div>
@@ -154,14 +149,10 @@ export default function Home() {
           id="sessions"
           aria-labelledby="sessions-title"
         >
-          <div className="section-heading">
+          <div className="section-heading" data-reveal="heading">
             <div>
               <span className="eyebrow">01 / A SPACE JUST FOR YOU</span>
-              <h2 id="sessions-title">
-                Let’s start with
-                <br />
-                <em>a little reset.</em>
-              </h2>
+              <h2 id="sessions-title">Let’s start with a little reset.</h2>
             </div>
             <p>
               When life feels a bit too full, you deserve a space that’s just
@@ -169,7 +160,7 @@ export default function Home() {
               footing.
             </p>
           </div>
-          <div className="session-grid">
+          <div className="session-grid" data-reveal="spread">
             <article className="session-card single-session">
               <div className="card-topline">
                 <span className="pill">A MOMENT TO RECENTER</span>
@@ -188,6 +179,15 @@ export default function Home() {
                 <li>Choose one of seven session focuses</li>
                 <li>A little space to pause and reconnect</li>
               </ul>
+              <div className="single-session-art" aria-hidden="true">
+                <Image
+                  src={accentArt}
+                  alt=""
+                  placeholder="blur"
+                  sizes="(max-width: 600px) 70vw, 460px"
+                />
+                <span>A quiet place to begin</span>
+              </div>
               <PurchaseButton
                 url={checkoutUrl(process.env.CHECKOUT_SINGLE_URL)}
               />
@@ -248,23 +248,19 @@ export default function Home() {
             aria-hidden="true"
           />
           <div className="container">
-            <div className="section-heading">
+            <div className="section-heading" data-reveal="heading">
               <div>
                 <span className="eyebrow">
                   02 / LITTLE THINGS, LOVINGLY MADE
                 </span>
-                <h2 id="little-title">
-                  Good for your day.
-                  <br />
-                  <em>Free for you.</em>
-                </h2>
+                <h2 id="little-title">Good for your day. Free for you.</h2>
               </div>
               <p>
                 Sometimes it’s a book. Sometimes it’s a tiny reminder on your
                 screen. Small pockets of good, coming your way.
               </p>
             </div>
-            <div className="resource-grid">
+            <div className="resource-grid" data-reveal="drift">
               <article className="resource-card">
                 <ResourceArt type="books" />
                 <div className="resource-content">
@@ -308,16 +304,12 @@ export default function Home() {
           id="coming-soon"
           aria-labelledby="upcoming-title"
         >
-          <div className="section-heading">
+          <div className="section-heading" data-reveal="heading">
             <div>
               <span className="eyebrow">
                 03 / GOOD THINGS TAKE A LITTLE TIME
               </span>
-              <h2 id="upcoming-title">
-                More ways to
-                <br />
-                <em>come back to you.</em>
-              </h2>
+              <h2 id="upcoming-title">More ways to come back to you.</h2>
             </div>
             <div>
               <span className="coming-pill upcoming-badge">
@@ -329,64 +321,63 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="upcoming-grid">
-            {upcoming.map((item) => (
-              <article className="upcoming-card" key={item.interest}>
-                <div className="upcoming-card-top">
-                  <span className="offering-icon" aria-hidden="true">
-                    {item.icon}
+          <div className="future-panel" data-reveal="journey">
+            <div className="upcoming-grid">
+              {upcoming.map((item) => (
+                <article className="upcoming-card" key={item.interest}>
+                  <div className="upcoming-card-top">
+                    <span className="upcoming-number">
+                      {item.number} / COMING SOON
+                    </span>
+                  </div>
+                  <span className="eyebrow offering-detail">{item.detail}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                  <InterestButton interest={item.interest}>
+                    Keep me posted
+                  </InterestButton>
+                </article>
+              ))}
+            </div>
+            <div className="explore-grid">
+              <article className="explore-card retreat-card">
+                <div className="mini-landscape" aria-hidden="true">
+                  <span className="landscape-sun" />
+                  <span className="landscape-hill hill-one" />
+                  <span className="landscape-hill hill-two" />
+                </div>
+                <div>
+                  <span className="eyebrow">
+                    A CHANGE OF SCENERY · COMING SOON
                   </span>
-                  <span className="upcoming-number">
-                    {item.number} / COMING SOON
+                  <h3>Somewhere to simply be.</h3>
+                  <p>Wellness stays around the world, curated from Airbnb.</p>
+                  <InterestButton interest="retreats">
+                    Daydream with us
+                  </InterestButton>
+                </div>
+              </article>
+              <article className="explore-card finds-card">
+                <div className="finds-illustration" aria-hidden="true">
+                  <Sprout />
+                  <span>
+                    little
+                    <br />
+                    <em>good things.</em>
                   </span>
                 </div>
-                <span className="eyebrow offering-detail">{item.detail}</span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-                <InterestButton interest={item.interest}>
-                  Keep me posted
-                </InterestButton>
+                <div>
+                  <span className="eyebrow">
+                    TRIED, LOVED, SHARED · COMING SOON
+                  </span>
+                  <h3>Good things, passed along.</h3>
+                  <p>Thoughtful wellness finds and recommendations.</p>
+                  <InterestButton interest="recommendations">
+                    Send me the good stuff
+                  </InterestButton>
+                </div>
               </article>
-            ))}
-          </div>
-          <div className="explore-grid">
-            <article className="explore-card retreat-card">
-              <div className="mini-landscape" aria-hidden="true">
-                <span className="landscape-sun" />
-                <span className="landscape-hill hill-one" />
-                <span className="landscape-hill hill-two" />
-              </div>
-              <div>
-                <span className="eyebrow">
-                  A CHANGE OF SCENERY · COMING SOON
-                </span>
-                <h3>Somewhere to simply be.</h3>
-                <p>Wellness stays around the world, curated from Airbnb.</p>
-                <InterestButton interest="retreats">
-                  Daydream with us
-                </InterestButton>
-              </div>
-            </article>
-            <article className="explore-card finds-card">
-              <div className="finds-illustration" aria-hidden="true">
-                <Sprout />
-                <span>
-                  little
-                  <br />
-                  <em>good things.</em>
-                </span>
-              </div>
-              <div>
-                <span className="eyebrow">
-                  TRIED, LOVED, SHARED · COMING SOON
-                </span>
-                <h3>Good things, passed along.</h3>
-                <p>Thoughtful wellness finds and recommendations.</p>
-                <InterestButton interest="recommendations">
-                  Send me the good stuff
-                </InterestButton>
-              </div>
-            </article>
+            </div>
           </div>
         </section>
 
@@ -396,19 +387,17 @@ export default function Home() {
           aria-labelledby="newsletter-title"
         >
           <div className="container newsletter-inner">
-            <div className="newsletter-copy">
+            <div className="newsletter-copy" data-reveal="heading">
               <span className="eyebrow">A NOTE FROM SHIN, NOW AND THEN</span>
               <h2 id="newsletter-title">
-                Make room for a little
-                <br />
-                <em>more wellbeing.</em>
+                Make room for a little more wellbeing.
               </h2>
               <p>
                 Fresh offerings, small rituals, and good things in the making.
                 <br />A softer corner of your inbox.
               </p>
             </div>
-            <div className="newsletter-form-wrap">
+            <div className="newsletter-form-wrap" data-reveal="drift">
               <Sprout className="newsletter-sprout" />
               <SignupForm />
             </div>
