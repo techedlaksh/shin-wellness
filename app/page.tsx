@@ -1,4 +1,5 @@
 import { Arrow, BotanicalArt, ResourceArt, Sprout } from "@/components/artwork";
+import Image from "next/image";
 import {
   InterestButton,
   PurchaseButton,
@@ -118,7 +119,7 @@ export default function Home() {
               <h2 id="sessions-title">
                 Let’s start with
                 <br />
-                <em>a little reset.</em>
+                a focused reset.
               </h2>
             </div>
             <p>
@@ -184,6 +185,61 @@ export default function Home() {
         </section>
 
         <section
+          className="experience-section"
+          aria-labelledby="experience-title"
+        >
+          <div className="container experience-inner">
+            <figure className="experience-image">
+              <Image
+                src="/session-presence.png"
+                alt="A person seated quietly in warm window light"
+                width={1023}
+                height={1537}
+                sizes="(max-width: 800px) calc(100vw - 36px), 48vw"
+                loading="eager"
+              />
+              <figcaption>A private hour, held online.</figcaption>
+            </figure>
+            <div className="experience-copy">
+              <span className="eyebrow">WHAT HAPPENS IN THE HOUR</span>
+              <h2 id="experience-title">
+                Arrive as you are. Leave with a way forward.
+              </h2>
+              <p className="experience-lede">
+                No performance, no perfect routine. We begin with what feels
+                most present and make the hour useful from there.
+              </p>
+              <ol className="experience-steps">
+                <li>
+                  <span>01</span>
+                  <div>
+                    <strong>Settle in</strong>
+                    <p>Name what is taking up the most space right now.</p>
+                  </div>
+                </li>
+                <li>
+                  <span>02</span>
+                  <div>
+                    <strong>Choose the focus</strong>
+                    <p>Work with the physical tension or burnout pattern at hand.</p>
+                  </div>
+                </li>
+                <li>
+                  <span>03</span>
+                  <div>
+                    <strong>Carry one thing forward</strong>
+                    <p>Finish with a practical action that fits your actual week.</p>
+                  </div>
+                </li>
+              </ol>
+              <a className="text-link experience-link" href="#sessions">
+                Choose your session <span>↑</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section
           className="little-section section"
           id="little-things"
           aria-labelledby="little-title"
@@ -197,7 +253,7 @@ export default function Home() {
                 <h2 id="little-title">
                   Good for your day.
                   <br />
-                  <em>Free for you.</em>
+                  Free for you.
                 </h2>
               </div>
               <p>
@@ -255,9 +311,7 @@ export default function Home() {
                 03 / GOOD THINGS TAKE A LITTLE TIME
               </span>
               <h2 id="upcoming-title">
-                More ways to
-                <br />
-                <em>come back to you.</em>
+                A short index of what comes next.
               </h2>
             </div>
             <div>
@@ -268,67 +322,47 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="upcoming-grid" aria-label="Upcoming offerings">
+          <div className="upcoming-index" aria-label="Upcoming offerings">
             {upcoming.map((item) => (
-              <article className="upcoming-card" key={item.interest}>
-                <div className="upcoming-card-top">
-                  <span className="offering-icon" aria-hidden="true">
-                    {item.icon}
-                  </span>
-                  <span className="upcoming-number">
-                    {item.number} / COMING SOON
-                  </span>
+              <article className="future-row" key={item.interest}>
+                <span className="future-number">{item.number}</span>
+                <div className="future-title">
+                  <span className="eyebrow offering-detail">{item.detail}</span>
+                  <h3>{item.title}</h3>
                 </div>
-                <span className="eyebrow offering-detail">{item.detail}</span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
+                <p className="future-description">{item.description}</p>
                 <InterestButton interest={item.interest}>
                   Keep me posted
                 </InterestButton>
               </article>
             ))}
-          </div>
-          <div className="explore-heading">
-            <span>FURTHER AFIELD</span>
-            <p>Two slower ideas, still at the sketchbook stage.</p>
-          </div>
-          <div className="explore-grid">
-            <article className="explore-card retreat-card">
-              <div className="mini-landscape" aria-hidden="true">
-                <span className="landscape-sun" />
-                <span className="landscape-hill hill-one" />
-                <span className="landscape-hill hill-two" />
-              </div>
-              <div>
-                <span className="eyebrow">
-                  A CHANGE OF SCENERY · COMING SOON
+            <article className="future-row future-row-secondary">
+              <span className="future-number">04</span>
+              <div className="future-title">
+                <span className="eyebrow offering-detail">
+                  CURATED STAYS
                 </span>
                 <h3>Somewhere to simply be.</h3>
-                <p>Restorative stays selected for setting, pace, and care.</p>
-                <InterestButton interest="retreats">
-                  Daydream with us
-                </InterestButton>
               </div>
+              <p className="future-description">
+                Restorative stays selected for setting, pace, and care.
+              </p>
+              <InterestButton interest="retreats">Daydream with us</InterestButton>
             </article>
-            <article className="explore-card finds-card">
-              <div className="finds-illustration" aria-hidden="true">
-                <Sprout />
-                <span>
-                  little
-                  <br />
-                  <em>good things.</em>
+            <article className="future-row future-row-secondary">
+              <span className="future-number">05</span>
+              <div className="future-title">
+                <span className="eyebrow offering-detail">
+                  TESTED &amp; KEPT
                 </span>
+                <h3>Useful things, passed along.</h3>
               </div>
-              <div>
-                <span className="eyebrow">
-                  TRIED, LOVED, SHARED · COMING SOON
-                </span>
-                <h3>Good things, passed along.</h3>
-                <p>Objects and practices we have tried and kept.</p>
-                <InterestButton interest="recommendations">
-                  Send me the good stuff
-                </InterestButton>
-              </div>
+              <p className="future-description">
+                Objects and practices we have tried and kept.
+              </p>
+              <InterestButton interest="recommendations">
+                Send me the edit
+              </InterestButton>
             </article>
           </div>
         </section>
