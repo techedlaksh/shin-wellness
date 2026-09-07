@@ -14,6 +14,10 @@ expanded, paired with its delivered critic analysis, or restored into the
 current workspace with one click. Restoring a variant only changes these design
 files:
 
+Clicking a screenshot opens a split viewer with the scrollable full-page design
+on the left and its matching score and critique on the right. On narrow screens,
+the critique moves beneath the screenshot.
+
 - `app/globals.css`
 - `app/page.tsx`
 - `components/artwork.tsx`
