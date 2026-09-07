@@ -10,8 +10,9 @@ reviewed the same implementation independently. They remain separate gallery
 entries because their scores and review passes are distinct.
 
 Run `npm run design:gallery` to open the visual gallery. Each card can be
-expanded or restored into the current workspace with one click. Restoring a
-variant only changes these design files:
+expanded, paired with its delivered critic analysis, or restored into the
+current workspace with one click. Restoring a variant only changes these design
+files:
 
 - `app/globals.css`
 - `app/page.tsx`
@@ -25,6 +26,11 @@ current branch's committed version.
 The rendered PNGs live in `.context/design-archive/screenshots/`, keeping large
 generated files out of Git. They can be regenerated from the tags with
 `npm run design:render`.
+
+`design-archive/critic-reviews.json` contains all 48 visible analyses delivered
+by the independent critics, including their scores, timestamps, aesthetic
+reads, identified gaps, and highest-leverage recommendations. It does not and
+cannot contain private chain-of-thought.
 
 Portable local backups are written to:
 
