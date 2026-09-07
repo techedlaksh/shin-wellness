@@ -121,9 +121,8 @@ export default function Home() {
               <em>yourself again.</em>
             </h1>
             <p>
-              You don’t have to have it all together. Shin offers personal
-              movement sessions—a little room to pause, reset, and come back
-              to you.
+              You don’t have to have it all together. Just a little room to
+              pause, reset, and come back to you.
             </p>
             <div className="hero-actions">
               <a className="button button-dark" href="#sessions">
@@ -229,32 +228,32 @@ export default function Home() {
                   One small commitment to yourself.
                 </p>
               </article>
+            </div>
 
-              <div className="focus-index">
-                <div className="focus-index-intro">
-                  <span className="eyebrow">YOUR SEVEN-DAY ITINERARY</span>
-                  <h3>Meet your body where it is.</h3>
-                  <p>
-                    Choose one focus for a personal reset, or explore all seven
-                    across the pack. Open any focus to learn a little more.
-                  </p>
-                </div>
-                <ol className="session-focus-list" role="list">
-                  {sessionFocuses.map((focus, index) => (
-                    <li key={focus.title}>
-                      <span className="focus-number" aria-hidden="true">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <details>
-                        <summary>
-                          <strong>{focus.title}</strong>
-                        </summary>
-                        <p>{focus.description}</p>
-                      </details>
-                    </li>
-                  ))}
-                </ol>
+            <div className="focus-index">
+              <div className="focus-index-intro">
+                <span className="eyebrow">SEVEN WAYS TO RESET</span>
+                <h3>Meet your body where it is.</h3>
+                <p>
+                  Choose one focus for a personal reset, or explore all seven
+                  across the pack. Open any focus to learn a little more.
+                </p>
               </div>
+              <ol className="session-focus-list" role="list">
+                {sessionFocuses.map((focus, index) => (
+                  <li key={focus.title}>
+                    <span className="focus-number" aria-hidden="true">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <details>
+                      <summary>
+                        <strong>{focus.title}</strong>
+                      </summary>
+                      <p>{focus.description}</p>
+                    </details>
+                  </li>
+                ))}
+              </ol>
             </div>
           </div>
           <p className="sessions-note">

@@ -59,7 +59,7 @@ export function BotanicalArt() {
             <feDisplacementMap
               in="SourceGraphic"
               in2="line-noise"
-              scale="2.4"
+              scale="5.5"
               xChannelSelector="R"
               yChannelSelector="G"
             />
@@ -95,9 +95,8 @@ export function BotanicalArt() {
           opacity=".62"
         />
         <path
-          d="M252 510c29-18 70-8 88 22 18 31 7 70-24 88-32 18-72 5-88-27-15-30-4-64 24-83Z"
+          d="M438 55c28-15 63-4 77 24 13 26 2 58-25 71-29 14-63 1-75-27-11-26 0-55 23-68Z"
           fill="#e7b194"
-          opacity=".88"
         />
         <path
           d="M211 86h404v520H211Z"
@@ -138,28 +137,19 @@ export function BotanicalArt() {
           <path d="M434 426c47-54 99-77 158-68" fill="none" strokeWidth="2" />
           <path d="M406 356c-42-25-82-29-120-12" fill="none" strokeWidth="2" />
           <path d="M373 298c35-50 75-76 121-76" fill="none" strokeWidth="2" />
-          <path d="M456 526c-34-17-61-40-80-70" fill="none" strokeWidth="1.8" />
-
-          <path
-            d="M378 458c-29 7-54-3-69-29 26-18 57-6 69 29Z"
-            fill="#d6dccf"
-            fillOpacity=".68"
-            strokeWidth="1.8"
-          />
-          <path d="M374 455c-20-9-40-17-60-23M352 447c-10-7-21-12-33-15" fill="none" strokeWidth=".9" />
 
           <path
             d="M434 430c28-70 100-104 167-70 1 71-79 117-167 70Z"
             fill="#bcc6b2"
-            fillOpacity=".76"
-            strokeWidth="2.8"
+            fillOpacity=".58"
+            strokeWidth="2.2"
           />
           <path d="M438 425c51-31 102-52 156-63M477 406c17-18 38-31 62-39M516 387c16-12 34-20 54-24" fill="none" strokeWidth="1" />
 
           <path
             d="M407 359c-56 8-105-8-142-49 43-35 107-14 142 49Z"
             fill="#8fa28f"
-            fillOpacity=".48"
+            fillOpacity=".62"
             strokeWidth="2.2"
           />
           <path d="M404 356c-45-18-89-32-133-43M376 347c-20-12-41-20-64-26M343 334c-18-8-37-14-57-17" fill="none" strokeWidth="1" />
@@ -174,10 +164,9 @@ export function BotanicalArt() {
 
           <path d="M352 143c-2-21 3-41 13-59" fill="none" strokeWidth="2" />
           <g strokeWidth="1.8">
-            <path d="M361 87c-34 7-60-8-62-33 16-22 48-11 62 33Z" fill="#e7b194" fillOpacity=".66" />
-            <path d="M365 84c-10-38 2-67 29-75 25 16 18 52-29 75Z" fill="#e7b194" fillOpacity=".84" />
-            <path d="M368 88c34-25 69-19 81 8-10 31-48 33-81-8Z" fill="#d8cce3" fillOpacity=".76" />
-            <path d="M365 92c18 22 18 45 0 59-22-8-23-35 0-59Z" fill="#c2ceb9" fillOpacity=".58" />
+            <path d="M363 87c-36 6-60-7-61-34 18-21 48-8 61 34Z" fill="#e7b194" fillOpacity=".6" />
+            <path d="M365 85c-12-37-2-65 27-74 27 14 22 49-27 74Z" fill="#e7b194" fillOpacity=".82" />
+            <path d="M367 88c35-24 69-20 82 7-8 33-47 35-82-7Z" fill="#d8cce3" fillOpacity=".72" />
           </g>
           <circle cx="363" cy="87" r="9" fill="#7b8e76" strokeWidth="1.5" />
           <path d="M359 84c-13-8-25-13-37-15M367 81c5-14 13-26 24-36M371 89c15 0 29 4 41 11M360 95c-6 13-8 26-7 39" fill="none" strokeWidth="1" />
@@ -192,6 +181,8 @@ export function BotanicalArt() {
           opacity=".5"
           transform="rotate(-5 430 370)"
         >
+          <path d="M454 414c21-17 43-30 67-40M474 426c23-16 47-28 72-36M500 433c21-12 42-20 63-25M530 433c16-7 32-12 49-15" />
+          <path d="M282 322c24 6 48 15 72 25M301 312c23 5 46 12 69 21M325 309c19 4 39 10 58 18" />
           <path d="M387 279c15-14 31-26 48-36M402 291c17-14 34-25 52-34M422 297c15-11 32-19 49-26" />
           <path d="M342 66c6 7 12 14 19 22M391 53c-9 11-17 22-25 33M402 103c-13-5-25-10-37-16M361 121c1-12 1-23 3-34" />
         </g>

@@ -368,7 +368,7 @@ svg {
 .hero h1 em {
   color: #73836e;
   display: inline-block;
-  margin-left: clamp(24px, 3vw, 48px);
+  margin-left: clamp(64px, 7vw, 112px);
   font-size: 1.1em;
 }
 
@@ -376,7 +376,7 @@ svg {
   max-width: 510px;
   margin-top: 31px;
   color: #566259;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.7;
 }
 
@@ -446,22 +446,16 @@ svg {
   min-height: 74px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 14px;
+  justify-content: space-between;
+  gap: 30px;
   font-family: var(--font-serif), serif;
-  font-size: 17px;
-  font-style: italic;
+  font-size: 16px;
 }
 
 .values-inner i {
-  width: auto;
-  height: auto;
-  background: none;
-}
-
-.values-inner i::after {
-  color: #82907f;
-  content: "·";
+  width: 32px;
+  height: 1px;
+  background: #9da99b;
 }
 
 /* Shared section introductions */
@@ -506,8 +500,7 @@ svg {
 
 .section-intro > p {
   color: var(--muted);
-  font-size: 20px;
-  line-height: 1.62;
+  font-size: 18px;
 }
 
 /* Sessions */
@@ -516,27 +509,35 @@ svg {
 }
 
 .session-suite {
-  position: relative;
   overflow: visible;
 }
 
 .session-grid {
   position: relative;
-  z-index: 2;
-  padding: clamp(46px, 4.5vw, 68px);
+  padding: 70px 0 0;
   display: grid;
-  grid-template-columns: minmax(390px, 0.72fr) minmax(0, 1.28fr);
-  grid-template-rows: auto auto;
+  grid-template-columns: minmax(310px, 0.68fr) minmax(560px, 1.32fr);
   align-items: stretch;
-  gap: 0 clamp(50px, 5vw, 78px);
-  overflow: hidden;
-  background: var(--moss);
-  box-shadow: 0 28px 70px #263b3217;
-  clip-path: polygon(0.4% 0.7%, 99.5% 0, 100% 99%, 0 100%);
+  gap: clamp(46px, 5vw, 76px);
+  overflow: visible;
+  background: transparent;
+  box-shadow: none;
+  clip-path: none;
 }
 
 .session-grid::before {
-  content: none;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  left: 0;
+  width: auto;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #b9c2b5;
+  color: #536156;
+  content: "SHIN WELLNESS  ·  PRIVATE SESSION FOLIO  ·  CHOOSE YOUR PACE";
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
 }
 
 .session-grid::after {
@@ -553,18 +554,15 @@ svg {
 }
 
 .single-session {
-  min-height: 0;
-  margin: 12px 0;
-  padding: 54px clamp(42px, 4vw, 62px);
-  grid-column: 1;
-  grid-row: 1 / 3;
+  min-height: 590px;
+  margin: 0;
+  padding: 56px 18px 42px 8px;
   overflow: hidden;
   justify-content: flex-start;
-  background: #f1e9dc;
-  box-shadow: 0 18px 46px #34483f0d;
+  background: transparent;
+  box-shadow: none;
   border: 0;
-  border-left: 0;
-  clip-path: polygon(0.6% 0, 100% 1.2%, 99.2% 99%, 0 100%);
+  clip-path: none;
   color: var(--moss);
   transform: none;
 }
@@ -573,23 +571,16 @@ svg {
   margin-top: 30px;
 }
 
-.single-session h3 {
-  font-size: clamp(40px, 3.3vw, 50px);
-}
-
 .pack-session {
   z-index: 3;
-  min-height: 0;
-  margin: 0;
-  padding: 14px 0 48px;
-  grid-column: 2;
-  grid-row: 1;
+  min-height: 650px;
+  margin: -24px 0 0;
   overflow: visible;
-  background: transparent;
-  box-shadow: none;
-  clip-path: none;
+  background: var(--moss);
+  box-shadow: 0 34px 76px #263a303b;
+  clip-path: polygon(0.7% 0, 100% 1.2%, 98.8% 100%, 0 98.7%);
   color: var(--ivory);
-  transform: none;
+  transform: rotate(0.35deg);
 }
 
 .card-topline {
@@ -603,7 +594,7 @@ svg {
 .offer-kicker {
   padding-top: 3px;
   color: #506052;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .pack-session .offer-kicker {
@@ -629,8 +620,7 @@ svg {
 .session-description {
   margin-top: 13px;
   color: #526053;
-  font-size: 20px;
-  line-height: 1.55;
+  font-size: 18px;
 }
 
 .pack-session .session-description,
@@ -652,7 +642,7 @@ svg {
 .price > span {
   color: #536155;
   font-family: var(--font-sans), sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   letter-spacing: 0;
 }
 
@@ -667,7 +657,7 @@ svg {
   gap: 13px;
   border-top: 0;
   list-style: none;
-  font-size: 19px;
+  font-size: 18px;
 }
 
 .benefits li {
@@ -687,34 +677,30 @@ svg {
   margin: 28px 0 18px;
   padding-top: 24px;
   border-top: 0;
-  font-size: 19px;
-  line-height: 1.55;
+  font-size: 18px;
 }
 
 .week-sequence {
   position: relative;
-  z-index: 2;
-  width: 100%;
-  min-height: 146px;
-  margin: 8px 0 28px;
-  padding: 22px 0 24px;
+  width: calc(100% + 18px);
+  min-height: 136px;
+  margin: 8px 0 30px -18px;
+  padding: 20px 32px 22px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  border-top: 1px solid #839288;
-  border-bottom: 1px solid #839288;
-  background: transparent;
-  box-shadow: none;
-  clip-path: none;
-  color: var(--ivory);
-  transform: none;
+  background: #f2ecdf;
+  box-shadow: 0 16px 34px #1b29233d;
+  clip-path: polygon(0.5% 2%, 100% 0, 98.8% 98%, 0 100%);
+  color: var(--moss);
+  transform: rotate(-0.7deg);
 }
 
 .week-sequence > span {
-  color: #c5d0c2;
+  color: var(--moss);
   font-family: var(--font-sans), sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -722,9 +708,9 @@ svg {
 
 .week-sequence strong {
   margin-top: 13px;
-  color: var(--ivory);
+  color: var(--moss);
   font-family: var(--font-serif), serif;
-  font-size: clamp(29px, 2.5vw, 36px);
+  font-size: clamp(24px, 2.2vw, 31px);
   font-weight: 400;
   letter-spacing: -0.035em;
   line-height: 1.08;
@@ -732,8 +718,8 @@ svg {
 
 .week-sequence p {
   margin-top: 12px;
-  color: #c5d0c2;
-  font-size: 17px;
+  color: #536155;
+  font-size: 15px;
   line-height: 1.5;
 }
 
@@ -749,7 +735,7 @@ svg {
 
 .purchase-message {
   margin-top: 13px;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.6;
 }
 
@@ -762,7 +748,7 @@ svg {
   margin-top: 14px;
   color: #536155;
   font-family: var(--font-serif), serif;
-  font-size: 15px;
+  font-size: 14px;
   font-style: italic;
   text-align: left;
 }
@@ -772,23 +758,17 @@ svg {
 }
 
 .focus-index {
-  position: relative;
-  z-index: 1;
   width: 100%;
-  margin: 0;
-  padding: clamp(40px, 3.6vw, 54px) 0 18px;
+  margin: 44px auto 0;
+  padding: clamp(42px, 4vw, 62px);
   display: grid;
-  grid-column: 2;
-  grid-row: 2;
-  grid-template-columns: minmax(190px, 0.62fr) minmax(0, 1.38fr);
-  gap: clamp(30px, 4vw, 54px);
+  grid-template-columns: minmax(250px, 0.7fr) minmax(0, 1.3fr);
+  gap: clamp(44px, 6vw, 90px);
   border: 0;
-  border-top: 1px solid #76887c;
-  border-bottom: 0;
+  border-top: 1px solid #bfc7ba;
+  border-bottom: 1px solid #d5d8ce;
   background: transparent;
   box-shadow: none;
-  clip-path: none;
-  transform: none;
 }
 
 .focus-index-intro h3 {
@@ -799,31 +779,11 @@ svg {
   line-height: 1.12;
 }
 
-.session-grid .focus-index-intro .eyebrow,
-.session-grid .focus-index-intro h3,
-.session-grid .session-focus-list strong {
-  color: var(--ivory);
-}
-
-.session-grid .focus-index-intro p,
-.session-grid .focus-number,
-.session-grid .session-focus-list details > p {
-  color: #c4cfc1;
-}
-
-.session-grid .session-focus-list li {
-  border-top-color: #697b70;
-}
-
-.session-grid .session-focus-list summary::after {
-  color: #c4cfc1;
-}
-
 .focus-index-intro p {
   max-width: 300px;
   margin-top: 18px;
   color: var(--muted);
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .session-focus-list {
@@ -854,7 +814,7 @@ svg {
 
 .session-focus-list strong {
   font-family: var(--font-serif), serif;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 400;
 }
 
@@ -891,14 +851,14 @@ svg {
 .session-focus-list details > p {
   margin-top: 10px;
   color: var(--muted);
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.6;
 }
 
 .sessions-note {
   margin-top: 21px;
   color: #59645b;
-  font-size: 15px;
+  font-size: 14px;
   text-align: center;
 }
 
@@ -944,8 +904,7 @@ svg {
   grid-column: 3;
   grid-row: 1 / 3;
   color: var(--muted);
-  font-size: 20px;
-  line-height: 1.62;
+  font-size: 18px;
 }
 
 .resource-stage {
@@ -1198,15 +1157,14 @@ svg {
 
 .resource-label {
   color: #4f5e51;
-  font-size: 15px;
 }
 
 .resource-status {
-  position: static;
-  margin-top: 8px;
-  color: #667266;
+  position: absolute;
+  top: 25px;
+  right: 27px;
+  color: #536055;
   font-size: 13px;
-  font-weight: 600;
 }
 
 .resource-wallpapers .resource-content {
@@ -1214,7 +1172,7 @@ svg {
 }
 
 .resource-content h3 {
-  margin-top: 18px;
+  margin-top: 23px;
   font-size: clamp(31px, 3vw, 44px);
   letter-spacing: -0.04em;
   line-height: 1.08;
@@ -1224,8 +1182,7 @@ svg {
   max-width: 390px;
   margin-top: 15px;
   color: var(--muted);
-  font-size: 19px;
-  line-height: 1.58;
+  font-size: 17px;
 }
 
 .resource-content .text-button {
@@ -1235,15 +1192,14 @@ svg {
 /* In the making */
 .upcoming-section {
   padding: 0 0 clamp(64px, 5vw, 82px);
-  background: #f1e7dc;
-  border-top: 1px solid #d8d3c7;
+  background: var(--ivory);
 }
 
 .making-layout {
   position: relative;
-  width: min(660px, calc(100% - 96px));
-  margin: 0 auto;
-  padding: 32px 36px 34px;
+  width: min(760px, calc(100% - 96px));
+  margin: -166px clamp(46px, 6vw, 110px) 0 auto;
+  padding: 38px 44px 40px;
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
@@ -1253,15 +1209,26 @@ svg {
     #e1d9e8;
   box-shadow: 0 28px 72px #34463d17;
   clip-path: polygon(0.4% 1.1%, 100% 0, 99.3% 99%, 0 97.8%);
-  transform: none;
+  transform: rotate(-0.25deg);
+}
+
+.making-layout::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, #c9bfd5 0 49%, var(--ivory) 50% 100%);
+  content: "";
+  filter: drop-shadow(-5px -5px 8px #34463d12);
 }
 
 .making-intro {
   position: relative;
   display: grid;
   max-width: none;
-  grid-template-columns: minmax(185px, 0.78fr) minmax(240px, 1.22fr);
-  gap: 8px 28px;
+  grid-template-columns: minmax(210px, 0.8fr) minmax(260px, 1.2fr);
+  gap: 10px 34px;
   padding-left: 0;
 }
 
@@ -1273,7 +1240,7 @@ svg {
 .making-intro h2 {
   max-width: 470px;
   margin-top: 28px;
-  font-size: clamp(29px, 2.5vw, 36px);
+  font-size: clamp(32px, 2.8vw, 40px);
   line-height: 1.02;
 }
 
@@ -1285,7 +1252,7 @@ svg {
   align-self: end;
   color: var(--muted);
   font-family: var(--font-serif), serif;
-  font-size: 15px;
+  font-size: 16px;
   font-style: italic;
   line-height: 1.5;
 }
@@ -1411,10 +1378,6 @@ svg {
   line-height: 1.08;
 }
 
-.future-index:not([open]) .future-index-copy strong {
-  display: none;
-}
-
 .future-index-action {
   display: flex;
   align-items: center;
@@ -1467,8 +1430,7 @@ svg {
   max-width: 510px;
   margin-top: 10px;
   color: var(--muted);
-  font-size: 18px;
-  line-height: 1.58;
+  font-size: 17px;
 }
 
 .upcoming-card .text-button {
@@ -1479,13 +1441,13 @@ svg {
 .featured-future h3 {
   max-width: 440px;
   margin-top: 18px;
-  font-size: clamp(32px, 2.7vw, 38px);
+  font-size: clamp(34px, 3vw, 42px);
 }
 
 .featured-future p {
   max-width: 560px;
   margin-top: 18px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .featured-future .text-button {
@@ -1624,7 +1586,10 @@ svg {
 .newsletter-inner {
   position: relative;
   z-index: 1;
-  display: block;
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  align-items: end;
+  gap: clamp(70px, 10vw, 160px);
 }
 
 .newsletter-copy .eyebrow {
@@ -1632,7 +1597,7 @@ svg {
 }
 
 .newsletter-copy h2 {
-  max-width: 900px;
+  max-width: 680px;
   margin-top: 24px;
   color: var(--ivory);
 }
@@ -1642,28 +1607,22 @@ svg {
 }
 
 .newsletter-copy p {
-  max-width: 680px;
+  max-width: 550px;
   margin-top: 25px;
   color: #cad4c7;
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 14px;
 }
 
 .newsletter-form-wrap {
   position: relative;
-  max-width: 900px;
-  margin: 42px 0 0;
-  padding-top: 28px;
+  max-width: 650px;
+  justify-self: end;
   width: 100%;
-  border-top: 1px solid #73867a;
 }
 
 .newsletter-sprout {
-  position: absolute;
-  top: -52px;
-  right: 10px;
-  width: 42px;
-  margin: 0;
+  width: 38px;
+  margin: 0 0 22px 10px;
   color: #bccbb6;
 }
 
@@ -1683,7 +1642,7 @@ svg {
   outline: none;
   background: transparent;
   color: var(--ivory);
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .signup-input-row input::placeholder {
@@ -1698,7 +1657,7 @@ svg {
   max-width: 480px;
   margin: 13px 0 0 10px;
   color: #adb9ab;
-  font-size: 13px;
+  font-size: 11px;
 }
 
 .honeypot {
@@ -1747,11 +1706,11 @@ svg {
   position: absolute;
   right: -15px;
   bottom: -30px;
-  width: 420px;
+  width: 220px;
   fill: none;
   stroke: #768874;
   stroke-width: 3;
-  opacity: 0.5;
+  opacity: 0.35;
 }
 
 .site-footer {
@@ -1765,14 +1724,14 @@ svg {
 .site-footer > p {
   color: #59635b;
   font-family: var(--font-serif), serif;
-  font-size: 15px;
+  font-size: 14px;
   font-style: italic;
   text-align: center;
 }
 
 .site-footer > span {
   color: #59635b;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .back-top,
@@ -2018,7 +1977,7 @@ svg {
   }
 
   .hero-copy > p:not(.hero-footnote) {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .hero-actions {
@@ -2066,7 +2025,7 @@ svg {
 
   .section-intro > p,
   .resource-intro > p {
-    font-size: 16px;
+    font-size: 13px;
   }
 
   .session-card {
@@ -2186,7 +2145,7 @@ svg {
   }
 
   .resource-content > p {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .making-journal {
@@ -2383,7 +2342,7 @@ svg {
   .resource-intro > p,
   .making-intro > p {
     margin-top: 21px;
-    font-size: 16px;
+    font-size: 13px;
   }
 
   .making-intro > p {
@@ -2443,7 +2402,7 @@ svg {
   }
 
   .session-description {
-    font-size: 16px;
+    font-size: 13px;
   }
 
   .price {
@@ -2452,15 +2411,12 @@ svg {
 
   .benefits,
   .pack-summary {
-    font-size: 16px;
+    font-size: 13px;
   }
 
   .focus-index {
     width: calc(100% - 32px);
-    margin: 24px auto 0;
     padding: 40px 24px 48px;
-    clip-path: none;
-    transform: none;
   }
 
   .focus-index-intro {
@@ -2619,7 +2575,7 @@ svg {
   }
 
   .upcoming-card p {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .upcoming-card .text-button {
@@ -2663,7 +2619,6 @@ svg {
   }
 
   .newsletter-form-wrap {
-    margin: 36px 0 0;
     justify-self: start;
   }
 
@@ -2681,7 +2636,7 @@ svg {
 
   .signup-note {
     margin-left: 5px;
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .site-footer {
@@ -2937,68 +2892,31 @@ svg {
   }
 }
 
-/* Continue the tabletop into one final journal row. */
-.upcoming-section .making-layout {
-  width: min(1400px, calc(100% - clamp(64px, 6vw, 112px)));
-  margin: 0 auto;
-  padding: 64px 42px 58px;
-  grid-template-columns: minmax(300px, 0.72fr) minmax(520px, 1.28fr);
-  gap: clamp(60px, 7vw, 108px);
-  align-items: center;
-  background: transparent;
-  box-shadow: none;
-  clip-path: none;
-}
-
-.upcoming-section .making-intro {
-  display: block;
-  max-width: 410px;
-}
-
-.upcoming-section .making-intro h2 {
-  margin-top: 22px;
-  font-size: clamp(44px, 4vw, 58px);
-}
-
-.upcoming-section .making-intro p {
-  max-width: 370px;
-  margin: 24px 0 0 38px;
-  display: block;
-  font-size: 17px;
-}
-
-.upcoming-section .making-intro .growing-note {
-  margin: 14px 0 0 38px;
-  display: flex;
-}
-
-.upcoming-section .making-journal {
+/* Preserve the single-note upcoming composition after legacy breakpoint rules. */
+.making-journal {
   min-height: 0;
-  margin: -104px 0 -104px;
+  margin-top: 28px;
   padding: 0;
   display: grid;
-  overflow: hidden;
-  background: #e1d9e8;
-  box-shadow: 0 18px 44px #34463d12;
-  clip-path: polygon(0.7% 1.2%, 100% 0, 99% 99%, 0 98%);
-  transform: rotate(0.18deg);
+  background: transparent;
+  box-shadow: none;
 }
 
-.upcoming-section .featured-future {
-  min-height: 310px;
-  padding: 42px 46px;
-  grid-template-columns: 1fr;
-  align-items: center;
-  gap: 26px;
+.featured-future {
+  min-height: 0;
+  padding: 0 0 26px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 42px;
   background: transparent;
   box-shadow: none;
   clip-path: none;
 }
 
-.upcoming-section .future-index {
+.future-index {
   width: 100%;
   margin: 0;
-  padding: 0 46px;
+  padding: 0;
   border: 0;
   border-top: 1px solid #bdb2c8;
   background: transparent;
@@ -3011,80 +2929,41 @@ svg {
     gap: 24px;
   }
 
-  .upcoming-section .making-layout {
+  .making-layout {
     width: calc(100% - 72px);
-    margin: 0 auto;
-    padding-inline: 36px;
-    grid-template-columns: 1fr;
-    gap: 46px;
+    margin: -44px auto 0;
   }
 
-  .upcoming-section .making-intro {
-    display: grid;
-    max-width: none;
-  }
-
-  .upcoming-section .making-journal {
-    margin: 0;
-    transform: none;
+  .making-journal {
+    margin-top: 32px;
   }
 }
 
 @media (max-width: 600px) {
   .session-grid {
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    gap: 24px;
-    background: var(--moss);
   }
 
-  .single-session,
-  .pack-session,
-  .focus-index {
-    grid-column: 1;
-    grid-row: auto;
-  }
-
-  .focus-index {
-    width: 100%;
-    margin-top: 0;
-  }
-
-  .upcoming-section .making-layout {
+  .making-layout {
     width: calc(100% - 32px);
-    margin: 0 auto;
+    margin: -28px auto 0;
     padding: 38px 24px;
     clip-path: none;
     transform: none;
   }
 
-  .upcoming-section .making-intro {
-    display: block;
-  }
-
-  .upcoming-section .making-intro p,
-  .upcoming-section .making-intro .growing-note {
-    margin-left: 0;
-  }
-
-  .upcoming-section .making-journal {
+  .making-journal {
     width: 100%;
-    margin: 0;
+    margin: 42px 0 0;
   }
 
-  .upcoming-section .featured-future {
-    min-height: 0;
-    padding: 34px 26px;
+  .featured-future {
+    padding: 0 0 30px;
     grid-template-columns: 1fr;
     gap: 24px;
   }
 
-  .upcoming-section .future-index {
-    width: 100%;
-    padding-inline: 20px;
-  }
-
-  .upcoming-section .future-index > summary {
+  .future-index > summary {
     padding: 24px 0 0;
   }
 
