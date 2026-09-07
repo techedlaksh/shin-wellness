@@ -43,6 +43,55 @@ const upcoming: {
   },
 ];
 
+const sessionTopics: {
+  number: string;
+  title: string;
+  description: string;
+}[] = [
+  {
+    number: "01",
+    title: "Neck & shoulders",
+    description:
+      "Gently open rounded shoulders and release tension through the neck and upper body.",
+  },
+  {
+    number: "02",
+    title: "Chest opening",
+    description:
+      "Create more space across the chest so breathing can feel easier and deeper.",
+  },
+  {
+    number: "03",
+    title: "Lower back (lumbar)",
+    description:
+      "Create gentle space through the sacrum and lower back to help ease discomfort.",
+  },
+  {
+    number: "04",
+    title: "Hamstrings",
+    description:
+      "Improve flexibility in hamstrings shortened by long periods of sitting.",
+  },
+  {
+    number: "05",
+    title: "Core strength",
+    description:
+      "Build steady core support so you can feel more balanced and energized.",
+  },
+  {
+    number: "06",
+    title: "Insomnia & rest",
+    description:
+      "Settle into a more grounded, relaxed state that can support better sleep.",
+  },
+  {
+    number: "07",
+    title: "Fatigue",
+    description:
+      "Feel a renewed sense of mental clarity when fatigue sets in.",
+  },
+];
+
 export default function Home() {
   return (
     <>
@@ -182,6 +231,36 @@ export default function Home() {
           <p className="sessions-note">
             All prices in USD. A softer start is still a start.
           </p>
+          <section
+            className="session-journey"
+            aria-labelledby="session-journey-title"
+          >
+            <div className="session-journey-intro">
+              <div>
+                <span className="eyebrow">
+                  INSIDE YOUR SEVEN-SESSION RESET
+                </span>
+                <h3 id="session-journey-title">
+                  Seven sessions. Seven ways to feel more at home in your body.
+                </h3>
+              </div>
+              <p>
+                Each session brings a different focus, with room to move through
+                them in the rhythm that works for you.
+              </p>
+            </div>
+            <ol className="session-journey-grid">
+              {sessionTopics.map((topic) => (
+                <li className="session-topic" key={topic.number}>
+                  <span className="session-topic-number" aria-hidden="true">
+                    {topic.number}
+                  </span>
+                  <h4>{topic.title}</h4>
+                  <p>{topic.description}</p>
+                </li>
+              ))}
+            </ol>
+          </section>
         </section>
 
         <section

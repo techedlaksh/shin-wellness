@@ -547,6 +547,70 @@ svg {
   margin-top: 21px;
   color: #5f6d57;
 }
+.session-journey {
+  border-top: 1px solid var(--line);
+  margin-top: 72px;
+  padding-top: 72px;
+}
+.session-journey-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.6fr);
+  align-items: end;
+  gap: 64px;
+  margin-bottom: 34px;
+}
+.session-journey-intro h3 {
+  max-width: 720px;
+  margin-top: 16px;
+  font-size: 42px;
+  line-height: 1.15;
+  letter-spacing: -1.7px;
+}
+.session-journey-intro > p {
+  max-width: 390px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.session-journey-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.session-topic {
+  min-height: 238px;
+  padding: 25px 24px 27px;
+  border: 1px solid #d7dbcc;
+  border-radius: 6px;
+  background: #f0f0e7;
+}
+.session-topic:nth-child(5) {
+  grid-column: 2;
+}
+.session-topic-number {
+  display: block;
+  margin-bottom: 34px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+}
+.session-topic h4 {
+  margin: 0;
+  font-family: var(--font-serif), serif;
+  font-size: 23px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.6px;
+}
+.session-topic p {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
 .little-section {
   background: #f0ede5;
   border-top: 1px solid #e7e4da;
@@ -1196,6 +1260,22 @@ svg {
   .session-card {
     padding-inline: 28px;
   }
+  .session-journey {
+    margin-top: 60px;
+    padding-top: 60px;
+  }
+  .session-journey-intro {
+    gap: 40px;
+  }
+  .session-journey-intro h3 {
+    font-size: 37px;
+  }
+  .session-journey-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .session-topic:nth-child(5) {
+    grid-column: auto;
+  }
   .resource-content {
     padding-inline: 22px;
   }
@@ -1748,6 +1828,41 @@ svg {
   .card-footnote {
     font-size: 10px;
   }
+  .session-journey {
+    margin-top: 48px;
+    padding-top: 48px;
+  }
+  .session-journey-intro {
+    display: block;
+    margin-bottom: 26px;
+  }
+  .session-journey-intro h3 {
+    margin-top: 13px;
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: -1.2px;
+  }
+  .session-journey-intro > p {
+    margin-top: 18px;
+    font-size: 12px;
+  }
+  .session-journey-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .session-topic {
+    min-height: 0;
+    padding: 22px 22px 24px;
+  }
+  .session-topic-number {
+    margin-bottom: 20px;
+  }
+  .session-topic h4 {
+    font-size: 24px;
+  }
+  .session-topic p {
+    font-size: 12px;
+  }
   .resource-grid {
     grid-template-columns: 1fr;
     gap: 23px;
@@ -2108,6 +2223,8 @@ svg {
   .session-description,
   .benefits,
   .purchase-message,
+  .session-journey-intro > p,
+  .session-topic p,
   .resource-content > p,
   .upcoming-card > p,
   .explore-card p,
@@ -2115,6 +2232,10 @@ svg {
   .signup-dialog > p,
   .signup-success p {
     font-size: 16px;
+  }
+
+  .session-topic-number {
+    font-size: 12px;
   }
 
   .price > span,
