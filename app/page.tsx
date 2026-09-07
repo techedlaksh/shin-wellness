@@ -84,7 +84,7 @@ export default function Home() {
           <div className="container experience-inner">
             <div className="experience-copy">
               <span className="eyebrow">WHAT HAPPENS IN THE HOUR</span>
-              <h2 id="experience-title">What we do with the hour.</h2>
+              <h2 id="experience-title">A useful hour has a simple shape.</h2>
               <p className="experience-lede">
                 Tell us what is stuck—physically or mentally. We spend the hour
                 getting specific, trying what helps, and deciding what to do next.
@@ -196,14 +196,12 @@ export default function Home() {
               />
             </figure>
             <div className="practice-copy">
-              <span className="eyebrow">ONE PRACTITIONER, NOT A PLATFORM</span>
-              <h2 id="practice-title">
-                You won’t have to start from zero each time.
-              </h2>
+              <span className="eyebrow">FOUNDER &amp; PRACTITIONER</span>
+              <h2 id="practice-title">Meet Shin.</h2>
               <p>
-                Shin is intentionally one-to-one. The person listening holds
-                the thread, notices what changes, and helps make the next step
-                fit the life you are actually living.
+                The practice is intentionally one-to-one. Shin holds the thread,
+                notices what changes, and helps make the next step fit the life
+                you are actually living.
               </p>
               <a className="text-link" href="#sessions">
                 Choose your session <span>↑</span>
