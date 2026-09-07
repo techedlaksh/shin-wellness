@@ -1672,6 +1672,11 @@ svg {
     min-height: 470px;
   }
 
+  .resource-status {
+    position: static;
+    margin-top: 8px;
+  }
+
   .resource-books {
     width: 70%;
   }
