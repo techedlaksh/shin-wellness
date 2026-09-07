@@ -44,6 +44,23 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
       await page.screenshot({ path: `.context/${name}-viewport.png` });
   }
   await expect(
+    page.getByRole("heading", {
+      level: 3,
+      name: "Seven sessions. Seven ways to feel more at home in your body.",
+    }),
+  ).toBeVisible();
+  const sessionTopics = page.locator(".session-journey-grid > .session-topic");
+  await expect(sessionTopics).toHaveCount(7);
+  await expect(sessionTopics.locator("h4")).toHaveText([
+    "Neck & shoulders",
+    "Chest opening",
+    "Lower back (lumbar)",
+    "Hamstrings",
+    "Core strength",
+    "Insomnia & rest",
+    "Fatigue",
+  ]);
+  await expect(
     page.getByRole("link", {
       name: "Buy a single session (opens checkout in a new tab)",
     }),
