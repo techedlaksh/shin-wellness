@@ -6,6 +6,10 @@
     "dev": "next dev --hostname 0.0.0.0",
     "build": "next build",
     "start": "next start --hostname 0.0.0.0",
+    "design:gallery": "node scripts/design-gallery.mjs --open",
+    "design:list": "node scripts/design-variants.mjs list",
+    "design:restore": "node scripts/design-variants.mjs restore",
+    "design:render": "node scripts/render-design-archive.mjs",
     "typecheck": "tsc --noEmit",
     "test": "tsx --test tests/*.test.ts",
     "test:e2e": "playwright test"
