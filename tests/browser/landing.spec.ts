@@ -17,7 +17,7 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
     await page.goto("/");
     await page.evaluate(() => document.fonts.ready);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-      "A little spaceto feel likeyourself again.",
+      "ShinWellness.",
     );
     expect(
       await page.evaluate(
@@ -45,13 +45,13 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
   }
   await expect(
     page.getByRole("heading", {
-      level: 3,
-      name: "Seven sessions. Seven ways to feel more at home in your body.",
+      level: 2,
+      name: "Seven places to begin feeling at home in your body.",
     }),
   ).toBeVisible();
-  const sessionTopics = page.locator(".session-journey-grid > .session-topic");
+  const sessionTopics = page.locator(".journey-list > li");
   await expect(sessionTopics).toHaveCount(7);
-  await expect(sessionTopics.locator("h4")).toHaveText([
+  await expect(sessionTopics.locator("h3")).toHaveText([
     "Neck & shoulders",
     "Chest opening",
     "Lower back (lumbar)",
