@@ -6244,3 +6244,340 @@ body .newsletter-form-wrap .signup-note {
     flex-direction: column;
   }
 }
+
+/* Eleventh critic pass: one full-bleed portrait and a clear primary decision. */
+body .hero h1 {
+  max-width: 560px;
+  font-size: clamp(68px, 5.85vw, 88px);
+}
+
+body .experience-section {
+  padding: 74px 0 80px;
+}
+
+body .experience-inner {
+  grid-template-columns: 0.74fr 1.26fr;
+  gap: 96px;
+}
+
+body .experience-copy h2 {
+  font-size: clamp(50px, 4.2vw, 63px);
+}
+
+body .experience-lede {
+  margin-top: 24px;
+  font-size: 17px;
+}
+
+body .experience-steps li,
+body .experience-steps li:first-child {
+  grid-template-columns: 62px 1fr;
+  padding: 18px 0;
+}
+
+body .experience-steps li > span {
+  font-size: 38px;
+}
+
+body .experience-steps strong {
+  font-size: 26px;
+}
+
+body .sessions-section {
+  padding-top: 104px;
+  padding-bottom: 116px;
+}
+
+body .sessions-section .section-heading {
+  margin-bottom: 52px;
+}
+
+body .sessions-section .section-heading h2 {
+  font-size: clamp(60px, 5.5vw, 80px);
+}
+
+body .session-grid {
+  grid-template-columns: 1.18fr 0.82fr;
+  background: transparent;
+}
+
+body .session-card,
+body .single-session,
+body .pack-session {
+  min-height: 420px;
+  padding: 42px 40px 32px;
+}
+
+body .single-session {
+  background: #e2e5dc;
+}
+
+body .single-session h3,
+body .single-session .session-description,
+body .single-session .price,
+body .single-session .benefits,
+body .single-session .purchase-action,
+body .single-session .card-footnote,
+body .pack-session h3,
+body .pack-session .session-description,
+body .pack-session .price,
+body .pack-session .benefits,
+body .pack-session .purchase-action,
+body .pack-session .card-footnote {
+  grid-column: auto;
+  grid-row: auto;
+  align-self: auto;
+}
+
+.session-heading-row {
+  grid-template-columns: minmax(0, 1fr) auto;
+  min-height: 128px;
+}
+
+body .session-card .price,
+body .pack-session .price {
+  grid-column: auto;
+  grid-row: auto;
+  align-self: start;
+}
+
+body .single-session h3 {
+  max-width: 380px;
+  font-size: 48px;
+}
+
+body .single-session .price {
+  font-size: 58px;
+}
+
+body .pack-session h3 {
+  max-width: 250px;
+  font-size: 35px;
+}
+
+body .pack-session .price {
+  font-size: 43px;
+}
+
+body .session-card .benefits,
+body .single-session .benefits,
+body .pack-session .benefits {
+  margin: 30px 0 28px;
+}
+
+.practice-section {
+  position: relative;
+  min-height: 800px;
+  background: #202f29;
+}
+
+.practice-inner {
+  position: relative;
+  display: block;
+  min-height: 800px;
+}
+
+.practice-portrait {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 800px;
+}
+
+.practice-portrait::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 42%, #17271f12 58%, #17271f8f 100%);
+}
+
+.practice-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 48%;
+}
+
+body .practice-mobile {
+  display: none;
+}
+
+.practice-copy {
+  position: absolute;
+  z-index: 1;
+  inset: 0 6% 0 auto;
+  width: 43%;
+  min-height: 800px;
+  padding: 74px 0 66px 7%;
+  background: transparent;
+}
+
+.practice-copy h2 {
+  white-space: nowrap;
+  font-size: clamp(76px, 7.5vw, 112px);
+}
+
+.practice-copy blockquote {
+  margin-top: 44px;
+  font-size: clamp(32px, 2.7vw, 41px);
+}
+
+.practice-copy > p {
+  margin-top: 36px;
+}
+
+body .little-section {
+  padding-block: 52px 56px;
+}
+
+body .little-section .section-heading {
+  margin-bottom: 28px;
+}
+
+body .little-section .section-heading h2 {
+  font-size: 40px;
+}
+
+body .resource-content {
+  min-height: 112px;
+  padding: 20px 26px 22px;
+}
+
+body .resource-meta {
+  margin-bottom: 18px;
+}
+
+body .resource-content h3 {
+  font-size: 24px;
+}
+
+body .newsletter-section {
+  padding-block: 80px;
+}
+
+@media (max-width: 1000px) {
+  body .session-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  body .single-session h3 {
+    font-size: 40px;
+  }
+
+  .practice-copy {
+    inset-inline-end: 4%;
+    width: 46%;
+    padding-left: 4%;
+  }
+}
+
+@media (max-width: 700px) {
+  body .hero h1 {
+    max-width: 100%;
+  }
+
+  body .experience-inner {
+    gap: 45px;
+  }
+
+  body .session-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .practice-section,
+  .practice-inner {
+    min-height: 970px;
+  }
+
+  .practice-portrait {
+    position: relative;
+    height: 540px;
+  }
+
+  body .practice-wide {
+    display: none;
+  }
+
+  body .practice-mobile {
+    display: block;
+  }
+
+  .practice-portrait::after {
+    display: none;
+  }
+
+  .practice-copy {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    min-height: 430px;
+    padding: 58px 28px 70px;
+  }
+
+  .practice-copy h2 {
+    white-space: normal;
+  }
+
+  body .little-section .section-heading {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
+}
+
+@media (max-width: 600px) {
+  body .hero h1 {
+    font-size: clamp(47px, 12.3vw, 56px);
+  }
+
+  body .experience-section {
+    padding-block: 66px 72px;
+  }
+
+  body .experience-steps li,
+  body .experience-steps li:first-child {
+    grid-template-columns: 44px 1fr;
+  }
+
+  body .experience-steps li > span {
+    font-size: 32px;
+  }
+
+  body .experience-steps strong {
+    font-size: 22px;
+  }
+
+  body .sessions-section {
+    padding-block: 78px 88px;
+  }
+
+  body .single-session h3,
+  body .pack-session h3 {
+    font-size: 34px;
+  }
+
+  .session-heading-row {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    gap: 25px;
+  }
+
+  body .single-session .price,
+  body .pack-session .price {
+    text-align: left;
+    font-size: 40px;
+  }
+
+  .practice-portrait {
+    height: 510px;
+  }
+
+  body .little-section .section-heading {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  body .resource-content {
+    min-height: 100px;
+  }
+}

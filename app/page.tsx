@@ -187,11 +187,21 @@ export default function Home() {
           <div className="container practice-inner">
             <figure className="practice-portrait">
               <Image
-                src="/practitioner-portrait.png"
+                className="practice-wide"
+                src="/practitioner-wide.png"
                 alt="A seated wellness practitioner looking attentively toward the camera"
+                width={1536}
+                height={1024}
+                sizes="100vw"
+                loading="eager"
+              />
+              <Image
+                className="practice-mobile"
+                src="/practitioner-portrait.png"
+                alt=""
                 width={1122}
                 height={1402}
-                sizes="(max-width: 700px) calc(100vw - 36px), 42vw"
+                sizes="100vw"
                 loading="eager"
               />
             </figure>
@@ -199,7 +209,9 @@ export default function Home() {
               <span className="eyebrow">FOUNDER &amp; PRACTITIONER</span>
               <h2 id="practice-title">Meet Shin.</h2>
               <blockquote>
-                No performance. No perfect routine. Just an honest next step.
+                No performance.<br />
+                No perfect routine.<br />
+                Just an honest next step.
               </blockquote>
               <p>
                 The practice is intentionally one-to-one. Shin holds the thread,
@@ -222,10 +234,10 @@ export default function Home() {
             <div className="section-heading">
               <div>
                 <span className="eyebrow">FREE RESOURCES</span>
-                <h2 id="little-title">Something useful, between sessions.</h2>
+                <h2 id="little-title">On the side.</h2>
               </div>
               <p>
-                Two small things in the works. Free, quiet, and made to be used.
+                Free, quiet, and made to be used.
               </p>
             </div>
             <div className="resource-grid">
