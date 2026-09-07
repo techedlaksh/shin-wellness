@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Arrow, ResourceArt, Sprout } from "@/components/artwork";
 import { HeroVisual } from "@/components/hero-visual";
 import {
@@ -6,6 +7,7 @@ import {
   SignupForm,
 } from "@/components/signup";
 import { checkoutUrl, type Interest } from "@/lib/offerings";
+import accentArt from "@/public/images/shin-botanical-accents.png";
 
 const upcoming: {
   interest: Interest;
@@ -237,6 +239,14 @@ export default function Home() {
           id="little-things"
           aria-labelledby="little-title"
         >
+          <Image
+            className="section-botanical-accent resource-section-accent"
+            src={accentArt}
+            alt=""
+            placeholder="blur"
+            sizes="260px"
+            aria-hidden="true"
+          />
           <div className="container">
             <div className="section-heading">
               <div>
@@ -403,9 +413,14 @@ export default function Home() {
               <SignupForm />
             </div>
           </div>
-          <span className="newsletter-decoration" aria-hidden="true">
-            ✳
-          </span>
+          <Image
+            className="section-botanical-accent newsletter-decoration"
+            src={accentArt}
+            alt=""
+            placeholder="blur"
+            sizes="400px"
+            aria-hidden="true"
+          />
         </section>
       </main>
       <footer className="site-footer container">

@@ -325,15 +325,26 @@ svg {
   color: #7b886e;
 }
 .hero-visual {
+  --accent-shift-x: 0px;
+  --accent-shift-y: 0px;
+  --accent-tilt-y: 0deg;
+  --light-x: 70%;
+  --light-y: 22%;
+  --shift-x: 0px;
+  --shift-y: 0px;
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
   position: relative;
   max-width: 560px;
   justify-self: end;
   width: 100%;
   animation: arrive 1s 0.12s ease-out both;
+  perspective: 1200px;
 }
 .hero-visual-stage {
   aspect-ratio: 0.92;
   position: relative;
+  transform-style: preserve-3d;
 }
 .hero-image-shell {
   position: absolute;
@@ -358,7 +369,11 @@ svg {
   pointer-events: none;
   background:
     linear-gradient(135deg, #fff8ec2e, transparent 42%),
-    radial-gradient(circle at 72% 22%, #fff6e23d, transparent 23%);
+    radial-gradient(
+      circle at var(--light-x) var(--light-y),
+      #fff6e259,
+      transparent 25%
+    );
   mix-blend-mode: soft-light;
 }
 .hero-floating-accent {
@@ -640,6 +655,26 @@ svg {
   background: #f0ede5;
   border-top: 1px solid #e7e4da;
   border-bottom: 1px solid #e7e4da;
+  overflow: hidden;
+  position: relative;
+}
+.little-section > .container {
+  position: relative;
+  z-index: 1;
+}
+.section-botanical-accent {
+  height: auto;
+  pointer-events: none;
+  position: absolute;
+  user-select: none;
+}
+.resource-section-accent {
+  filter: saturate(0.8);
+  opacity: 0.18;
+  right: -78px;
+  top: 24px;
+  transform: rotate(-12deg);
+  width: 300px;
 }
 .resource-grid {
   display: grid;
@@ -651,6 +686,7 @@ svg {
   border: 1px solid #dfe0d5;
   border-radius: 7px;
   background: var(--ivory);
+  box-shadow: 0 16px 40px #34483f0a;
 }
 .resource-art {
   height: 259px;
@@ -850,6 +886,8 @@ svg {
   padding: 25px 25px 24px;
   display: flex;
   flex-direction: column;
+  background: linear-gradient(145deg, #faf7f0 0%, #f4f1e8 100%);
+  box-shadow: 0 14px 34px #34483f08;
 }
 .upcoming-card-top {
   display: flex;
@@ -911,6 +949,8 @@ svg {
   display: flex;
   align-items: center;
   gap: 23px;
+  background: #f9f5ed;
+  box-shadow: 0 14px 34px #34483f08;
 }
 .explore-card .eyebrow {
   font-size: 6.5px;
@@ -1110,13 +1150,12 @@ svg {
   max-width: 340px;
 }
 .newsletter-decoration {
-  position: absolute;
-  font-size: 330px;
-  line-height: 1;
-  right: -100px;
-  bottom: -150px;
-  color: #52624a;
-  opacity: 0.6;
+  bottom: -78px;
+  filter: brightness(1.25) saturate(0.7);
+  opacity: 0.22;
+  right: -72px;
+  transform: rotate(-9deg);
+  width: 420px;
 }
 .site-footer {
   height: 131px;
@@ -1234,6 +1273,51 @@ svg {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .hero-visual-stage {
+    transform:
+      rotateX(var(--tilt-x)) rotateY(var(--tilt-y))
+      translate3d(var(--shift-x), var(--shift-y), 0);
+    transition: transform 320ms cubic-bezier(0.2, 0.75, 0.25, 1);
+  }
+  .hero-image-shell {
+    transform: translateZ(8px);
+    transition: box-shadow 320ms ease;
+  }
+  .hero-visual-stage:hover .hero-image-shell {
+    box-shadow:
+      0 42px 82px #34483f2d,
+      0 6px 18px #34483f17,
+      inset 0 0 0 1px #f7f3ea80;
+  }
+  .hero-floating-accent {
+    transform: translate3d(
+        var(--accent-shift-x),
+        var(--accent-shift-y),
+        38px
+      )
+      rotateY(var(--accent-tilt-y));
+    transition: transform 360ms cubic-bezier(0.2, 0.75, 0.25, 1);
+  }
+  .art-note {
+    transform: rotate(7deg) translateZ(46px);
+  }
+  .resource-card,
+  .upcoming-card,
+  .explore-card {
+    transition:
+      border-color 240ms ease,
+      box-shadow 240ms ease,
+      transform 240ms ease;
+  }
+  .resource-card:hover,
+  .upcoming-card:hover,
+  .explore-card:hover {
+    border-color: #c8cfba;
+    box-shadow: 0 22px 52px #34483f16;
+    transform: translateY(-5px);
   }
 }
 @media (min-width: 1450px) {
@@ -2045,9 +2129,12 @@ svg {
     max-width: 310px;
   }
   .newsletter-decoration {
-    font-size: 270px;
     right: -103px;
     bottom: -124px;
+    width: 320px;
+  }
+  .resource-section-accent {
+    display: none;
   }
   .site-footer {
     height: auto;

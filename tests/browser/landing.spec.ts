@@ -29,6 +29,17 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
         .locator(".hero-copy")
         .evaluate((element) => getComputedStyle(element).animationName),
     ).toBe("none");
+    expect(
+      await page
+        .getByTestId("hero-depth-stage")
+        .evaluate((element) => getComputedStyle(element).transform),
+    ).toBe("none");
+    expect(
+      await page.locator(".hero-image").evaluate((element) => {
+        const image = element as HTMLImageElement;
+        return image.complete && image.naturalWidth > 0 && image.naturalHeight > 0;
+      }),
+    ).toBe(true);
     if (width > 900) {
       await expect(page.locator(".hero-copy > p")).toHaveCSS(
         "font-size",
@@ -56,6 +67,87 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
   await page.getByRole("link", { name: "Find your reset" }).click();
   await expect(page).toHaveURL(/#sessions$/);
   expect(errors).toEqual([]);
+});
+
+test("hero depth follows the pointer and returns to rest with motion enabled", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto("/", { waitUntil: "domcontentloaded" });
+  const hero = page.locator(".hero");
+
+  for (const [time, delay] of [
+    [0, 0],
+    [200, 200],
+    [500, 300],
+    [1000, 500],
+  ] as const) {
+    if (delay) await page.waitForTimeout(delay);
+    await page.evaluate(() => window.scrollTo(0, 0));
+    const frameBounds = await hero.boundingBox();
+    expect(frameBounds).not.toBeNull();
+    if (frameBounds)
+      await page.screenshot({
+        path: `.context/hero-motion-${time}.png`,
+        clip: frameBounds,
+        caret: "initial",
+      });
+  }
+
+  await expect(page.locator(".hero-copy")).toHaveCSS("opacity", "1");
+
+  const stage = page.getByTestId("hero-depth-stage");
+  const bounds = await stage.boundingBox();
+  expect(bounds).not.toBeNull();
+  if (!bounds) return;
+
+  await page.mouse.move(bounds.x + 2, bounds.y + 2);
+  await page.waitForTimeout(360);
+  const topLeft = await stage.evaluate((element) => ({
+    tiltX: parseFloat(
+      (element as HTMLElement).style.getPropertyValue("--tilt-x"),
+    ),
+    tiltY: parseFloat(
+      (element as HTMLElement).style.getPropertyValue("--tilt-y"),
+    ),
+    transform: getComputedStyle(element).transform,
+  }));
+  expect(topLeft.tiltX).toBeGreaterThan(2.5);
+  expect(topLeft.tiltY).toBeLessThan(-2.5);
+  expect(topLeft.transform).not.toBe("none");
+  await page.screenshot({ path: ".context/hero-depth-top-left.png" });
+
+  await page.mouse.move(
+    bounds.x + bounds.width - 2,
+    bounds.y + bounds.height - 2,
+  );
+  await page.waitForTimeout(360);
+  const bottomRight = await stage.evaluate((element) => ({
+    tiltX: parseFloat(
+      (element as HTMLElement).style.getPropertyValue("--tilt-x"),
+    ),
+    tiltY: parseFloat(
+      (element as HTMLElement).style.getPropertyValue("--tilt-y"),
+    ),
+    transform: getComputedStyle(element).transform,
+  }));
+  expect(bottomRight.tiltX).toBeLessThan(-2.5);
+  expect(bottomRight.tiltY).toBeGreaterThan(2.5);
+  expect(bottomRight.transform).not.toBe(topLeft.transform);
+  await page.screenshot({ path: ".context/hero-depth-bottom-right.png" });
+
+  await page.mouse.move(0, 0);
+  await page.waitForTimeout(360);
+  await expect
+    .poll(() =>
+      stage.evaluate((element) => ({
+        tiltX: (element as HTMLElement).style.getPropertyValue("--tilt-x"),
+        tiltY: (element as HTMLElement).style.getPropertyValue("--tilt-y"),
+      })),
+    )
+    .toEqual({ tiltX: "0deg", tiltY: "0deg" });
+  await page.screenshot({ path: ".context/hero-depth-rest.png" });
 });
 
 test("session cards explain the selectable focus and tailored seven-day sequence", async ({
@@ -99,6 +191,7 @@ test("offering dialog traps focus, closes with Escape, and restores focus", asyn
   await trigger.click();
   const dialog = page.getByRole("dialog");
   await expect(dialog).toBeVisible();
+  await page.screenshot({ path: ".context/signup-dialog.png" });
   await expect(dialog).toContainText("the Shin Wellness reading list");
   await expect(
     dialog.getByRole("button", { name: "Close signup" }),
