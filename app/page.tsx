@@ -12,7 +12,6 @@ const upcoming: {
   title: string;
   description: string;
   detail: string;
-  icon: string;
 }[] = [
   {
     interest: "routine",
@@ -21,7 +20,6 @@ const upcoming: {
     description:
       "A gentle, 7-day routine to get to know your emotions and make space for them.",
     detail: "7-DAY PDF ROUTINE · $29",
-    icon: "☷",
   },
   {
     interest: "checkins",
@@ -30,7 +28,6 @@ const upcoming: {
     description:
       "Weekly 30-minute check-ins. A space to reflect, reconnect, and find your next small step.",
     detail: "4-WEEK PROGRAM · $99",
-    icon: "◷",
   },
   {
     interest: "coaching",
@@ -39,7 +36,6 @@ const upcoming: {
     description:
       "Personal coaching with CBT-informed tools to build habits that fit your real life.",
     detail: "HABIT COACHING",
-    icon: "↗",
   },
 ];
 
@@ -81,16 +77,27 @@ const sessionFocuses = [
   },
 ];
 
+function Wordmark() {
+  return (
+    <span className="wordmark-lockup">
+      <span className="wordmark-name">
+        shin<span className="wordmark-mark" aria-hidden="true" />
+      </span>
+      <span className="wordmark-sub">WELLNESS</span>
+    </span>
+  );
+}
+
 export default function Home() {
   return (
     <>
       <a className="skip-link" href="#main">
         Skip to content
       </a>
+
       <header className="site-header container">
         <a className="wordmark" href="#" aria-label="Shin Wellness home">
-          shin<span className="wordmark-dot">✳</span>
-          <span className="wordmark-sub">WELLNESS</span>
+          <Wordmark />
         </a>
         <nav aria-label="Main navigation">
           <a href="#sessions">Your reset</a>
@@ -102,12 +109,14 @@ export default function Home() {
           <Arrow diagonal />
         </a>
       </header>
+
       <main id="main">
         <section className="hero container" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <div className="eyebrow">
-              <span className="tiny-flower">✳</span> WELLBEING, AT YOUR OWN PACE
-            </div>
+            <span className="eyebrow hero-eyebrow">
+              <span className="eyebrow-rule" aria-hidden="true" />
+              WELLBEING, AT YOUR OWN PACE
+            </span>
             <h1 id="hero-title">
               A little space
               <br />
@@ -116,9 +125,8 @@ export default function Home() {
               <em>yourself again.</em>
             </h1>
             <p>
-              You don’t have to have it all together.
-              <br className="desktop-break" /> Just a little room to pause,
-              reset, and come back to you.
+              You don’t have to have it all together. Just a little room to
+              pause, reset, and come back to you.
             </p>
             <div className="hero-actions">
               <a className="button button-dark" href="#sessions">
@@ -126,38 +134,35 @@ export default function Home() {
                 <Arrow />
               </a>
               <a className="text-link" href="#stay-in-touch">
-                Let’s stay in touch<span>↗</span>
+                Let’s stay in touch
+                <Arrow diagonal />
               </a>
             </div>
-            <div className="hero-footnote">
-              <span className="mini-orbit">✧</span> Small steps. Soft landings.
-              A little more you.
-            </div>
+            <span className="hero-footnote">Small steps. Soft landings.</span>
           </div>
           <BotanicalArt />
         </section>
-        <div className="values-strip">
+
+        <aside className="values-strip" aria-label="Our approach">
           <div className="container values-inner">
             <span>Less doing. More being.</span>
-            <span className="strip-star">✳</span>
+            <i aria-hidden="true" />
             <span>Care that meets you where you are.</span>
-            <span className="strip-star">✳</span>
+            <i aria-hidden="true" />
             <span>Your pace is a good pace.</span>
           </div>
-        </div>
+        </aside>
 
         <section
-          className="sessions-section container section"
+          className="sessions-section section"
           id="sessions"
           aria-labelledby="sessions-title"
         >
-          <div className="section-heading">
+          <div className="container section-intro sessions-intro">
             <div>
               <span className="eyebrow">01 / A SPACE JUST FOR YOU</span>
               <h2 id="sessions-title">
-                Let’s start with
-                <br />
-                <em>a little reset.</em>
+                Let’s start with <em>a little reset.</em>
               </h2>
             </div>
             <p>
@@ -166,52 +171,79 @@ export default function Home() {
               footing.
             </p>
           </div>
-          <div className="session-grid">
-            <article className="session-card single-session">
-              <div className="card-topline">
-                <span className="pill">A MOMENT TO RECENTER</span>
-                <Sprout className="session-symbol" />
+
+          <div className="container session-suite">
+            <div className="session-grid">
+              <article className="session-card single-session">
+                <div className="card-topline">
+                  <span className="offer-kicker">A moment to recenter</span>
+                  <Sprout className="session-symbol" />
+                </div>
+                <div className="offer-copy">
+                  <h3>The personal reset</h3>
+                  <p className="session-description">
+                    One session. Choose the focus your body needs today.
+                  </p>
+                </div>
+                <div className="price">
+                  $60<span>/ one session</span>
+                </div>
+                <ul className="benefits">
+                  <li>1:1 attention, centered around you</li>
+                  <li>Choose one of seven session focuses</li>
+                  <li>A little space to pause and reconnect</li>
+                </ul>
+                <PurchaseButton
+                  url={checkoutUrl(process.env.CHECKOUT_SINGLE_URL)}
+                />
+                <p className="card-footnote">A gentle place to begin.</p>
+              </article>
+
+              <article className="session-card pack-session">
+                <div className="card-topline">
+                  <span className="offer-kicker">A little more continuity</span>
+                  <span className="seven-mark" aria-hidden="true">
+                    7
+                  </span>
+                </div>
+                <div className="offer-copy">
+                  <h3>Seven days, for you</h3>
+                  <p className="session-description">
+                    Every focus, thoughtfully ordered around you.
+                  </p>
+                </div>
+                <div className="price">
+                  $350<span>/ seven-day pack</span>
+                </div>
+                <p className="pack-summary">
+                  All seven focuses are included. Shin will shape their order
+                  around what you need, with one focus explored each day.
+                </p>
+                <PurchaseButton
+                  url={checkoutUrl(process.env.CHECKOUT_PACK_URL)}
+                  pack
+                />
+                <p className="card-footnote">
+                  One small commitment to yourself.
+                </p>
+              </article>
+            </div>
+
+            <div className="focus-index">
+              <div className="focus-index-intro">
+                <span className="eyebrow">SEVEN WAYS TO RESET</span>
+                <h3>Meet your body where it is.</h3>
+                <p>
+                  Choose one focus for a personal reset, or explore all seven
+                  across the pack.
+                </p>
               </div>
-              <h3>The personal reset</h3>
-              <p className="session-description">
-                One session. Choose the focus your body needs today.
-              </p>
-              <div className="price">
-                $60<span>/ one session</span>
-              </div>
-              <div className="session-rule" />
-              <ul className="benefits">
-                <li>1:1 attention, centered around you</li>
-                <li>Choose one of seven session focuses</li>
-                <li>A little space to pause and reconnect</li>
-              </ul>
-              <PurchaseButton
-                url={checkoutUrl(process.env.CHECKOUT_SINGLE_URL)}
-              />
-              <p className="card-footnote">A gentle place to begin.</p>
-            </article>
-            <article className="session-card pack-session">
-              <div className="card-topline">
-                <span className="pill">A LITTLE MORE CONTINUITY</span>
-                <span className="pack-symbol" aria-hidden="true">
-                  ✳
-                </span>
-              </div>
-              <h3>Seven days, for you</h3>
-              <p className="session-description">
-                Every focus, thoughtfully ordered around you.
-              </p>
-              <div className="price">
-                $350<span>/ seven-day pack</span>
-              </div>
-              <div className="session-rule" />
-              <p className="session-focus-intro">
-                All seven focuses are included. Shin will shape their order
-                around what you need, with one focus explored each day.
-              </p>
               <ol className="session-focus-list" role="list">
-                {sessionFocuses.map((focus) => (
+                {sessionFocuses.map((focus, index) => (
                   <li key={focus.title}>
+                    <span className="focus-number" aria-hidden="true">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
                     <div>
                       <strong>{focus.title}</strong>
                       <span>{focus.description}</span>
@@ -219,12 +251,7 @@ export default function Home() {
                   </li>
                 ))}
               </ol>
-              <PurchaseButton
-                url={checkoutUrl(process.env.CHECKOUT_PACK_URL)}
-                pack
-              />
-              <p className="card-footnote">One small commitment to yourself.</p>
-            </article>
+            </div>
           </div>
           <p className="sessions-note">
             All prices in USD. A softer start is still a start.
@@ -236,146 +263,132 @@ export default function Home() {
           id="little-things"
           aria-labelledby="little-title"
         >
-          <div className="container">
-            <div className="section-heading">
-              <div>
-                <span className="eyebrow">
-                  02 / LITTLE THINGS, LOVINGLY MADE
-                </span>
-                <h2 id="little-title">
-                  Good for your day.
-                  <br />
-                  <em>Free for you.</em>
-                </h2>
+          <div className="container resource-intro">
+            <span className="eyebrow">02 / LITTLE THINGS, LOVINGLY MADE</span>
+            <h2 id="little-title">
+              Good for your day. <em>Free for you.</em>
+            </h2>
+            <p>
+              Sometimes it’s a book. Sometimes it’s a tiny reminder on your
+              screen. Small pockets of good, coming your way.
+            </p>
+          </div>
+
+          <div className="container resource-stage">
+            <article className="resource-card resource-books">
+              <ResourceArt type="books" />
+              <div className="resource-content">
+                <span className="resource-label">For your nightstand</span>
+                <span className="resource-status">Coming soon · free</span>
+                <h3>A few good pages for slowing down.</h3>
+                <p>
+                  Thoughtful book recommendations for gentler habits, steadier
+                  days, and coming back to yourself.
+                </p>
+                <InterestButton interest="books">
+                  Send me the reading list
+                </InterestButton>
               </div>
-              <p>
-                Sometimes it’s a book. Sometimes it’s a tiny reminder on your
-                screen. Small pockets of good, coming your way.
-              </p>
-            </div>
-            <div className="resource-grid">
-              <article className="resource-card">
-                <ResourceArt type="books" />
-                <div className="resource-content">
-                  <div className="resource-meta">
-                    <span>FOR YOUR NIGHTSTAND</span>
-                    <span className="coming-pill">COMING SOON · FREE</span>
-                  </div>
-                  <h3>A few good pages for slowing down.</h3>
-                  <p>
-                    Thoughtful book recommendations for gentler habits, steadier
-                    days, and coming back to yourself.
-                  </p>
-                  <InterestButton interest="books">
-                    Send me the reading list
-                  </InterestButton>
-                </div>
-              </article>
-              <article className="resource-card">
-                <ResourceArt type="wallpapers" />
-                <div className="resource-content">
-                  <div className="resource-meta">
-                    <span>FOR YOUR EVERYDAY</span>
-                    <span className="coming-pill">COMING SOON · FREE</span>
-                  </div>
-                  <h3>A little joy for your screen.</h3>
-                  <p>
-                    Cute wallpapers with gentle reminders. Because even your
-                    phone could use a softer side.
-                  </p>
-                  <InterestButton interest="wallpapers">
-                    Save me a little joy
-                  </InterestButton>
-                </div>
-              </article>
-            </div>
+            </article>
+
+            <article className="resource-card resource-wallpapers">
+              <ResourceArt type="wallpapers" />
+              <div className="resource-content">
+                <span className="resource-label">For your everyday</span>
+                <span className="resource-status">Coming soon · free</span>
+                <h3>A little joy for your screen.</h3>
+                <p>
+                  Cute wallpapers with gentle reminders. Because even your
+                  phone could use a softer side.
+                </p>
+                <InterestButton interest="wallpapers">
+                  Save me a little joy
+                </InterestButton>
+              </div>
+            </article>
           </div>
         </section>
 
         <section
-          className="upcoming-section section container"
+          className="upcoming-section section"
           id="coming-soon"
           aria-labelledby="upcoming-title"
         >
-          <div className="section-heading">
-            <div>
-              <span className="eyebrow">
-                03 / GOOD THINGS TAKE A LITTLE TIME
-              </span>
+          <div className="container making-layout">
+            <div className="making-intro">
+              <span className="eyebrow">03 / IN THE MAKING</span>
               <h2 id="upcoming-title">
-                More ways to
-                <br />
-                <em>come back to you.</em>
+                More ways to <em>come back to you.</em>
               </h2>
-            </div>
-            <div>
-              <span className="coming-pill upcoming-badge">
-                <span /> GROWING WITH CARE
-              </span>
               <p>
-                Thoughtful tools and experiences are taking shape. Join the list
-                for whatever speaks to you.
+                Thoughtful tools and experiences are taking shape. Join the
+                list for whatever speaks to you.
               </p>
+              <span className="growing-note">
+                <span aria-hidden="true" /> Growing with care
+              </span>
             </div>
-          </div>
-          <div className="upcoming-grid">
-            {upcoming.map((item) => (
-              <article className="upcoming-card" key={item.interest}>
-                <div className="upcoming-card-top">
-                  <span className="offering-icon" aria-hidden="true">
-                    {item.icon}
-                  </span>
-                  <span className="upcoming-number">
-                    {item.number} / COMING SOON
-                  </span>
-                </div>
-                <span className="eyebrow offering-detail">{item.detail}</span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-                <InterestButton interest={item.interest}>
-                  Keep me posted
-                </InterestButton>
-              </article>
-            ))}
-          </div>
-          <div className="explore-grid">
-            <article className="explore-card retreat-card">
-              <div className="mini-landscape" aria-hidden="true">
-                <span className="landscape-sun" />
-                <span className="landscape-hill hill-one" />
-                <span className="landscape-hill hill-two" />
+
+            <div className="making-journal">
+              <div className="journal-heading" aria-hidden="true">
+                <span>What’s taking shape</span>
+                <span>Shin Wellness · Field notes</span>
               </div>
-              <div>
-                <span className="eyebrow">
-                  A CHANGE OF SCENERY · COMING SOON
-                </span>
-                <h3>Somewhere to simply be.</h3>
-                <p>Wellness stays around the world, curated from Airbnb.</p>
-                <InterestButton interest="retreats">
-                  Daydream with us
-                </InterestButton>
+              <div className="upcoming-grid">
+                {upcoming.map((item) => (
+                  <article className="upcoming-card" key={item.interest}>
+                    <span className="upcoming-number">{item.number}</span>
+                    <div className="upcoming-copy">
+                      <span className="offering-detail">{item.detail}</span>
+                      <h3>{item.title}</h3>
+                      <p>{item.description}</p>
+                    </div>
+                    <InterestButton interest={item.interest}>
+                      Keep me posted
+                    </InterestButton>
+                  </article>
+                ))}
               </div>
-            </article>
-            <article className="explore-card finds-card">
-              <div className="finds-illustration" aria-hidden="true">
-                <Sprout />
-                <span>
-                  little
-                  <br />
-                  <em>good things.</em>
-                </span>
+
+              <div className="explore-grid">
+                <article className="explore-card retreat-card">
+                  <div className="mini-landscape" aria-hidden="true">
+                    <span className="landscape-sun" />
+                    <span className="landscape-hill hill-one" />
+                    <span className="landscape-hill hill-two" />
+                  </div>
+                  <div>
+                    <span className="explore-label">
+                      A change of scenery · coming soon
+                    </span>
+                    <h3>Somewhere to simply be.</h3>
+                    <p>Wellness stays around the world, curated from Airbnb.</p>
+                    <InterestButton interest="retreats">
+                      Daydream with us
+                    </InterestButton>
+                  </div>
+                </article>
+
+                <article className="explore-card finds-card">
+                  <div className="finds-illustration" aria-hidden="true">
+                    <Sprout />
+                    <span>
+                      little <em>good things.</em>
+                    </span>
+                  </div>
+                  <div>
+                    <span className="explore-label">
+                      Tried, loved, shared · coming soon
+                    </span>
+                    <h3>Good things, passed along.</h3>
+                    <p>Thoughtful wellness finds and recommendations.</p>
+                    <InterestButton interest="recommendations">
+                      Send me the good stuff
+                    </InterestButton>
+                  </div>
+                </article>
               </div>
-              <div>
-                <span className="eyebrow">
-                  TRIED, LOVED, SHARED · COMING SOON
-                </span>
-                <h3>Good things, passed along.</h3>
-                <p>Thoughtful wellness finds and recommendations.</p>
-                <InterestButton interest="recommendations">
-                  Send me the good stuff
-                </InterestButton>
-              </div>
-            </article>
+            </div>
           </div>
         </section>
 
@@ -388,13 +401,11 @@ export default function Home() {
             <div className="newsletter-copy">
               <span className="eyebrow">A NOTE FROM SHIN, NOW AND THEN</span>
               <h2 id="newsletter-title">
-                Make room for a little
-                <br />
-                <em>more wellbeing.</em>
+                Make room for a little <em>more wellbeing.</em>
               </h2>
               <p>
                 Fresh offerings, small rituals, and good things in the making.
-                <br />A softer corner of your inbox.
+                A softer corner of your inbox.
               </p>
             </div>
             <div className="newsletter-form-wrap">
@@ -402,15 +413,19 @@ export default function Home() {
               <SignupForm />
             </div>
           </div>
-          <span className="newsletter-decoration" aria-hidden="true">
-            ✳
-          </span>
+          <svg
+            className="newsletter-drawing"
+            viewBox="0 0 180 180"
+            aria-hidden="true"
+          >
+            <path d="M156 178C143 112 105 65 26 17M119 113c5-26 18-40 39-48M91 82C64 82 47 70 35 48" />
+          </svg>
         </section>
       </main>
+
       <footer className="site-footer container">
         <a className="wordmark" href="#" aria-label="Shin Wellness home">
-          shin<span className="wordmark-dot">✳</span>
-          <span className="wordmark-sub">WELLNESS</span>
+          <Wordmark />
         </a>
         <p>A little more present. A little more you.</p>
         <span>© {new Date().getFullYear()} Shin Wellness</span>

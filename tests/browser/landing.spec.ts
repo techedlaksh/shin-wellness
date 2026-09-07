@@ -74,7 +74,9 @@ test("session cards explain the selectable focus and tailored seven-day sequence
   await expect(sevenDayPack).toContainText(
     "Shin will shape their order around what you need",
   );
-  await expect(sevenDayPack.locator(".session-focus-list > li")).toHaveCount(7);
+  await expect(
+    page.locator(".sessions-section .session-focus-list > li"),
+  ).toHaveCount(7);
 
   for (const focus of [
     "Neck & shoulders",
@@ -85,7 +87,9 @@ test("session cards explain the selectable focus and tailored seven-day sequence
     "Insomnia",
     "Fatigue",
   ]) {
-    await expect(sevenDayPack.getByText(focus, { exact: true })).toBeVisible();
+    await expect(
+      page.locator(".sessions-section").getByText(focus, { exact: true }),
+    ).toBeVisible();
   }
 });
 
