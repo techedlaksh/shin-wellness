@@ -137,6 +137,7 @@ test("every offering sends its interest, blocks in-flight resubmission, and conf
     await route.fulfill({ status: 200, json: { ok: true } });
   });
   await page.goto("/");
+  await page.locator(".future-index > summary").click();
   const buttons = page.locator("button[aria-haspopup='dialog']");
   const interests = [
     "books",

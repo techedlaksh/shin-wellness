@@ -121,8 +121,9 @@ export default function Home() {
               <em>yourself again.</em>
             </h1>
             <p>
-              You don’t have to have it all together. Just a little room to
-              pause, reset, and come back to you.
+              You don’t have to have it all together. Shin offers personal
+              movement sessions—a little room to pause, reset, and come back
+              to you.
             </p>
             <div className="hero-actions">
               <a className="button button-dark" href="#sessions">
@@ -215,6 +216,11 @@ export default function Home() {
                   All seven focuses are included. Shin will shape their order
                   around what you need, with one focus explored each day.
                 </p>
+                <div className="week-sequence">
+                  <span>Inside one day</span>
+                  <strong>Arrive. Listen. Move. Settle.</strong>
+                  <p>One guided focus, shaped around what you need.</p>
+                </div>
                 <PurchaseButton
                   url={checkoutUrl(process.env.CHECKOUT_PACK_URL)}
                   pack
@@ -223,32 +229,32 @@ export default function Home() {
                   One small commitment to yourself.
                 </p>
               </article>
-            </div>
 
-            <div className="focus-index">
-              <div className="focus-index-intro">
-                <span className="eyebrow">SEVEN WAYS TO RESET</span>
-                <h3>Meet your body where it is.</h3>
-                <p>
-                  Choose one focus for a personal reset, or explore all seven
-                  across the pack. Open any focus to learn a little more.
-                </p>
+              <div className="focus-index">
+                <div className="focus-index-intro">
+                  <span className="eyebrow">YOUR SEVEN-DAY ITINERARY</span>
+                  <h3>Meet your body where it is.</h3>
+                  <p>
+                    Choose one focus for a personal reset, or explore all seven
+                    across the pack. Open any focus to learn a little more.
+                  </p>
+                </div>
+                <ol className="session-focus-list" role="list">
+                  {sessionFocuses.map((focus, index) => (
+                    <li key={focus.title}>
+                      <span className="focus-number" aria-hidden="true">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <details>
+                        <summary>
+                          <strong>{focus.title}</strong>
+                        </summary>
+                        <p>{focus.description}</p>
+                      </details>
+                    </li>
+                  ))}
+                </ol>
               </div>
-              <ol className="session-focus-list" role="list">
-                {sessionFocuses.map((focus, index) => (
-                  <li key={focus.title}>
-                    <span className="focus-number" aria-hidden="true">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <details>
-                      <summary>
-                        <strong>{focus.title}</strong>
-                      </summary>
-                      <p>{focus.description}</p>
-                    </details>
-                  </li>
-                ))}
-              </ol>
             </div>
           </div>
           <p className="sessions-note">
@@ -339,60 +345,74 @@ export default function Home() {
                 </InterestButton>
               </article>
 
-              <div className="future-index">
-                {upcoming.slice(1).map((item) => (
-                  <article
-                    className="upcoming-card future-row"
-                    key={item.interest}
-                  >
-                    <div className="upcoming-copy">
-                      <span className="offering-detail">{item.detail}</span>
-                      <h3>{item.title}</h3>
-                      <p>{item.description}</p>
+              <details className="future-index">
+                <summary>
+                  <span className="future-index-copy">
+                    <small>Also in the making</small>
+                    <strong>Four more thoughtful things.</strong>
+                  </span>
+                  <span className="future-index-action" aria-hidden="true">
+                    Open the studio notes <i>+</i>
+                  </span>
+                </summary>
+
+                <div className="future-list">
+                  {upcoming.slice(1).map((item) => (
+                    <article
+                      className="upcoming-card future-row"
+                      key={item.interest}
+                    >
+                      <div className="upcoming-copy">
+                        <span className="offering-detail">{item.detail}</span>
+                        <h3>{item.title}</h3>
+                        <p>{item.description}</p>
+                      </div>
+                      <InterestButton interest={item.interest}>
+                        Keep me posted
+                      </InterestButton>
+                    </article>
+                  ))}
+
+                  <article className="explore-card retreat-card future-row future-side-note">
+                    <div className="mini-landscape" aria-hidden="true">
+                      <span className="landscape-sun" />
+                      <span className="landscape-hill hill-one" />
+                      <span className="landscape-hill hill-two" />
                     </div>
-                    <InterestButton interest={item.interest}>
-                      Keep me posted
-                    </InterestButton>
+                    <div>
+                      <span className="explore-label">
+                        A change of scenery · coming soon
+                      </span>
+                      <h3>Somewhere to simply be.</h3>
+                      <p>
+                        Wellness stays around the world, curated from Airbnb.
+                      </p>
+                      <InterestButton interest="retreats">
+                        Daydream with us
+                      </InterestButton>
+                    </div>
                   </article>
-                ))}
 
-                <article className="explore-card retreat-card future-row future-side-note">
-                  <div className="mini-landscape" aria-hidden="true">
-                    <span className="landscape-sun" />
-                    <span className="landscape-hill hill-one" />
-                    <span className="landscape-hill hill-two" />
-                  </div>
-                  <div>
-                    <span className="explore-label">
-                      A change of scenery · coming soon
-                    </span>
-                    <h3>Somewhere to simply be.</h3>
-                    <p>Wellness stays around the world, curated from Airbnb.</p>
-                    <InterestButton interest="retreats">
-                      Daydream with us
-                    </InterestButton>
-                  </div>
-                </article>
-
-                <article className="explore-card finds-card future-row future-side-note">
-                  <div className="finds-illustration" aria-hidden="true">
-                    <Sprout />
-                    <span>
-                      little <em>good things.</em>
-                    </span>
-                  </div>
-                  <div>
-                    <span className="explore-label">
-                      Tried, loved, shared · coming soon
-                    </span>
-                    <h3>Good things, passed along.</h3>
-                    <p>Thoughtful wellness finds and recommendations.</p>
-                    <InterestButton interest="recommendations">
-                      Send me the good stuff
-                    </InterestButton>
-                  </div>
-                </article>
-              </div>
+                  <article className="explore-card finds-card future-row future-side-note">
+                    <div className="finds-illustration" aria-hidden="true">
+                      <Sprout />
+                      <span>
+                        little <em>good things.</em>
+                      </span>
+                    </div>
+                    <div>
+                      <span className="explore-label">
+                        Tried, loved, shared · coming soon
+                      </span>
+                      <h3>Good things, passed along.</h3>
+                      <p>Thoughtful wellness finds and recommendations.</p>
+                      <InterestButton interest="recommendations">
+                        Send me the good stuff
+                      </InterestButton>
+                    </div>
+                  </article>
+                </div>
+              </details>
             </div>
           </div>
         </section>
