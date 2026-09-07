@@ -1,4 +1,5 @@
-import { Arrow, BotanicalArt, ResourceArt, Sprout } from "@/components/artwork";
+import { Arrow, ResourceArt, Sprout } from "@/components/artwork";
+import { HeroVisual } from "@/components/hero-visual";
 import {
   InterestButton,
   PurchaseButton,
@@ -134,7 +135,7 @@ export default function Home() {
               A little more you.
             </div>
           </div>
-          <BotanicalArt />
+          <HeroVisual />
         </section>
         <div className="values-strip">
           <div className="container values-inner">

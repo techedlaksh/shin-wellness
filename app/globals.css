@@ -324,16 +324,52 @@ svg {
   font-size: 24px;
   color: #7b886e;
 }
-.botanical-art {
+.hero-visual {
   position: relative;
-  max-width: 515px;
+  max-width: 560px;
   justify-self: end;
   width: 100%;
   animation: arrive 1s 0.12s ease-out both;
 }
-.botanical-canvas {
+.hero-visual-stage {
+  aspect-ratio: 0.92;
+  position: relative;
+}
+.hero-image-shell {
+  position: absolute;
+  inset: 0 4% 0 3%;
+  overflow: hidden;
+  border: 1px solid #ffffff96;
+  border-radius: 48% 48% 5% 5% / 34% 34% 4% 4%;
+  background: #e9ddc9;
+  box-shadow:
+    0 35px 70px #34483f24,
+    0 4px 14px #34483f12,
+    inset 0 0 0 1px #f7f3ea80;
+}
+.hero-image {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-image-light {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(135deg, #fff8ec2e, transparent 42%),
+    radial-gradient(circle at 72% 22%, #fff6e23d, transparent 23%);
+  mix-blend-mode: soft-light;
+}
+.hero-floating-accent {
+  position: absolute;
+  z-index: 2;
+  left: -8%;
+  bottom: -4%;
+  width: 49%;
   height: auto;
+  filter: drop-shadow(0 17px 18px #34483f2a);
+  pointer-events: none;
 }
 .art-note {
   position: absolute;
@@ -1211,7 +1247,7 @@ svg {
   .hero-copy > p {
     font-size: 15px;
   }
-  .botanical-art {
+  .hero-visual {
     max-width: 530px;
   }
 }
@@ -1698,7 +1734,7 @@ svg {
     font-size: 9px;
     margin-top: 25px;
   }
-  .botanical-art {
+  .hero-visual {
     max-width: 370px;
     justify-self: center;
     width: 100%;
@@ -2095,7 +2131,7 @@ svg {
     max-width: 530px;
   }
 
-  .botanical-art {
+  .hero-visual {
     max-width: 600px;
   }
 
