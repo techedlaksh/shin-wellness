@@ -32,8 +32,8 @@ export default function Home() {
         <section className="hero" aria-labelledby="hero-title">
           <Image
             className="hero-photo"
-            src="/session-presence.png"
-            alt="A person seated in a deep green chair beside a sunlit window"
+            src="/session-active.png"
+            alt="A person working through shoulder tension beside a laptop during an online session"
             fill
             priority
             sizes="(max-width: 600px) 100vw, 53vw"
@@ -137,6 +137,7 @@ export default function Home() {
             <article className="session-card single-session">
               <div className="session-heading-row">
                 <div>
+                  <span className="offer-kicker">START HERE</span>
                   <h3>One focused hour</h3>
                   <p className="session-description">
                     Release tension, clear the noise, and choose your next step.
@@ -159,6 +160,7 @@ export default function Home() {
             <article className="session-card pack-session">
               <div className="session-heading-row">
                 <div>
+                  <span className="offer-kicker">CONTINUE THE WORK</span>
                   <h3>Seven steady days</h3>
                   <p className="session-description">
                     Daily attention for a change that needs steady momentum.
@@ -214,12 +216,21 @@ export default function Home() {
             <div className="practice-copy">
               <span className="eyebrow">FOUNDER &amp; PRACTITIONER</span>
               <h2 id="practice-title">Meet Shin.</h2>
-              <blockquote>Attention before advice.</blockquote>
               <p>
-                The practice is intentionally one-to-one. Shin holds the thread,
-                notices what changes, and helps make the next step fit the life
-                you are actually living.
+                Shin works where physical tension, overload, and decision fatigue
+                meet. The hour moves between guided movement, close attention,
+                and a written next step you can actually use.
               </p>
+              <dl className="practice-facts">
+                <div>
+                  <dt>FORMAT</dt>
+                  <dd>Private · Online · One-to-one</dd>
+                </div>
+                <div>
+                  <dt>FOCUS</dt>
+                  <dd>Tension · Overload · Burnout</dd>
+                </div>
+              </dl>
               <a className="text-link" href="#sessions">
                 Choose your session <span>↑</span>
               </a>
@@ -235,10 +246,10 @@ export default function Home() {
           <div className="container newsletter-inner">
             <div className="newsletter-copy">
               <span className="eyebrow">OCCASIONAL NOTES</span>
-              <h2 id="newsletter-title">A quieter inbox.</h2>
+              <h2 id="newsletter-title">Session dates + field notes.</h2>
               <p>
-                New session dates, original resources, and field notes—only
-                when there is something worth opening.
+                Practical resets, new availability, and the occasional useful
+                thing. Sent only when there is something worth opening.
               </p>
             </div>
             <div className="newsletter-form-wrap">
