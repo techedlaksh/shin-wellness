@@ -17,7 +17,7 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
     await page.goto("/");
     await page.evaluate(() => document.fonts.ready);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-      "ShinWellness.",
+      "Shin Wellness.",
     );
     expect(
       await page.evaluate(
@@ -32,7 +32,7 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
     if (width > 900) {
       await expect(page.locator(".hero-service")).toHaveCSS(
         "font-size",
-        "30px",
+        "23px",
       );
       await expect(page.locator(".hero-copy > .button")).toHaveCSS(
         "font-size",
@@ -46,7 +46,7 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
   await expect(
     page.getByRole("heading", {
       level: 2,
-      name: "Seven sessions. Seven areas of focus.",
+      name: "Seven days. A little more space.",
     }),
   ).toBeVisible();
   const sessionTopics = page.locator(".journey-list > li");
@@ -54,7 +54,7 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
   await expect(sessionTopics.locator("h3")).toHaveText([
     "Neck & shoulders",
     "Chest opening",
-    "Lower back (lumbar)",
+    "Lower back",
     "Hamstrings",
     "Core strength",
     "Insomnia & rest",
@@ -62,12 +62,12 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
   ]);
   await expect(
     page.getByRole("link", {
-      name: "Buy a single session (opens checkout in a new tab)",
+      name: "Book one session (opens checkout in a new tab)",
     }),
   ).toHaveAttribute("href", "https://checkout.example.com/single");
   await expect(
     page.getByRole("link", {
-      name: "Buy the 7-day pack (opens checkout in a new tab)",
+      name: "Book seven sessions (opens checkout in a new tab)",
     }),
   ).toHaveAttribute("href", "https://checkout.example.com/pack");
   await page.locator(".hero-copy > a").click();

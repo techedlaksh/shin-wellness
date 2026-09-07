@@ -185,49 +185,33 @@ export function ResourceArt({ type }: { type: "playlist" | "wallpapers" }) {
     return (
       <div className="resource-art playlist-art" aria-hidden="true">
         <div className="record-sleeve">
-          <span>
+          <span className="sleeve-number">01</span>
+          <span className="sleeve-title">
             the slow
             <br />
-            <em>down club.</em>
+            down club.
           </span>
-          <span className="sleeve-caption">A SHIN WELLNESS PLAYLIST</span>
-          <div className="sleeve-flower">✳</div>
         </div>
-        <div className="vinyl">
-          <div className="vinyl-label">
-            <Sprout />
-          </div>
-        </div>
-        <span className="music-note">♪</span>
       </div>
     );
   return (
     <div className="resource-art wallpaper-art" aria-hidden="true">
       <div className="wallpaper-card wallpaper-back">
         <span>
-          one little
+          A little more
           <br />
-          thing
-          <br />
-          <em>at a time.</em>
+          present.
         </span>
-        <Sprout />
+        <small>SHIN WELLNESS</small>
       </div>
       <div className="wallpaper-card wallpaper-front">
         <span>
-          you&apos;re
+          A little more
           <br />
-          allowed
-          <br />
-          <em>
-            to grow
-            <br />
-            slowly.
-          </em>
+          present.
         </span>
-        <div className="wallpaper-flower">✿</div>
+        <small>SHIN WELLNESS</small>
       </div>
-      <span className="wallpaper-star">✧</span>
     </div>
   );
 }

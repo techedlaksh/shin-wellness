@@ -109,11 +109,9 @@ export function SignupForm({
         />
       </div>
       <p className="signup-note" id={`${id}-note`}>
-        Join for{" "}
         {interest === "updates"
-          ? "launch updates and little moments of wellbeing"
-          : `launch updates about ${interests[interest]}`}
-        . No pressure, ever.
+          ? "Join for launch updates and new resources."
+          : `Join for launch updates about ${interests[interest]}.`}
       </p>
       {message && (
         <p className="form-error" id={`${id}-error`} role="alert">
@@ -239,12 +237,12 @@ export function PurchaseButton({
 }) {
   const [unavailable, setUnavailable] = useState(false);
   const id = useId();
-  const label = pack ? "Buy the 7-day pack" : "Buy a single session";
+  const label = pack ? "Book seven sessions" : "Book one session";
   return (
     <div className="purchase-action">
       {url ? (
         <a
-          className={`button ${pack ? "button-light" : "button-dark"}`}
+          className="button button-dark"
           href={url}
           target="_blank"
           rel="noopener noreferrer"
@@ -255,7 +253,7 @@ export function PurchaseButton({
         </a>
       ) : (
         <button
-          className={`button ${pack ? "button-light" : "button-dark"}`}
+          className="button button-dark"
           type="button"
           onClick={() => setUnavailable(true)}
           aria-describedby={unavailable ? id : undefined}
