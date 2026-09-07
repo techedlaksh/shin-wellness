@@ -27,7 +27,7 @@ Set `CHECKOUT_SINGLE_URL` to the $60 single-session checkout and `CHECKOUT_PACK_
 5. Copy the spreadsheet ID from its URL into `GOOGLE_SHEETS_ID`. Copy the key's `client_email` into `GOOGLE_SERVICE_ACCOUNT_EMAIL` and its `private_key` into `GOOGLE_PRIVATE_KEY`. In `.env.local`, wrap the key in double quotes and preserve its escaped `\n` newlines.
 6. Restart the server. Submit a test email and verify its timestamp, interest, and location appear as a new row. Delete your test row when finished.
 
-`POST /api/subscribe` accepts `{ email, interest, location, website }`. `website` is an empty honeypot. Supported interests: `updates`, `playlist`, `wallpapers`, `routine`, `checkins`, `coaching`, `retreats`, `recommendations`. Locations: `footer`, `offering-dialog`.
+`POST /api/subscribe` accepts `{ email, interest, location, website }`. `website` is an empty honeypot. Supported interests: `updates`, `books`, `wallpapers`, `routine`, `checkins`, `coaching`, `retreats`, `recommendations`. Locations: `footer`, `offering-dialog`.
 
 The endpoint validates input, rejects foreign browser origins, writes with `valueInputOption=RAW`, and returns success only after Google acknowledges the write. Automatic write retries are disabled to avoid duplicate rows. Repeated clicks during one submission are blocked in the browser; intentional later signups are appended as separate interest events. Google credentials never enter client props or public environment variables. Storage errors return generic messages without provider details or submitted email addresses.
 

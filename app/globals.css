@@ -571,75 +571,88 @@ svg {
   align-items: center;
   justify-content: center;
 }
-.playlist-art {
+.books-art {
   background: #dce1d0;
 }
-.record-sleeve {
-  width: 195px;
-  height: 198px;
-  background: #efe9d9;
-  z-index: 2;
-  padding: 24px 18px;
+.book-stack {
+  width: 304px;
+  height: 215px;
   position: relative;
-  transform: translateX(-37px) rotate(-8deg);
-  box-shadow: 0 6px 20px #34483f22;
+  transform: scale(var(--book-scale, 1));
 }
-.record-sleeve > span:first-child {
+.book {
+  position: absolute;
+  border-radius: 3px 8px 8px 3px;
+  box-shadow: 0 8px 18px #34483f24;
+}
+.book::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 13px;
+  width: 1px;
+  background: #34483f24;
+}
+.book-back {
+  width: 184px;
+  height: 151px;
+  left: 99px;
+  top: 37px;
+  background: var(--peach);
+  transform: rotate(9deg);
+}
+.book-middle {
+  width: 176px;
+  height: 166px;
+  left: 78px;
+  top: 25px;
+  background: var(--lilac);
+  transform: rotate(2deg);
+}
+.book-back > span,
+.book-middle > span {
+  position: absolute;
+  right: 10px;
+  top: 12px;
+  font-size: 5px;
+  letter-spacing: 1.1px;
+  writing-mode: vertical-rl;
+}
+.book-front {
+  width: 170px;
+  height: 194px;
+  left: 38px;
+  top: 10px;
+  padding: 24px 20px;
+  background: #efe9d9;
+  transform: rotate(-8deg);
+  z-index: 2;
+}
+.book-title {
   font-family: var(--font-serif), serif;
   font-size: 27px;
   line-height: 1.1;
   letter-spacing: -1px;
 }
-.sleeve-caption {
+.book-caption {
   position: absolute;
   bottom: 13px;
-  left: 18px;
+  left: 20px;
   font-size: 5px;
   letter-spacing: 1.3px;
 }
-.sleeve-flower {
-  font-size: 82px;
-  line-height: 1;
+.book-sprout {
   position: absolute;
-  right: 14px;
-  bottom: 15px;
+  right: 16px;
+  bottom: 18px;
+  width: 55px;
+  height: 61px;
   color: #7a8b6c;
 }
-.vinyl {
+.book-star {
   position: absolute;
-  width: 187px;
-  height: 187px;
-  left: 50%;
-  top: 37px;
-  border-radius: 50%;
-  background: repeating-radial-gradient(
-    circle,
-    #34483f 0px,
-    #34483f 2px,
-    #46564a 3px,
-    #34483f 4px
-  );
-  box-shadow: 0 8px 16px #34483f26;
-  display: grid;
-  place-items: center;
-}
-.vinyl-label {
-  height: 62px;
-  width: 62px;
-  border-radius: 50%;
-  background: var(--peach);
-  display: grid;
-  place-items: center;
-}
-.vinyl-label svg {
-  width: 27px;
-  height: 30px;
-}
-.music-note {
-  position: absolute;
-  top: 23px;
-  right: 42px;
-  font-size: 32px;
+  top: 26px;
+  right: 38px;
+  font-size: 28px;
   color: #64765b;
   transform: rotate(13deg);
 }
@@ -1413,33 +1426,8 @@ svg {
   .resource-art {
     height: 227px;
   }
-  .record-sleeve {
-    width: 159px;
-    height: 165px;
-    transform: translateX(-28px) rotate(-8deg);
-    padding: 20px 15px;
-  }
-  .record-sleeve > span:first-child {
-    font-size: 23px;
-  }
-  .sleeve-flower {
-    font-size: 68px;
-  }
-  .sleeve-caption {
-    font-size: 4px;
-    left: 13px;
-  }
-  .vinyl {
-    width: 152px;
-    height: 152px;
-    top: 41px;
-  }
-  .vinyl-label {
-    width: 51px;
-    height: 51px;
-  }
-  .music-note {
-    right: 18px;
+  .book-stack {
+    --book-scale: 0.86;
   }
   .wallpaper-card {
     width: 110px;
@@ -1755,34 +1743,8 @@ svg {
   .resource-art {
     height: 251px;
   }
-  .record-sleeve {
-    height: 187px;
-    width: 182px;
-    transform: translateX(-34px) rotate(-8deg);
-    padding: 24px 18px;
-  }
-  .record-sleeve > span:first-child {
-    font-size: 26px;
-  }
-  .sleeve-flower {
-    font-size: 76px;
-  }
-  .sleeve-caption {
-    font-size: 5px;
-    left: 17px;
-  }
-  .vinyl {
-    width: 175px;
-    height: 175px;
-    top: 39px;
-  }
-  .vinyl-label {
-    height: 58px;
-    width: 58px;
-  }
-  .music-note {
-    right: 31px;
-    top: 20px;
+  .book-stack {
+    --book-scale: 0.95;
   }
   .wallpaper-card {
     height: 205px;

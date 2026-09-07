@@ -180,25 +180,28 @@ export function BotanicalArt() {
   );
 }
 
-export function ResourceArt({ type }: { type: "playlist" | "wallpapers" }) {
-  if (type === "playlist")
+export function ResourceArt({ type }: { type: "books" | "wallpapers" }) {
+  if (type === "books")
     return (
-      <div className="resource-art playlist-art" aria-hidden="true">
-        <div className="record-sleeve">
-          <span>
-            the slow
-            <br />
-            <em>down club.</em>
-          </span>
-          <span className="sleeve-caption">A SHIN WELLNESS PLAYLIST</span>
-          <div className="sleeve-flower">✳</div>
-        </div>
-        <div className="vinyl">
-          <div className="vinyl-label">
-            <Sprout />
+      <div className="resource-art books-art" aria-hidden="true">
+        <div className="book-stack">
+          <div className="book book-back">
+            <span>PAUSE · NOTICE · BEGIN AGAIN</span>
+          </div>
+          <div className="book book-middle">
+            <span>WORDS FOR SOFTER DAYS</span>
+          </div>
+          <div className="book book-front">
+            <span className="book-title">
+              the soft
+              <br />
+              <em>shelf.</em>
+            </span>
+            <span className="book-caption">READ WITH SHIN WELLNESS</span>
+            <Sprout className="book-sprout" />
           </div>
         </div>
-        <span className="music-note">♪</span>
+        <span className="book-star">✦</span>
       </div>
     );
   return (

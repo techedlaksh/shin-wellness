@@ -62,11 +62,13 @@ test("offering dialog traps focus, closes with Escape, and restores focus", asyn
   page,
 }) => {
   await page.goto("/");
-  const trigger = page.getByRole("button", { name: "Tell me when it drops" });
+  const trigger = page.getByRole("button", {
+    name: "Send me the reading list",
+  });
   await trigger.click();
   const dialog = page.getByRole("dialog");
   await expect(dialog).toBeVisible();
-  await expect(dialog).toContainText("the feel-good playlist");
+  await expect(dialog).toContainText("the Shin Wellness reading list");
   await expect(
     dialog.getByRole("button", { name: "Close signup" }),
   ).toBeFocused();
@@ -102,7 +104,7 @@ test("every offering sends its interest, blocks in-flight resubmission, and conf
   await page.goto("/");
   const buttons = page.locator("button[aria-haspopup='dialog']");
   const interests = [
-    "playlist",
+    "books",
     "wallpapers",
     "routine",
     "checkins",
@@ -192,7 +194,9 @@ test("page and signup dialog pass automated accessibility checks", async ({
     .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
     .analyze();
   expect(pageResults.violations).toEqual([]);
-  await page.getByRole("button", { name: "Tell me when it drops" }).click();
+  await page
+    .getByRole("button", { name: "Send me the reading list" })
+    .click();
   const dialogResults = await new AxeBuilder({ page })
     .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
     .analyze();

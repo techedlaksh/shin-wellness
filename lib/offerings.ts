@@ -1,6 +1,6 @@
 export const interests = {
   updates: "the Shin Wellness newsletter",
-  playlist: "the feel-good playlist",
+  books: "the Shin Wellness reading list",
   wallpapers: "a little joy for your screen",
   routine: "the 7-day emotion routine",
   checkins: "the 4-week check-in program",

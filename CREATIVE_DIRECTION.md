@@ -176,19 +176,18 @@ Benefits are short, plain-language statements with subtle checkmarks. The cards 
 
 The free resources use more playful art direction.
 
-### Playlist
+### Book recommendations
 
-The playlist card includes:
+The book recommendations card includes:
 
-- A tilted record sleeve
-- A dark vinyl record
-- Peach center label
+- Three layered book covers
+- Sage, lilac, and peach tones
 - Botanical mark
 - Hand-lettered editorial title
 - Soft sage background
-- Floating music note
+- A small floating star
 
-It evokes a physical record collection and slow mornings.
+It evokes a thoughtfully kept bedside reading stack and quiet moments of reflection.
 
 ### Wallpapers
 

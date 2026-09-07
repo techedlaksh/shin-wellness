@@ -202,25 +202,25 @@ export default function Home() {
                 </h2>
               </div>
               <p>
-                Sometimes it’s a song. Sometimes it’s a tiny reminder on your
+                Sometimes it’s a book. Sometimes it’s a tiny reminder on your
                 screen. Small pockets of good, coming your way.
               </p>
             </div>
             <div className="resource-grid">
               <article className="resource-card">
-                <ResourceArt type="playlist" />
+                <ResourceArt type="books" />
                 <div className="resource-content">
                   <div className="resource-meta">
-                    <span>FOR YOUR EARS</span>
+                    <span>FOR YOUR NIGHTSTAND</span>
                     <span className="coming-pill">COMING SOON · FREE</span>
                   </div>
-                  <h3>A soundtrack for slowing down.</h3>
+                  <h3>A few good pages for slowing down.</h3>
                   <p>
-                    A feel-good playlist for deep breaths, slow mornings, and
-                    finding your own rhythm.
+                    Thoughtful book recommendations for gentler habits, steadier
+                    days, and coming back to yourself.
                   </p>
-                  <InterestButton interest="playlist">
-                    Tell me when it drops
+                  <InterestButton interest="books">
+                    Send me the reading list
                   </InterestButton>
                 </div>
               </article>

@@ -17,7 +17,7 @@ function request(body: unknown, origin = "http://localhost:3000") {
 }
 const valid = {
   email: "  Hello@Example.com ",
-  interest: "playlist",
+  interest: "books",
   location: "offering-dialog",
   website: "",
 };
