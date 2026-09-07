@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Arrow, ResourceArt } from "@/components/artwork";
+import { Arrow } from "@/components/artwork";
 import {
   InterestButton,
   PurchaseButton,
@@ -117,9 +117,7 @@ export default function Home() {
           <div className="container experience-inner">
             <div className="experience-copy">
               <span className="eyebrow">WHAT HAPPENS IN THE HOUR</span>
-              <h2 id="experience-title">
-                We work the problem, not a wellness script.
-              </h2>
+              <h2 id="experience-title">What we do with the hour.</h2>
               <p className="experience-lede">
                 Tell us what is stuck—physically or mentally. We spend the hour
                 getting specific, trying what helps, and deciding what to do next.
@@ -227,15 +225,25 @@ export default function Home() {
             <div className="section-heading">
               <div>
                 <span className="eyebrow">FREE RESOURCES</span>
-                <h2 id="little-title">Take the playlist. Keep the reminder.</h2>
+                <h2 id="little-title">Free resources for between sessions.</h2>
               </div>
               <p>
                 Two free tools, made to be used rather than admired.
               </p>
             </div>
+            <figure className="resource-photo">
+              <Image
+                src="/resource-still-life.png"
+                alt="A forest-green record, headphones, and a phone on a sunlit stone table"
+                width={1536}
+                height={1024}
+                sizes="(max-width: 600px) calc(100vw - 36px), calc(100vw - 96px)"
+                loading="eager"
+              />
+              <figcaption>Listen or look—no streak to maintain.</figcaption>
+            </figure>
             <div className="resource-grid">
               <article className="resource-card">
-                <ResourceArt type="playlist" />
                 <div className="resource-content">
                   <div className="resource-meta">
                     <span>FOR YOUR EARS</span>
@@ -252,7 +260,6 @@ export default function Home() {
                 </div>
               </article>
               <article className="resource-card">
-                <ResourceArt type="wallpapers" />
                 <div className="resource-content">
                   <div className="resource-meta">
                     <span>FOR YOUR SCREEN</span>
@@ -287,45 +294,54 @@ export default function Home() {
               you would genuinely use.
             </p>
           </div>
-          <div className="upcoming-index" aria-label="Upcoming offerings">
-            {upcoming.map((item) => (
-              <article className="future-row" key={item.interest}>
-                <span className="future-number">{item.number}</span>
+          <details className="future-details">
+            <summary>
+              Browse five ideas in development <span aria-hidden="true">+</span>
+            </summary>
+            <div className="upcoming-index" aria-label="Upcoming offerings">
+              {upcoming.map((item) => (
+                <article className="future-row" key={item.interest}>
+                  <span className="future-number">{item.number}</span>
+                  <div className="future-title">
+                    <span className="eyebrow offering-detail">{item.detail}</span>
+                    <h3>{item.title}</h3>
+                  </div>
+                  <p className="future-description">{item.description}</p>
+                  <InterestButton interest={item.interest}>
+                    Keep me posted
+                  </InterestButton>
+                </article>
+              ))}
+              <article className="future-row future-row-secondary">
+                <span className="future-number">04</span>
                 <div className="future-title">
-                  <span className="eyebrow offering-detail">{item.detail}</span>
-                  <h3>{item.title}</h3>
+                  <span className="eyebrow offering-detail">CURATED STAYS</span>
+                  <h3>Somewhere to simply be.</h3>
                 </div>
-                <p className="future-description">{item.description}</p>
-                <InterestButton interest={item.interest}>
-                  Keep me posted
+                <p className="future-description">
+                  Restorative stays selected for setting, pace, and care.
+                </p>
+                <InterestButton interest="retreats">
+                  Daydream with us
                 </InterestButton>
               </article>
-            ))}
-            <article className="future-row future-row-secondary">
-              <span className="future-number">04</span>
-              <div className="future-title">
-                <span className="eyebrow offering-detail">CURATED STAYS</span>
-                <h3>Somewhere to simply be.</h3>
-              </div>
-              <p className="future-description">
-                Restorative stays selected for setting, pace, and care.
-              </p>
-              <InterestButton interest="retreats">Daydream with us</InterestButton>
-            </article>
-            <article className="future-row future-row-secondary">
-              <span className="future-number">05</span>
-              <div className="future-title">
-                <span className="eyebrow offering-detail">TESTED &amp; KEPT</span>
-                <h3>Useful things, passed along.</h3>
-              </div>
-              <p className="future-description">
-                Objects and practices we have tried and kept.
-              </p>
-              <InterestButton interest="recommendations">
-                Send me the edit
-              </InterestButton>
-            </article>
-          </div>
+              <article className="future-row future-row-secondary">
+                <span className="future-number">05</span>
+                <div className="future-title">
+                  <span className="eyebrow offering-detail">
+                    TESTED &amp; KEPT
+                  </span>
+                  <h3>Useful things, passed along.</h3>
+                </div>
+                <p className="future-description">
+                  Objects and practices we have tried and kept.
+                </p>
+                <InterestButton interest="recommendations">
+                  Send me the edit
+                </InterestButton>
+              </article>
+            </div>
+          </details>
         </section>
 
         <section
@@ -336,11 +352,7 @@ export default function Home() {
           <div className="container newsletter-inner">
             <div className="newsletter-copy">
               <span className="eyebrow">OCCASIONAL NOTES</span>
-              <h2 id="newsletter-title">
-                No content calendar.
-                <br />
-                <em>Just useful notes.</em>
-              </h2>
+              <h2 id="newsletter-title">Occasional notes from Shin.</h2>
               <p>
                 New session dates, original resources, and field notes—sent
                 only when there is something worth your attention.

@@ -100,6 +100,9 @@ test("every offering sends its interest, blocks in-flight resubmission, and conf
     await route.fulfill({ status: 200, json: { ok: true } });
   });
   await page.goto("/");
+  await page
+    .locator(".future-details")
+    .evaluate((details) => ((details as HTMLDetailsElement).open = true));
   const buttons = page.locator("button[aria-haspopup='dialog']");
   const interests = [
     "playlist",
