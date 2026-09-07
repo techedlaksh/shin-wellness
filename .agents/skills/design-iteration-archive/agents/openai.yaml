@@ -1,0 +1,5 @@
+interface:
+  display_name: "Design Iteration Archive"
+  short_description: "Archive and browse reviewed design iterations"
+  brand_color: "#304D42"
+  default_prompt: "Use $design-iteration-archive to preserve these design iterations, their screenshots, source states, scores, and delivered critiques in a browsable gallery."

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Design Critic Loop"
+  short_description: "Iterate a design with independent visual critics"
+  brand_color: "#304D42"
+  default_prompt: "Use $design-critic-loop to improve this design, archive every independently reviewed iteration, and restore the highest-scoring result."

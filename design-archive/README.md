@@ -1,42 +1,15 @@
-# Shin Wellness design archive
+# Design archive compatibility entry point
 
-The critic loop is preserved as 48 local Git tags named `design/critic-01`
-through `design/critic-48`. Each tag points to the exact four-file source state
-used to render that critic's screenshot. The tags are also connected by the
-`design-archive/critic-variants` branch.
+The canonical archive is now [`design-reviews/shin-wellness-studio-redesign`](../design-reviews/shin-wellness-studio-redesign/).
 
-There are 46 distinct source trees: critics 13/14 and critics 16/17 each
-reviewed the same implementation independently. They remain separate gallery
-entries because their scores and review passes are distinct.
+Existing commands remain available as wrappers around the shared archive engine:
 
-Run `npm run design:gallery` to open the visual gallery. Each card can be
-expanded, paired with its delivered critic analysis, or restored into the
-current workspace with one click. Restoring a variant only changes these design
-files:
+```bash
+npm run design:gallery
+npm run design:list
+npm run design:restore -- 38
+npm run design:restore -- current
+npm run design:render
+```
 
-Clicking a screenshot opens a split viewer with the scrollable full-page design
-on the left and its matching score and critique on the right. On narrow screens,
-the critique moves beneath the screenshot.
-
-- `app/globals.css`
-- `app/page.tsx`
-- `components/artwork.tsx`
-- `tests/browser/landing.spec.ts`
-
-The restore command refuses to overwrite edits that do not match a known
-variant. Use `npm run design:restore -- current` to return those files to the
-current branch's committed version.
-
-The rendered PNGs live in `.context/design-archive/screenshots/`, keeping large
-generated files out of Git. They can be regenerated from the tags with
-`npm run design:render`.
-
-`design-archive/critic-reviews.json` contains all 48 visible analyses delivered
-by the independent critics, including their scores, timestamps, aesthetic
-reads, identified gaps, and highest-leverage recommendations. It does not and
-cannot contain private chain-of-thought.
-
-Portable local backups are written to:
-
-- `.context/design-archive/shin-design-variants.bundle` for the Git history.
-- `.context/shin-wellness-48-critic-gallery.zip` for the rendered gallery.
+New runs should use the repository-local `design-critic-loop` or `design-iteration-archive` skill under `.agents/skills/`.
