@@ -159,7 +159,7 @@ The two session options are presented as a matched pair.
 - Pale sage card
 - Dark moss purchase button
 - Positioned as the gentle entry point
-- Focuses on choosing physical reset or burnout prevention
+- Lets the client choose one of the seven session focuses
 
 ### Seven-day pack
 
@@ -167,10 +167,23 @@ The two session options are presented as a matched pair.
 - Ivory purchase button
 - Higher visual weight
 - Presented as continued daily support
+- Includes all seven focuses once, with Shin tailoring their order to the individual
+
+The seven session focuses are:
+
+1. Neck and shoulders
+2. Chest opening
+3. Lower back (lumbar)
+4. Hamstrings
+5. Core strength
+6. Insomnia
+7. Fatigue
+
+The focus descriptions use supportive, non-guaranteed language. They communicate intended comfort, flexibility, balance, relaxation, energy, and clarity without presenting medical treatment or promised outcomes.
 
 Pricing is oversized and uses serif typography so it feels intentional and transparent.
 
-Benefits are short, plain-language statements with subtle checkmarks. The cards avoid exaggerated promises, testimonials, urgency, countdowns, or aggressive sales language.
+Benefits are short, plain-language statements. The personal reset uses subtle checkmarks, while the seven-day pack uses a compact numbered session list. The cards avoid exaggerated promises, testimonials, urgency, countdowns, or aggressive sales language.
 
 ## Free resources
 

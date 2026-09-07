@@ -58,6 +58,37 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
   expect(errors).toEqual([]);
 });
 
+test("session cards explain the selectable focus and tailored seven-day sequence", async ({
+  page,
+}) => {
+  await page.goto("/#sessions");
+  const singleSession = page.locator(".single-session");
+  const sevenDayPack = page.locator(".pack-session");
+
+  await expect(singleSession).toContainText(
+    "Choose the focus your body needs today",
+  );
+  await expect(singleSession).toContainText(
+    "Choose one of seven session focuses",
+  );
+  await expect(sevenDayPack).toContainText(
+    "Shin will shape their order around what you need",
+  );
+  await expect(sevenDayPack.locator(".session-focus-list > li")).toHaveCount(7);
+
+  for (const focus of [
+    "Neck & shoulders",
+    "Chest opening",
+    "Lower back (lumbar)",
+    "Hamstrings",
+    "Core strength",
+    "Insomnia",
+    "Fatigue",
+  ]) {
+    await expect(sevenDayPack.getByText(focus, { exact: true })).toBeVisible();
+  }
+});
+
 test("offering dialog traps focus, closes with Escape, and restores focus", async ({
   page,
 }) => {

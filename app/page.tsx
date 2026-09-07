@@ -43,6 +43,44 @@ const upcoming: {
   },
 ];
 
+const sessionFocuses = [
+  {
+    title: "Neck & shoulders",
+    description:
+      "A gradual opening practice for rounded shoulders and everyday upper-body tension.",
+  },
+  {
+    title: "Chest opening",
+    description:
+      "Create more room across the chest to support easier, deeper breathing.",
+  },
+  {
+    title: "Lower back (lumbar)",
+    description:
+      "Gently create space between the sacrum and lower back to support comfort and ease.",
+  },
+  {
+    title: "Hamstrings",
+    description:
+      "Build flexibility in hamstrings that can tighten during long periods of sitting.",
+  },
+  {
+    title: "Core strength",
+    description:
+      "Develop steady core support to encourage balance and everyday energy.",
+  },
+  {
+    title: "Insomnia",
+    description:
+      "A grounding, relaxing practice designed to help the body settle before rest.",
+  },
+  {
+    title: "Fatigue",
+    description:
+      "A gently energizing practice intended to support focus and mental clarity.",
+  },
+];
+
 export default function Home() {
   return (
     <>
@@ -136,7 +174,7 @@ export default function Home() {
               </div>
               <h3>The personal reset</h3>
               <p className="session-description">
-                One session. Your space to exhale.
+                One session. Choose the focus your body needs today.
               </p>
               <div className="price">
                 $60<span>/ one session</span>
@@ -144,7 +182,7 @@ export default function Home() {
               <div className="session-rule" />
               <ul className="benefits">
                 <li>1:1 attention, centered around you</li>
-                <li>Choose physical reset or burnout prevention</li>
+                <li>Choose one of seven session focuses</li>
                 <li>A little space to pause and reconnect</li>
               </ul>
               <PurchaseButton
@@ -161,17 +199,26 @@ export default function Home() {
               </div>
               <h3>Seven days, for you</h3>
               <p className="session-description">
-                Make a little room for yourself, every day.
+                Every focus, thoughtfully ordered around you.
               </p>
               <div className="price">
                 $350<span>/ seven-day pack</span>
               </div>
               <div className="session-rule" />
-              <ul className="benefits">
-                <li>Seven personal sessions over seven days</li>
-                <li>A consistent space to slow down and reset</li>
-                <li>Support that makes room for your everyday life</li>
-              </ul>
+              <p className="session-focus-intro">
+                All seven focuses are included. Shin will shape their order
+                around what you need, with one focus explored each day.
+              </p>
+              <ol className="session-focus-list" role="list">
+                {sessionFocuses.map((focus) => (
+                  <li key={focus.title}>
+                    <div>
+                      <strong>{focus.title}</strong>
+                      <span>{focus.description}</span>
+                    </div>
+                  </li>
+                ))}
+              </ol>
               <PurchaseButton
                 url={checkoutUrl(process.env.CHECKOUT_PACK_URL)}
                 pack
