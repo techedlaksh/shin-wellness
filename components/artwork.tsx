@@ -61,6 +61,31 @@ export function BotanicalArt() {
             </feComponentTransfer>
             <feBlend in="SourceGraphic" mode="multiply" />
           </filter>
+          <filter id="ink-rough" x="-8%" y="-8%" width="116%" height="116%">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency=".018 .08"
+              numOctaves="2"
+              seed="11"
+              result="ink-noise"
+            />
+            <feDisplacementMap
+              in="SourceGraphic"
+              in2="ink-noise"
+              scale="3.5"
+              xChannelSelector="R"
+              yChannelSelector="G"
+            />
+          </filter>
+          <pattern
+            id="print-hatch"
+            width="10"
+            height="10"
+            patternUnits="userSpaceOnUse"
+            patternTransform="rotate(-7)"
+          >
+            <path d="M0 10 10 0" stroke="#34483f" strokeWidth=".7" opacity=".22" />
+          </pattern>
         </defs>
         <path d="M82 578V260a213 213 0 0 1 426 0v318Z" fill="#ddd8cd" />
         <g clipPath="url(#garden-arch)">
@@ -107,7 +132,7 @@ export function BotanicalArt() {
             strokeWidth="32"
             strokeLinecap="round"
           />
-          <g className="garden-leaves">
+          <g className="garden-leaves" filter="url(#ink-rough)">
             <path
               className="garden-stem"
               d="M170 580c-4-77 16-139 35-193 20-59 40-91 43-135 4-52 21-95 48-139"
@@ -165,6 +190,7 @@ export function BotanicalArt() {
             <path d="M451 531c-36-12-50-38-43-68 35 10 49 34 43 68Z" />
             <path d="M451 532c6-36 29-58 60-60-3 36-24 57-60 60Z" />
           </g>
+          <path d="M0 0h550v600H0z" fill="url(#print-hatch)" opacity=".18" />
           <path
             d="M0 0h550v600H0z"
             fill="#dfd8c5"
@@ -172,7 +198,14 @@ export function BotanicalArt() {
             filter="url(#paper-grain)"
           />
         </g>
-        <path d="M62 564V256a213 213 0 0 1 426 0v308" fill="none" stroke="#34483f" strokeWidth="1" opacity=".45" />
+        <path
+          d="M62 564V256c0-117 93-213 210-213 121 0 216 93 216 213v308"
+          fill="none"
+          stroke="#34483f"
+          strokeWidth="1.2"
+          opacity=".48"
+          filter="url(#ink-rough)"
+        />
       </svg>
       <div className="art-note">
         <span>

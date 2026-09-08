@@ -2233,6 +2233,20 @@ svg {
   margin-top: 26px;
 }
 
+.resource-story .resource-art::after {
+  background-image: repeating-linear-gradient(
+    96deg,
+    transparent 0 8px,
+    #34483f12 8px 9px
+  );
+  content: "";
+  inset: 0;
+  mix-blend-mode: multiply;
+  opacity: 0.32;
+  pointer-events: none;
+  position: absolute;
+}
+
 @media (max-width: 1000px) {
   .resource-spread {
     gap: 24px;
