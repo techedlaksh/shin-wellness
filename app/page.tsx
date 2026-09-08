@@ -1,4 +1,11 @@
-import { Arrow, BotanicalArt, ResourceArt, Sprout } from "@/components/artwork";
+import {
+  AmbientFlow,
+  Arrow,
+  BotanicalArt,
+  ContourBloom,
+  ResourceArt,
+  Sprout,
+} from "@/components/artwork";
 import {
   InterestButton,
   PurchaseButton,
@@ -151,6 +158,7 @@ export default function Home() {
           id="sessions"
           aria-labelledby="sessions-title"
         >
+          <ContourBloom className="sessions-bloom" />
           <div className="section-heading">
             <div>
               <span className="eyebrow">01 / A SPACE JUST FOR YOU</span>
@@ -397,6 +405,7 @@ export default function Home() {
           id="stay-in-touch"
           aria-labelledby="newsletter-title"
         >
+          <AmbientFlow className="newsletter-flow" />
           <div className="container newsletter-inner">
             <div className="newsletter-copy">
               <span className="eyebrow">A NOTE FROM SHIN, NOW AND THEN</span>

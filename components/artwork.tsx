@@ -31,15 +31,159 @@ export function Arrow({ diagonal = false }: { diagonal?: boolean }) {
   );
 }
 
+export function ContourBloom({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 320 320"
+      fill="none"
+      aria-hidden="true"
+    >
+      <defs>
+        <radialGradient id="contour-bloom-fill" cx="0" cy="0" r="1">
+          <stop stopColor="#e9b89f" stopOpacity=".72" />
+          <stop offset=".56" stopColor="#ded5eb" stopOpacity=".46" />
+          <stop offset="1" stopColor="#ded5eb" stopOpacity="0" />
+        </radialGradient>
+        <filter id="contour-warp" x="-30%" y="-30%" width="160%" height="160%">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency=".012 .021"
+            numOctaves="2"
+            seed="17"
+            result="contour-noise"
+          />
+          <feDisplacementMap
+            in="SourceGraphic"
+            in2="contour-noise"
+            scale="13"
+          />
+        </filter>
+      </defs>
+      <circle cx="160" cy="160" r="142" fill="url(#contour-bloom-fill)" />
+      <g
+        className="contour-bloom-lines"
+        stroke="#78866f"
+        strokeWidth="1"
+        opacity=".44"
+        filter="url(#contour-warp)"
+      >
+        <path d="M160 42c67 0 118 51 118 116 0 67-50 121-118 121S42 225 42 158C42 93 93 42 160 42Z" />
+        <path d="M160 64c55 0 96 41 96 94 0 56-40 99-96 99s-96-43-96-99c0-53 41-94 96-94Z" />
+        <path d="M160 87c42 0 73 30 73 71 0 43-30 77-73 77s-73-34-73-77c0-41 31-71 73-71Z" />
+        <path d="M160 110c29 0 51 20 51 48 0 31-21 55-51 55s-51-24-51-55c0-28 22-48 51-48Z" />
+      </g>
+      <path
+        className="contour-bloom-thread"
+        d="M77 257c49-22 30-81 82-99 44-15 55-59 75-96"
+        stroke="#f5efe2"
+        strokeWidth="14"
+        strokeLinecap="round"
+        opacity=".72"
+      />
+    </svg>
+  );
+}
+
+export function AmbientFlow({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 900 420"
+      preserveAspectRatio="xMidYMid slice"
+      fill="none"
+      aria-hidden="true"
+    >
+      <defs>
+        <linearGradient id="ambient-flow-line" x1="40" y1="40" x2="830" y2="360">
+          <stop stopColor="#e9b89f" stopOpacity=".62" />
+          <stop offset=".48" stopColor="#ded5eb" stopOpacity=".5" />
+          <stop offset="1" stopColor="#c7d3ae" stopOpacity=".22" />
+        </linearGradient>
+        <radialGradient id="ambient-flow-orb">
+          <stop stopColor="#ded5eb" stopOpacity=".24" />
+          <stop offset="1" stopColor="#ded5eb" stopOpacity="0" />
+        </radialGradient>
+        <filter id="ambient-flow-warp" x="-20%" y="-30%" width="140%" height="160%">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency=".006 .018"
+            numOctaves="2"
+            seed="9"
+            result="flow-noise"
+          />
+          <feDisplacementMap in="SourceGraphic" in2="flow-noise" scale="24" />
+        </filter>
+      </defs>
+      <ellipse cx="714" cy="198" rx="220" ry="202" fill="url(#ambient-flow-orb)" />
+      <g
+        className="ambient-flow-lines"
+        stroke="url(#ambient-flow-line)"
+        strokeLinecap="round"
+        filter="url(#ambient-flow-warp)"
+      >
+        <path d="M-31 365C145 104 286 407 467 187 607 17 708 43 950 228" strokeWidth="2.2" />
+        <path d="M-58 399C130 142 291 438 486 211 638 35 760 87 966 267" strokeWidth="1.1" opacity=".76" />
+        <path d="M-14 319C143 72 272 362 449 153 590-13 701 4 929 185" strokeWidth=".8" opacity=".5" />
+      </g>
+      <circle className="ambient-flow-star" cx="747" cy="103" r="5" fill="#e9b89f" />
+      <circle cx="747" cy="103" r="23" stroke="#ded5eb" strokeOpacity=".38" />
+    </svg>
+  );
+}
+
 export function BotanicalArt() {
   return (
     <div className="botanical-art">
-      <svg
-        className="botanical-canvas"
-        viewBox="0 0 550 600"
-        role="img"
-        aria-labelledby="botanical-title"
-      >
+      <div className="botanical-stage">
+        <svg
+          className="botanical-aura"
+          viewBox="0 0 550 600"
+          fill="none"
+          aria-hidden="true"
+        >
+          <defs>
+            <radialGradient id="botanical-aura-fill">
+              <stop stopColor="#ded5eb" stopOpacity=".86" />
+              <stop offset=".48" stopColor="#e9b89f" stopOpacity=".42" />
+              <stop offset="1" stopColor="#e9b89f" stopOpacity="0" />
+            </radialGradient>
+            <filter id="botanical-aura-warp" x="-30%" y="-30%" width="160%" height="160%">
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency=".009 .016"
+                numOctaves="2"
+                seed="23"
+                result="aura-noise"
+              />
+              <feDisplacementMap in="SourceGraphic" in2="aura-noise" scale="28" />
+            </filter>
+          </defs>
+          <path
+            className="botanical-aura-blob"
+            d="M94 388C20 225 123 37 298 33c168-4 275 124 231 279-48 170-174 278-306 233C146 519 123 452 94 388Z"
+            fill="url(#botanical-aura-fill)"
+            filter="url(#botanical-aura-warp)"
+          />
+          <ellipse
+            className="botanical-aura-ring"
+            cx="300"
+            cy="292"
+            rx="246"
+            ry="229"
+            stroke="#738066"
+            strokeWidth="1"
+            strokeDasharray="3 11"
+            opacity=".48"
+          />
+        </svg>
+        <span className="botanical-slab" aria-hidden="true" />
+        <svg
+          className="botanical-canvas"
+          viewBox="0 0 550 600"
+          role="img"
+          aria-labelledby="botanical-title"
+        >
         <title id="botanical-title">
           An expressive botanical stem following a sunlit path through soft
           hills
@@ -86,16 +230,56 @@ export function BotanicalArt() {
           >
             <path d="M0 10 10 0" stroke="#34483f" strokeWidth=".7" opacity=".22" />
           </pattern>
+          <linearGradient id="garden-sky" x1="108" y1="41" x2="442" y2="570">
+            <stop stopColor="#f1ebdf" />
+            <stop offset=".52" stopColor="#e5dfd1" />
+            <stop offset="1" stopColor="#d6d9ca" />
+          </linearGradient>
+          <radialGradient id="garden-sun-volume" cx=".32" cy=".25" r=".78">
+            <stop stopColor="#ffd8bb" />
+            <stop offset=".46" stopColor="#efb48f" />
+            <stop offset="1" stopColor="#d99778" />
+          </radialGradient>
+          <linearGradient id="garden-hill-one" x1="86" y1="332" x2="412" y2="568">
+            <stop stopColor="#cdd0bf" />
+            <stop offset="1" stopColor="#a3ad9d" />
+          </linearGradient>
+          <linearGradient id="garden-hill-two" x1="48" y1="415" x2="454" y2="597">
+            <stop stopColor="#a5b09e" />
+            <stop offset="1" stopColor="#718575" />
+          </linearGradient>
+          <linearGradient id="garden-hill-three" x1="50" y1="490" x2="460" y2="620">
+            <stop stopColor="#708877" />
+            <stop offset="1" stopColor="#405e50" />
+          </linearGradient>
+          <linearGradient id="garden-path-light" x1="340" y1="239" x2="277" y2="622">
+            <stop stopColor="#fff4d9" />
+            <stop offset="1" stopColor="#e6d6b6" />
+          </linearGradient>
+          <radialGradient id="garden-glow">
+            <stop stopColor="#f4d8cc" stopOpacity=".8" />
+            <stop offset=".48" stopColor="#ded5eb" stopOpacity=".34" />
+            <stop offset="1" stopColor="#ded5eb" stopOpacity="0" />
+          </radialGradient>
         </defs>
         <path d="M82 578V260a213 213 0 0 1 426 0v318Z" fill="#ddd8cd" />
         <g clipPath="url(#garden-arch)">
-          <path fill="#e7e1d4" d="M0 0h550v600H0z" />
+          <path fill="url(#garden-sky)" d="M0 0h550v600H0z" />
+          <ellipse
+            className="garden-light"
+            cx="376"
+            cy="212"
+            rx="184"
+            ry="174"
+            fill="url(#garden-glow)"
+            opacity=".28"
+          />
           <circle
             className="garden-sun"
             cx="381"
             cy="183"
             r="64"
-            fill="#edb996"
+            fill="url(#garden-sun-volume)"
           />
           <ellipse
             cx="381"
@@ -109,15 +293,15 @@ export function BotanicalArt() {
           />
           <path
             d="M-12 405C92 326 178 322 270 370c95 49 176-20 295-44v294H-12Z"
-            fill="#b9bda9"
+            fill="url(#garden-hill-one)"
           />
           <path
             d="M-20 486c87-103 180-111 288-50 111 62 185 6 307-45v240H-20Z"
-            fill="#879584"
+            fill="url(#garden-hill-two)"
           />
           <path
             d="M-22 544c118-91 222-65 315-17 91 47 174-20 286-61v170H-22Z"
-            fill="#5f7667"
+            fill="url(#garden-hill-three)"
           />
           <g fill="none" stroke="#657766" strokeWidth="1" opacity=".5">
             <path d="M-15 430c95-67 186-66 273-18 104 57 180 12 302-40" />
@@ -128,7 +312,7 @@ export function BotanicalArt() {
             className="garden-path"
             d="M326 625c17-88-105-83-64-151 37-60 128-54 90-117-29-48-83-60-43-112"
             fill="none"
-            stroke="#efe3c8"
+            stroke="url(#garden-path-light)"
             strokeWidth="32"
             strokeLinecap="round"
           />
@@ -206,7 +390,11 @@ export function BotanicalArt() {
           opacity=".48"
           filter="url(#ink-rough)"
         />
-      </svg>
+        </svg>
+        <span className="botanical-depth-tag" aria-hidden="true">
+          breathe · notice · return
+        </span>
+      </div>
       <div className="art-note">
         <span>
           less pressure.

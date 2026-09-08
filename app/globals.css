@@ -15,6 +15,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 32px;
+  overflow-x: clip;
 }
 body {
   margin: 0;
@@ -22,6 +23,7 @@ body {
   color: var(--ink);
   font-family: var(--font-sans), sans-serif;
   font-size: 15px;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 button,
@@ -2798,5 +2800,431 @@ svg {
 
   .resource-story-books {
     height: 100%;
+  }
+}
+
+/* Dimensional layer: a soft-focus SVG light field and tactile paper objects. */
+.hero {
+  isolation: isolate;
+}
+
+.botanical-art {
+  perspective: 1100px;
+  z-index: 0;
+}
+
+.botanical-stage {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 700ms cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+
+.botanical-aura {
+  height: 112%;
+  inset: -7% -8% -5% -10%;
+  overflow: visible;
+  pointer-events: none;
+  position: absolute;
+  transform: translate3d(0, 0, -56px) scale(1.05);
+  width: 118%;
+  z-index: -2;
+}
+
+.botanical-aura-blob {
+  animation: aura-breathe 9s ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.botanical-aura-ring {
+  animation: aura-orbit 30s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.botanical-slab {
+  background: linear-gradient(145deg, #e4dccf 10%, #cbd0c1 84%);
+  border: 1px solid #34483f24;
+  border-radius: 48% 48% 2px 2px / 35% 35% 2px 2px;
+  box-shadow:
+    0 34px 65px #34483f2b,
+    0 9px 22px #34483f1c;
+  inset: 7.5% 2.5% 2.5% 9%;
+  position: absolute;
+  transform: translate3d(22px, 17px, -18px);
+  z-index: -1;
+}
+
+.botanical-canvas {
+  filter: drop-shadow(0 18px 18px #34483f19);
+  position: relative;
+  transform: translateZ(22px);
+  z-index: 1;
+}
+
+.botanical-art:hover .botanical-stage {
+  transform: rotateX(1.2deg) rotateY(-2.6deg) translateY(-5px);
+}
+
+.garden-light {
+  animation: garden-light-drift 8s ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.garden-sun {
+  filter: drop-shadow(0 11px 14px #a3624245);
+}
+
+.garden-leaves {
+  filter: drop-shadow(0 8px 5px #203a302b);
+}
+
+.botanical-depth-tag {
+  align-items: center;
+  background: #f7f3eae8;
+  border: 1px solid #aeb8a5;
+  border-radius: 100px;
+  bottom: 6.5%;
+  box-shadow: 0 10px 26px #34483f1f;
+  display: flex;
+  font-size: 8px;
+  gap: 8px;
+  left: 3%;
+  letter-spacing: 1.45px;
+  padding: 9px 13px;
+  position: absolute;
+  text-transform: uppercase;
+  transform: translateZ(46px) rotate(-4deg);
+  z-index: 3;
+}
+
+.botanical-depth-tag::before {
+  background: #d79b7f;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px #e9b89f38;
+  content: "";
+  height: 5px;
+  width: 5px;
+}
+
+.art-note {
+  box-shadow:
+    0 18px 34px #34483f20,
+    0 3px 6px #34483f12;
+  z-index: 4;
+}
+
+.sessions-section {
+  isolation: isolate;
+  position: relative;
+}
+
+.sessions-section > :not(.sessions-bloom) {
+  position: relative;
+  z-index: 1;
+}
+
+.sessions-bloom {
+  height: 360px;
+  opacity: 0.62;
+  pointer-events: none;
+  position: absolute;
+  right: -80px;
+  top: 16px;
+  width: 360px;
+  z-index: 0;
+}
+
+.contour-bloom-lines {
+  animation: contour-turn 38s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.contour-bloom-thread {
+  animation: contour-thread 7s ease-in-out infinite alternate;
+}
+
+.session-card {
+  transform: translateZ(0);
+  transition:
+    transform 420ms cubic-bezier(0.2, 0.75, 0.2, 1),
+    box-shadow 420ms ease;
+}
+
+.single-session {
+  background:
+    radial-gradient(circle at 93% 4%, #ded5eb99 0, transparent 31%),
+    linear-gradient(145deg, #f0f1e8, #e5e9dc);
+  box-shadow: inset 0 1px #ffffffa6;
+}
+
+.pack-session {
+  box-shadow:
+    inset 0 1px #ffffff17,
+    0 18px 45px #34483f17;
+}
+
+.session-card:hover {
+  box-shadow: 0 24px 48px #34483f1d;
+  transform: translateY(-7px);
+}
+
+.focus-menu {
+  box-shadow:
+    inset 0 1px #ffffff8f,
+    0 18px 50px #34483f0d;
+  overflow: hidden;
+  position: relative;
+}
+
+.focus-menu::before {
+  background:
+    radial-gradient(circle at 18% 8%, #ded5eb80, transparent 29%),
+    radial-gradient(circle at 96% 88%, #e9b89f66, transparent 27%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.focus-menu > * {
+  position: relative;
+}
+
+.resource-art {
+  perspective: 850px;
+}
+
+.book-stack,
+.wallpaper-card {
+  transform-style: preserve-3d;
+  transition: transform 650ms cubic-bezier(0.18, 0.8, 0.2, 1);
+}
+
+.book-stack {
+  transform: scale(var(--book-scale, 1)) rotateX(5deg) rotateY(-7deg);
+}
+
+.book-back {
+  background: linear-gradient(135deg, #f1c6af, #d79b7f);
+  box-shadow: 14px 18px 32px #34483f24;
+  transform: translateZ(5px) rotate(9deg);
+}
+
+.book-middle {
+  background: linear-gradient(135deg, #e7dff0, #c9b9dd);
+  box-shadow: 10px 15px 26px #34483f20;
+  transform: translateZ(24px) rotate(2deg);
+}
+
+.book-front {
+  background: linear-gradient(135deg, #fffaf0 0%, #e8dfca 100%);
+  box-shadow: 8px 19px 30px #34483f2e;
+  transform: translateZ(48px) rotate(-8deg);
+}
+
+.books-art:hover .book-stack {
+  transform: scale(var(--book-scale, 1)) rotateX(1deg) rotateY(-1deg) translateY(-8px);
+}
+
+.wallpaper-back {
+  background: linear-gradient(145deg, #d1dbbd, #9eac89);
+  box-shadow: 10px 18px 28px #34483f26;
+  transform: translateZ(6px) rotateY(7deg) rotate(-12deg);
+}
+
+.wallpaper-front {
+  background: linear-gradient(145deg, #f3cfbb, #dca386);
+  box-shadow: 13px 21px 32px #34483f2b;
+  transform: translateZ(38px) rotateY(-5deg) rotate(10deg);
+}
+
+.wallpaper-art:hover .wallpaper-back {
+  transform: translate3d(-7px, 0, 5px) rotateY(4deg) rotate(-15deg);
+}
+
+.wallpaper-art:hover .wallpaper-front {
+  transform: translate3d(8px, -7px, 48px) rotateY(-2deg) rotate(7deg);
+}
+
+.resource-story {
+  box-shadow: 0 24px 60px #34483f0f;
+}
+
+.resource-story-wallpapers .resource-art {
+  box-shadow: 0 22px 48px #6f5e7817;
+}
+
+.upcoming-card {
+  overflow: hidden;
+  position: relative;
+  transition: background 320ms ease, transform 320ms ease;
+}
+
+.upcoming-card::after {
+  background: radial-gradient(circle, #ded5eb99 0, transparent 68%);
+  content: "";
+  height: 190px;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  right: -75px;
+  top: -85px;
+  transform: scale(0.72);
+  transition: opacity 420ms ease, transform 420ms ease;
+  width: 190px;
+}
+
+.upcoming-card:hover {
+  background: #f1eee7;
+  transform: translateY(-4px);
+}
+
+.upcoming-card:hover::after {
+  opacity: 0.75;
+  transform: scale(1);
+}
+
+.newsletter-section {
+  background:
+    radial-gradient(circle at 77% 24%, #536253, transparent 32%),
+    linear-gradient(135deg, #34483f, #293f35);
+}
+
+.newsletter-flow {
+  height: 126%;
+  inset: -13% -7%;
+  opacity: 0.78;
+  pointer-events: none;
+  position: absolute;
+  width: 114%;
+}
+
+.ambient-flow-lines {
+  animation: ambient-flow-drift 12s ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.ambient-flow-star {
+  animation: ambient-star-pulse 3.2s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.newsletter-decoration {
+  opacity: 0.14;
+}
+
+@keyframes aura-breathe {
+  from {
+    opacity: 0.7;
+    transform: rotate(-3deg) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(3deg) scale(1.04);
+  }
+}
+
+@keyframes aura-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes garden-light-drift {
+  from {
+    opacity: 0.18;
+    transform: translate(-12px, 8px) scale(0.92);
+  }
+  to {
+    opacity: 0.42;
+    transform: translate(11px, -7px) scale(1.05);
+  }
+}
+
+@keyframes contour-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes contour-thread {
+  from {
+    opacity: 0.48;
+    stroke-width: 11px;
+  }
+  to {
+    opacity: 0.82;
+    stroke-width: 16px;
+  }
+}
+
+@keyframes ambient-flow-drift {
+  from {
+    transform: translateX(-12px) scaleY(0.95);
+  }
+  to {
+    transform: translateX(18px) scaleY(1.04);
+  }
+}
+
+@keyframes ambient-star-pulse {
+  50% {
+    opacity: 0.54;
+    transform: scale(1.8);
+  }
+}
+
+@media (max-width: 900px) {
+  .sessions-bloom {
+    height: 280px;
+    right: -55px;
+    top: 28px;
+    width: 280px;
+  }
+
+  .botanical-aura {
+    opacity: 0.8;
+  }
+}
+
+@media (max-width: 600px) {
+  .botanical-stage {
+    margin-inline: 8px;
+  }
+
+  .botanical-depth-tag {
+    bottom: 7%;
+    font-size: 6px;
+    left: -1%;
+    letter-spacing: 1px;
+    padding: 7px 10px;
+  }
+
+  .botanical-slab {
+    transform: translate3d(14px, 12px, -18px);
+  }
+
+  .sessions-bloom {
+    height: 210px;
+    opacity: 0.44;
+    right: -70px;
+    top: 6px;
+    width: 210px;
+  }
+
+  .session-card:hover,
+  .upcoming-card:hover {
+    transform: none;
+  }
+
+  .newsletter-flow {
+    height: 100%;
+    inset: 0 -75%;
+    width: 240%;
   }
 }
