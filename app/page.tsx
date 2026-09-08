@@ -93,9 +93,9 @@ export default function Home() {
           <span className="wordmark-sub">WELLNESS</span>
         </a>
         <nav aria-label="Main navigation">
-          <a href="#sessions">Your reset</a>
-          <a href="#little-things">The little things</a>
-          <a href="#coming-soon">What’s growing</a>
+          <a href="#sessions">Sessions</a>
+          <a href="#little-things">Free resources</a>
+          <a href="#coming-soon">Coming soon</a>
         </nav>
         <a className="button button-outline header-cta" href="#sessions">
           Book a session
@@ -224,14 +224,14 @@ export default function Home() {
               <h3>
                 One menu.
                 <br />
-                <em>Two ways in.</em>
+                Two ways in.
               </h3>
               <p>
-                Start with the focus that speaks to today, or explore the full
-                sequence over seven sessions.
+                This is a guide, not a quiz. Choose one focus after booking a
+                personal reset, or explore the full sequence over seven days.
               </p>
               <span className="focus-menu-note">
-                PERSONAL RESET · CHOOSE ONE
+                PERSONAL RESET · CHOOSE ONE AFTER BOOKING
                 <br />
                 SEVEN DAYS · EXPLORE ALL SEVEN
               </span>
@@ -261,17 +261,13 @@ export default function Home() {
             <div className="section-heading resource-heading">
               <div>
                 <span className="eyebrow">
-                  02 / LITTLE THINGS, LOVINGLY MADE
+                  02 / FREE RESOURCES · COMING SOON
                 </span>
-                <h2 id="little-title">
-                  Good for your day.
-                  <br />
-                  <em>Free for you.</em>
-                </h2>
+                <h2 id="little-title">Small things for slower days.</h2>
               </div>
               <p>
-                Sometimes it’s a book. Sometimes it’s a tiny reminder on your
-                screen. Small pockets of good, coming your way.
+                A reading list and illustrated phone reminders, both free when
+                they launch. Leave your email and we’ll tell you when.
               </p>
             </div>
             <div className="resource-spread">
@@ -323,11 +319,7 @@ export default function Home() {
               <span className="eyebrow">
                 03 / GOOD THINGS TAKE A LITTLE TIME
               </span>
-              <h2 id="upcoming-title">
-                More ways to
-                <br />
-                <em>come back to you.</em>
-              </h2>
+              <h2 id="upcoming-title">What’s taking shape next.</h2>
             </div>
             <div>
               <span className="coming-pill upcoming-badge">
