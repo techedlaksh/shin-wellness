@@ -41,7 +41,8 @@ export function BotanicalArt() {
         aria-labelledby="botanical-title"
       >
         <title id="botanical-title">
-          A sunlit garden of flowing leaves and soft hills, framed by an arch
+          An expressive botanical stem following a sunlit path through soft
+          hills
         </title>
         <defs>
           <clipPath id="garden-arch">
@@ -61,129 +62,128 @@ export function BotanicalArt() {
             <feBlend in="SourceGraphic" mode="multiply" />
           </filter>
         </defs>
-        <path d="M79 578V260a213 213 0 0 1 426 0v318Z" fill="#e5dfd3" />
+        <path d="M82 578V260a213 213 0 0 1 426 0v318Z" fill="#ddd8cd" />
         <g clipPath="url(#garden-arch)">
-          <path fill="#ddd9c7" d="M0 0h550v600H0z" />
+          <path fill="#e7e1d4" d="M0 0h550v600H0z" />
           <circle
             className="garden-sun"
-            cx="352"
-            cy="190"
-            r="72"
+            cx="381"
+            cy="183"
+            r="64"
             fill="#edb996"
           />
-          <path
-            d="M0 378c156-163 239-122 328-28S504 300 560 325v290H0Z"
-            fill="#aeb4a0"
+          <ellipse
+            cx="381"
+            cy="183"
+            rx="77"
+            ry="73"
+            fill="none"
+            stroke="#d8a98f"
+            strokeWidth="1.4"
+            opacity=".65"
           />
           <path
-            d="M-10 463c79-152 191-161 329-81s179 24 247-10v256H-10Z"
-            fill="#829381"
+            d="M-12 405C92 326 178 322 270 370c95 49 176-20 295-44v294H-12Z"
+            fill="#b9bda9"
           />
           <path
-            d="M-17 510c141-164 273-48 372-70s136-52 207-5v190H-17Z"
-            fill="#5b7363"
+            d="M-20 486c87-103 180-111 288-50 111 62 185 6 307-45v240H-20Z"
+            fill="#879584"
           />
+          <path
+            d="M-22 544c118-91 222-65 315-17 91 47 174-20 286-61v170H-22Z"
+            fill="#5f7667"
+          />
+          <g fill="none" stroke="#657766" strokeWidth="1" opacity=".5">
+            <path d="M-15 430c95-67 186-66 273-18 104 57 180 12 302-40" />
+            <path d="M-18 463c91-69 181-73 282-18 103 56 181 7 300-38" />
+            <path d="M-18 507c99-62 188-52 278-10 105 49 192 1 306-47" />
+          </g>
           <path
             className="garden-path"
-            d="M218 620c64-95 175-102 133-152s-108-76-83-114"
+            d="M326 625c17-88-105-83-64-151 37-60 128-54 90-117-29-48-83-60-43-112"
             fill="none"
-            stroke="#e8d9b9"
-            strokeWidth="39"
+            stroke="#efe3c8"
+            strokeWidth="32"
+            strokeLinecap="round"
           />
-          <path
-            className="garden-stem"
-            d="M302 603C217 477 207 345 183 216"
-            fill="none"
-            stroke="#34483f"
-            strokeWidth="7"
-          />
-          <g className="garden-leaves" fill="#34483f">
-            <path d="M189 257c-76-1-106-76-91-114 58 9 91 47 91 114Z" />
-            <path d="M190 268c-17-69 17-106 63-133 20 61 0 117-63 133Z" />
-            <path d="M213 348c-75-7-133-53-135-99 75-6 121 37 135 99Z" />
-            <path d="M211 348c-2-76 48-120 91-124 6 70-26 107-91 124Z" />
-            <path d="M242 444c-99-2-134-54-145-109 83 4 123 53 145 109Z" />
-            <path d="M237 432c-5-83 39-131 90-150 26 70-29 132-90 150Z" />
-            <path d="M280 533c-97 9-161-40-177-96 85-11 144 31 177 96Z" />
-            <path d="M267 505c-9-75 36-134 89-150 13 84-29 122-89 150Z" />
+          <g className="garden-leaves">
+            <path
+              className="garden-stem"
+              d="M170 580c-4-77 16-139 35-193 20-59 40-91 43-135 4-52 21-95 48-139"
+              fill="none"
+              stroke="#34483f"
+              strokeWidth="8"
+              strokeLinecap="round"
+            />
+            <g fill="none" stroke="#34483f" strokeWidth="5" strokeLinecap="round">
+              <path d="m181 486-65-54m91-47-79-57m121-78-78-57m124-78-66 52m19 86 82-32m-124 166 83-42" />
+            </g>
+            <g>
+              <path
+                d="M181 489c-55 0-95-28-108-78 56-2 94 23 108 78Z"
+                fill="#41594d"
+              />
+              <path
+                d="M205 389c-61 2-103-29-113-84 62 1 101 28 113 84Z"
+                fill="#34483f"
+              />
+              <path
+                d="M247 255c-57-2-94-34-101-87 57 4 92 33 101 87Z"
+                fill="#506759"
+              />
+              <path
+                d="M287 126c-5-49 19-89 65-110 12 50-12 90-65 110Z"
+                fill="#34483f"
+              />
+              <path
+                d="M246 257c10-53 52-83 103-79-8 54-47 84-103 79Z"
+                fill="#3e574a"
+              />
+              <path
+                d="M204 391c12-54 57-85 110-75-12 53-53 81-110 75Z"
+                fill="#536b5b"
+              />
+              <path
+                d="M294 117c-49 4-85-18-103-61 49-7 86 15 103 61Z"
+                fill="#596f60"
+              />
+            </g>
+            <g fill="none" stroke="#b5c0ae" strokeWidth="1.2" opacity=".72">
+              <path d="m176 483-86-59m111-40-91-65m132-71-80-67m126-62 49-91m-87 221 82-59m-125 193 91-55m-19-216-78-50" />
+            </g>
           </g>
-          <g stroke="#86947e" strokeWidth="1" fill="none" opacity=".65">
-            <path d="m110 165 78 88m49-94-44 99M96 268l111 73m75-97-66 95m-99 18 116 79m74-129-66 116M124 454l143 71m73-145-68 118" />
-          </g>
           <path
-            d="M425 600c17-91-6-144 4-212s31-87 28-139"
-            stroke="#d9dbb7"
-            strokeWidth="4"
+            d="M449 606c-8-62-4-117 8-165 11-45 28-79 27-122"
+            stroke="#d8ddbf"
+            strokeWidth="3"
             fill="none"
           />
-          <g fill="#d9dbb7">
-            <ellipse
-              cx="436"
-              cy="291"
-              rx="12"
-              ry="31"
-              transform="rotate(-33 436 291)"
-            />
-            <ellipse
-              cx="468"
-              cy="322"
-              rx="13"
-              ry="31"
-              transform="rotate(31 468 322)"
-            />
-            <ellipse
-              cx="419"
-              cy="358"
-              rx="12"
-              ry="33"
-              transform="rotate(-34 419 358)"
-            />
-            <ellipse
-              cx="449"
-              cy="394"
-              rx="12"
-              ry="34"
-              transform="rotate(31 449 394)"
-            />
-            <ellipse
-              cx="413"
-              cy="438"
-              rx="13"
-              ry="35"
-              transform="rotate(-30 413 438)"
-            />
-            <ellipse
-              cx="449"
-              cy="475"
-              rx="13"
-              ry="35"
-              transform="rotate(31 449 475)"
-            />
+          <g fill="#d8ddbf">
+            <path d="M459 450c-34-15-43-43-33-70 32 13 44 38 33 70Z" />
+            <path d="M459 454c8-37 31-54 62-55-5 35-27 55-62 55Z" />
+            <path d="M451 531c-36-12-50-38-43-68 35 10 49 34 43 68Z" />
+            <path d="M451 532c6-36 29-58 60-60-3 36-24 57-60 60Z" />
           </g>
           <path
             d="M0 0h550v600H0z"
             fill="#dfd8c5"
-            opacity=".22"
+            opacity=".29"
             filter="url(#paper-grain)"
           />
         </g>
-        <path
-          d="M36 102h28m-14-14v28m441 298h30m-15-15v30"
-          stroke="#62725b"
-          strokeWidth="1.3"
-        />
-        <circle cx="25" cy="339" r="4" fill="#b5abcb" />
-        <circle cx="507" cy="108" r="5" fill="#d9a589" />
+        <path d="M62 564V256a213 213 0 0 1 426 0v308" fill="none" stroke="#34483f" strokeWidth="1" opacity=".45" />
       </svg>
       <div className="art-note">
-        <span className="note-sun">☼</span>
         <span>
           less pressure.
           <br />
           <em>more presence.</em>
         </span>
       </div>
-      <span className="art-caption">A SOFTER WAY TO COME BACK TO YOU</span>
+      <a className="art-caption" href="#sessions">
+        FOLLOW THE PATH · EXPLORE YOUR RESET <span>↓</span>
+      </a>
     </div>
   );
 }
