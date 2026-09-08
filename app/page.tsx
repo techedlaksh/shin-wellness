@@ -161,75 +161,77 @@ export default function Home() {
               footing.
             </p>
           </div>
-          <div className="session-stage" data-depth-scene="sessions">
+          <div className="session-stage">
             <SessionAtmosphere />
             <div className="session-grid" data-reveal="spread">
               <article className="session-card single-session">
-              <div className="card-topline">
-                <span className="pill">A MOMENT TO RECENTER</span>
-                <Sprout className="session-symbol" />
-              </div>
-              <h3>The personal reset</h3>
-              <p className="session-description">
-                One session. Choose the focus your body needs today.
-              </p>
-              <div className="price">
-                $60<span>/ one session</span>
-              </div>
-              <div className="session-rule" />
-              <ul className="benefits">
-                <li>1:1 attention, centered around you</li>
-                <li>Choose one of seven session focuses</li>
-                <li>A little space to pause and reconnect</li>
-              </ul>
-              <div className="single-session-art" aria-hidden="true">
-                <Image
-                  src={accentArt}
-                  alt=""
-                  placeholder="blur"
-                  sizes="(max-width: 600px) 70vw, 460px"
+                <div className="card-topline">
+                  <span className="pill">A MOMENT TO RECENTER</span>
+                  <Sprout className="session-symbol" />
+                </div>
+                <h3>The personal reset</h3>
+                <p className="session-description">
+                  One session. Choose the focus your body needs today.
+                </p>
+                <div className="price">
+                  $60<span>/ one session</span>
+                </div>
+                <div className="session-rule" />
+                <ul className="benefits">
+                  <li>1:1 attention, centered around you</li>
+                  <li>Choose one of seven session focuses</li>
+                  <li>A little space to pause and reconnect</li>
+                </ul>
+                <div className="single-session-art" aria-hidden="true">
+                  <Image
+                    src={accentArt}
+                    alt=""
+                    placeholder="blur"
+                    sizes="(max-width: 600px) 70vw, 460px"
+                  />
+                  <span>A quiet place to begin</span>
+                </div>
+                <PurchaseButton
+                  url={checkoutUrl(process.env.CHECKOUT_SINGLE_URL)}
                 />
-                <span>A quiet place to begin</span>
-              </div>
-              <PurchaseButton
-                url={checkoutUrl(process.env.CHECKOUT_SINGLE_URL)}
-              />
-              <p className="card-footnote">A gentle place to begin.</p>
+                <p className="card-footnote">A gentle place to begin.</p>
               </article>
               <article className="session-card pack-session">
-              <div className="card-topline">
-                <span className="pill">A LITTLE MORE CONTINUITY</span>
-                <span className="pack-symbol" aria-hidden="true">
-                  ✳
-                </span>
-              </div>
-              <h3>Seven days, for you</h3>
-              <p className="session-description">
-                Every focus, thoughtfully ordered around you.
-              </p>
-              <div className="price">
-                $350<span>/ seven-day pack</span>
-              </div>
-              <div className="session-rule" />
-              <p className="session-focus-intro">
-                All seven focuses are included. Shin will shape their order
-                around what you need, with one focus explored each day.
-              </p>
-              <ol className="session-focus-list" role="list">
-                {sessionFocuses.map((focus) => (
-                  <li key={focus.title}>
-                    <div>
-                      <strong>{focus.title}</strong>
-                      <span>{focus.description}</span>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-              <PurchaseButton
-                url={checkoutUrl(process.env.CHECKOUT_PACK_URL)}
-                pack
-              />
-              <p className="card-footnote">One small commitment to yourself.</p>
+                <div className="card-topline">
+                  <span className="pill">A LITTLE MORE CONTINUITY</span>
+                  <span className="pack-symbol" aria-hidden="true">
+                    ✳
+                  </span>
+                </div>
+                <h3>Seven days, for you</h3>
+                <p className="session-description">
+                  Every focus, thoughtfully ordered around you.
+                </p>
+                <div className="price">
+                  $350<span>/ seven-day pack</span>
+                </div>
+                <div className="session-rule" />
+                <p className="session-focus-intro">
+                  All seven focuses are included. Shin will shape their order
+                  around what you need, with one focus explored each day.
+                </p>
+                <ol className="session-focus-list" role="list">
+                  {sessionFocuses.map((focus) => (
+                    <li key={focus.title}>
+                      <div>
+                        <strong>{focus.title}</strong>
+                        <span>{focus.description}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+                <PurchaseButton
+                  url={checkoutUrl(process.env.CHECKOUT_PACK_URL)}
+                  pack
+                />
+                <p className="card-footnote">
+                  One small commitment to yourself.
+                </p>
               </article>
             </div>
           </div>
@@ -242,6 +244,7 @@ export default function Home() {
           className="little-section section"
           id="little-things"
           aria-labelledby="little-title"
+          data-depth-scene="resources"
         >
           <Image
             className="section-botanical-accent resource-section-accent"
@@ -325,7 +328,11 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="future-panel" data-reveal="journey">
+          <div
+            className="future-panel"
+            data-reveal="journey"
+            data-depth-scene="future"
+          >
             <div className="upcoming-grid">
               {upcoming.map((item) => (
                 <article className="upcoming-card" key={item.interest}>
@@ -389,6 +396,7 @@ export default function Home() {
           className="newsletter-section"
           id="stay-in-touch"
           aria-labelledby="newsletter-title"
+          data-depth-scene="newsletter"
         >
           <div className="container newsletter-inner">
             <div className="newsletter-copy" data-reveal="heading">

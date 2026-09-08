@@ -44,6 +44,15 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
       "opacity",
       "1",
     );
+    const atmosphere = page.getByTestId("session-atmosphere");
+    await expect(atmosphere).toHaveAttribute("data-render-state", "static");
+    await expect(atmosphere).toHaveAttribute("data-rendering", "paused");
+    expect(
+      await atmosphere.locator("canvas").evaluate((canvas) => {
+        const element = canvas as HTMLCanvasElement;
+        return element.width > 0 && element.height > 0;
+      }),
+    ).toBe(true);
     if (width > 900) {
       await expect(page.locator(".hero-copy > p")).toHaveCSS(
         "font-size",
@@ -70,6 +79,14 @@ test("responsive layouts, navigation, reduced motion, and configured checkouts",
   ).toHaveAttribute("href", "https://checkout.example.com/pack");
   await page.getByRole("link", { name: "Find your reset" }).click();
   await expect(page).toHaveURL(/#sessions$/);
+  const staticAtmosphere = page.getByTestId("session-atmosphere");
+  await page.waitForTimeout(250);
+  const staticFrame = await staticAtmosphere.getAttribute("data-frame-count");
+  await page.waitForTimeout(250);
+  await expect(staticAtmosphere).toHaveAttribute(
+    "data-frame-count",
+    staticFrame ?? "1",
+  );
   expect(errors).toEqual([]);
 });
 
@@ -153,10 +170,209 @@ test("hero depth follows the pointer and returns to rest with motion enabled", a
     .toEqual({ tiltX: "0deg", tiltY: "0deg" });
   await page.screenshot({ path: ".context/hero-depth-rest.png" });
 
+  await page.evaluate(() => {
+    document.documentElement.style.scrollBehavior = "auto";
+  });
+
   const futurePanel = page.locator(".future-panel");
   await futurePanel.scrollIntoViewIfNeeded();
   await expect(futurePanel).toHaveClass(/is-visible/);
   await expect(futurePanel).toHaveCSS("opacity", "1");
+
+  const sessionStage = page.locator(".session-stage");
+  const atmosphere = page.getByTestId("session-atmosphere");
+  const canvas = atmosphere.locator("canvas");
+  await sessionStage.evaluate((element) =>
+    element.scrollIntoView({ block: "center" }),
+  );
+  await expect(atmosphere).toHaveAttribute("data-render-state", "ready");
+  await expect(atmosphere).toHaveAttribute("data-rendering", "active");
+
+  for (const [time, delay] of [
+    [0, 0],
+    [200, 200],
+    [500, 300],
+    [1000, 500],
+  ] as const) {
+    if (delay) await page.waitForTimeout(delay);
+    await sessionStage.screenshot({
+      path: `.context/booking-motion-${time}.png`,
+    });
+  }
+
+  const sceneMetrics = await sessionStage.evaluate((element) => {
+    const bounds = element.getBoundingClientRect();
+    return {
+      top: bounds.top + window.scrollY,
+      height: bounds.height,
+      viewport: window.innerHeight,
+    };
+  });
+  for (const progress of [0, 0.25, 0.5, 0.75, 1]) {
+    const scrollY =
+      sceneMetrics.top -
+      (sceneMetrics.viewport -
+        progress * (sceneMetrics.viewport + sceneMetrics.height));
+    await page.evaluate((top) => window.scrollTo(0, top), scrollY);
+    await page.waitForTimeout(180);
+    await page.screenshot({
+      path: `.context/booking-scroll-${Math.round(progress * 100)}.png`,
+    });
+  }
+
+  await sessionStage.evaluate((element) =>
+    element.scrollIntoView({ block: "center" }),
+  );
+  const sessionBounds = await sessionStage.boundingBox();
+  expect(sessionBounds).not.toBeNull();
+  if (sessionBounds) {
+    const visibleTop = Math.max(2, sessionBounds.y);
+    const visibleBottom = Math.min(
+      sceneMetrics.viewport - 2,
+      sessionBounds.y + sessionBounds.height,
+    );
+    const visibleY = visibleTop + (visibleBottom - visibleTop) * 0.5;
+    await page.mouse.move(sessionBounds.x + sessionBounds.width / 2, visibleY);
+    await page.waitForTimeout(260);
+    await sessionStage.screenshot({ path: ".context/booking-pointer-center.png" });
+
+    await page.mouse.move(
+      sessionBounds.x + sessionBounds.width * 0.1,
+      visibleTop + (visibleBottom - visibleTop) * 0.15,
+    );
+    await page.waitForTimeout(700);
+    expect(
+      parseFloat((await atmosphere.getAttribute("data-pointer-x")) ?? "1"),
+    ).toBeLessThan(0.2);
+    await sessionStage.screenshot({
+      path: ".context/booking-pointer-top-left.png",
+    });
+
+    await page.mouse.move(
+      sessionBounds.x + sessionBounds.width * 0.9,
+      visibleTop + (visibleBottom - visibleTop) * 0.85,
+    );
+    await page.waitForTimeout(700);
+    expect(
+      parseFloat((await atmosphere.getAttribute("data-pointer-x")) ?? "0"),
+    ).toBeGreaterThan(0.8);
+    await sessionStage.screenshot({
+      path: ".context/booking-pointer-bottom-right.png",
+    });
+
+    await page.mouse.move(0, 0);
+    await expect
+      .poll(async () =>
+        Math.abs(
+          parseFloat((await atmosphere.getAttribute("data-pointer-x")) ?? "0") -
+            0.68,
+        ),
+      )
+      .toBeLessThan(0.02);
+    await sessionStage.screenshot({ path: ".context/booking-pointer-rest.png" });
+  }
+
+  const supportsContextLoss = await canvas.evaluate((element) => {
+    const target = element as HTMLCanvasElement & {
+      restoreWebgl?: () => void;
+      shaderCanvas?: HTMLCanvasElement;
+    };
+    const gl = target.shaderCanvas?.getContext("webgl2");
+    const extension = gl?.getExtension("WEBGL_lose_context");
+    if (extension) target.restoreWebgl = () => extension.restoreContext();
+    extension?.loseContext();
+    return Boolean(extension);
+  });
+  if (supportsContextLoss) {
+    await expect(atmosphere).toHaveAttribute("data-render-state", "lost");
+    await canvas.evaluate((element) => {
+      const target = element as HTMLCanvasElement & {
+        restoreWebgl?: () => void;
+      };
+      target.restoreWebgl?.();
+    });
+    await expect(atmosphere).toHaveAttribute("data-render-state", "ready");
+  }
+
+  const resources = page.locator('[data-depth-scene="resources"]');
+  await resources.scrollIntoViewIfNeeded();
+  const resourceBounds = await resources.boundingBox();
+  expect(resourceBounds).not.toBeNull();
+  if (resourceBounds) {
+    await page.mouse.move(
+      resourceBounds.x + resourceBounds.width - 3,
+      Math.min(
+        sceneMetrics.viewport - 3,
+        resourceBounds.y + resourceBounds.height - 3,
+      ),
+    );
+    await page.waitForTimeout(550);
+    await expect(resources).toHaveAttribute("data-depth-active", "true");
+    expect(
+      await resources.evaluate((element) =>
+        parseFloat(
+          (element as HTMLElement).style.getPropertyValue("--depth-x"),
+        ),
+      ),
+    ).toBeGreaterThan(0.8);
+    await page.screenshot({ path: ".context/resources-depth.png" });
+  }
+
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await expect(atmosphere).toHaveAttribute("data-rendering", "paused");
+  await expect(resources).toHaveAttribute("data-depth-active", "false");
+  await expect
+    .poll(() =>
+      resources.evaluate((element) =>
+        (element as HTMLElement).style.getPropertyValue("--depth-x"),
+      ),
+    )
+    .toBe("0px");
+});
+
+test("touch devices keep the depth composition static", async ({
+  browser,
+  baseURL,
+}) => {
+  const context = await browser.newContext({
+    baseURL: baseURL ?? "http://localhost:3100",
+    hasTouch: true,
+    isMobile: true,
+    reducedMotion: "no-preference",
+    viewport: { width: 390, height: 844 },
+  });
+  const page = await context.newPage();
+  await page.goto("/");
+  const atmosphere = page.getByTestId("session-atmosphere");
+  await expect(atmosphere).toHaveAttribute("data-render-state", "static");
+  await expect(atmosphere).toHaveAttribute("data-rendering", "paused");
+  await expect(page.locator('[data-depth-scene="resources"]')).toHaveAttribute(
+    "data-depth-active",
+    "false",
+  );
+  await context.close();
+});
+
+test("WebGL failure retains the static booking composition", async ({ page }) => {
+  await page.addInitScript(() => {
+    const getContext = HTMLCanvasElement.prototype.getContext;
+    Object.defineProperty(HTMLCanvasElement.prototype, "getContext", {
+      configurable: true,
+      value(this: HTMLCanvasElement, contextId: string, ...args: unknown[]) {
+        if (contextId === "webgl2") return null;
+        return Reflect.apply(getContext, this, [contextId, ...args]);
+      },
+    });
+  });
+  await page.goto("/#sessions");
+  await expect(page.getByTestId("session-atmosphere")).toHaveAttribute(
+    "data-render-state",
+    "fallback",
+  );
+  await expect(page.locator(".session-card")).toHaveCount(2);
+  await expect(
+    page.getByText("Buy a single session", { exact: true }),
+  ).toBeVisible();
 });
 
 test("session cards explain the selectable focus and tailored seven-day sequence", async ({

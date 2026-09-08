@@ -93,7 +93,7 @@ void main() {
   color += (grain - 0.5) * 0.018;
 
   float edge_fade = smoothstep(0.0, 0.16, uv.y) * smoothstep(0.0, 0.13, 1.0 - uv.y);
-  out_color = vec4(color, 0.72 * edge_fade);
+  out_color = vec4(mix(ivory, color, 0.72 * edge_fade), 1.0);
 }
 `;
 
@@ -123,7 +123,11 @@ function createProgram(gl: WebGL2RenderingContext) {
   }
 
   const program = gl.createProgram();
-  if (!program) return null;
+  if (!program) {
+    gl.deleteShader(vertex);
+    gl.deleteShader(fragment);
+    return null;
+  }
   gl.attachShader(program, vertex);
   gl.attachShader(program, fragment);
   gl.linkProgram(program);
@@ -150,20 +154,29 @@ export function SessionAtmosphere() {
     const canvas = currentCanvas;
     const host = currentHost;
     const stage = currentStage;
+    const shaderCanvas = document.createElement("canvas");
+    const displayContext = canvas.getContext("2d", { alpha: false });
+    (
+      canvas as HTMLCanvasElement & { shaderCanvas?: HTMLCanvasElement }
+    ).shaderCanvas = shaderCanvas;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
-    let gl = canvas.getContext("webgl2", {
-      alpha: true,
-      antialias: false,
-      depth: false,
-      powerPreference: "low-power",
-      premultipliedAlpha: false,
-    });
+    let gl = displayContext
+      ? shaderCanvas.getContext("webgl2", {
+          alpha: false,
+          antialias: false,
+          depth: false,
+          powerPreference: "low-power",
+          premultipliedAlpha: false,
+        })
+      : null;
     let program: WebGLProgram | null = null;
     let buffer: WebGLBuffer | null = null;
     let animationFrame = 0;
+    let animateUntil = 0;
     let frameCount = 0;
+    let lastDrawnAt = 0;
     let intersecting = false;
     let disposed = false;
     let startedAt = performance.now();
@@ -208,12 +221,14 @@ export function SessionAtmosphere() {
 
     function resize() {
       if (!gl) return;
-      const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
+      const ratio = Math.min(window.devicePixelRatio || 1, 1.25);
       const width = Math.max(1, Math.round(canvas.clientWidth * ratio));
       const height = Math.max(1, Math.round(canvas.clientHeight * ratio));
       if (canvas.width !== width || canvas.height !== height) {
         canvas.width = width;
         canvas.height = height;
+        shaderCanvas.width = width;
+        shaderCanvas.height = height;
         gl.viewport(0, 0, width, height);
       }
     }
@@ -228,9 +243,18 @@ export function SessionAtmosphere() {
 
     function render(now: number) {
       if (disposed || !gl || !program) return;
+      if (shouldAnimate() && now < animateUntil && now - lastDrawnAt < 32) {
+        animationFrame = requestAnimationFrame(render);
+        return;
+      }
+      lastDrawnAt = now;
       resize();
-      pointerCurrent.x += (pointerTarget.x - pointerCurrent.x) * 0.045;
-      pointerCurrent.y += (pointerTarget.y - pointerCurrent.y) * 0.045;
+      if (shouldAnimate() && now >= animateUntil) {
+        pointerCurrent = { ...pointerTarget };
+      } else {
+        pointerCurrent.x += (pointerTarget.x - pointerCurrent.x) * 0.06;
+        pointerCurrent.y += (pointerTarget.y - pointerCurrent.y) * 0.06;
+      }
 
       gl.useProgram(program);
       gl.uniform2f(
@@ -243,18 +267,28 @@ export function SessionAtmosphere() {
         pointerCurrent.x,
         pointerCurrent.y,
       );
-      gl.uniform1f(gl.getUniformLocation(program, "u_scroll"), sectionProgress());
+      const scrollProgress = sectionProgress();
+      gl.uniform1f(gl.getUniformLocation(program, "u_scroll"), scrollProgress);
       gl.uniform1f(
         gl.getUniformLocation(program, "u_time"),
         shouldAnimate() ? (now - startedAt) / 1000 : 0,
       );
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      displayContext?.drawImage(shaderCanvas, 0, 0, canvas.width, canvas.height);
 
       frameCount += 1;
       host.dataset.frameCount = String(frameCount);
+      host.dataset.pointerX = pointerCurrent.x.toFixed(3);
+      host.dataset.pointerY = pointerCurrent.y.toFixed(3);
+      host.dataset.scrollProgress = scrollProgress.toFixed(3);
       host.dataset.renderState = shouldAnimate() ? "ready" : "static";
 
-      if (shouldAnimate() && intersecting && !document.hidden) {
+      if (
+        shouldAnimate() &&
+        intersecting &&
+        !document.hidden &&
+        now < animateUntil
+      ) {
         host.dataset.rendering = "active";
         animationFrame = requestAnimationFrame(render);
       } else {
@@ -263,10 +297,11 @@ export function SessionAtmosphere() {
       }
     }
 
-    function start() {
+    function start(duration = 0) {
       cancelAnimationFrame(animationFrame);
       animationFrame = 0;
       if (!program) return;
+      animateUntil = Math.max(animateUntil, performance.now() + duration);
       if (shouldAnimate() && intersecting && !document.hidden) {
         host.dataset.rendering = "active";
         animationFrame = requestAnimationFrame(render);
@@ -282,21 +317,23 @@ export function SessionAtmosphere() {
         x: Math.min(1, Math.max(0, (event.clientX - bounds.left) / bounds.width)),
         y: Math.min(1, Math.max(0, (event.clientY - bounds.top) / bounds.height)),
       };
+      start(420);
     }
 
     function handlePointerLeave() {
       pointerTarget = { x: 0.68, y: 0.2 };
+      start(520);
     }
 
     function handleMotionPreference() {
       pointerTarget = { x: 0.68, y: 0.2 };
       pointerCurrent = { ...pointerTarget };
-      start();
+      start(900);
     }
 
     function handleVisibility() {
       if (document.hidden) setFallback(host.dataset.renderState || "ready");
-      else start();
+      else start(900);
     }
 
     function handleContextLost(event: Event) {
@@ -308,24 +345,29 @@ export function SessionAtmosphere() {
 
     function handleContextRestored() {
       if (disposed) return;
-      gl = canvas.getContext("webgl2", {
-        alpha: true,
+      gl = shaderCanvas.getContext("webgl2", {
+        alpha: false,
         antialias: false,
         depth: false,
         powerPreference: "low-power",
         premultipliedAlpha: false,
       });
-      if (initialize()) start();
+      if (initialize()) start(900);
+    }
+
+    function handleScroll() {
+      if (intersecting) start(520);
     }
 
     const resizeObserver = new ResizeObserver(() => {
       resize();
-      if (!shouldAnimate()) render(performance.now());
+      if (shouldAnimate()) start(600);
+      else render(performance.now());
     });
     const intersectionObserver = new IntersectionObserver(
       ([entry]) => {
         intersecting = entry.isIntersecting;
-        start();
+        start(entry.isIntersecting ? 1400 : 0);
       },
       { rootMargin: "18% 0px", threshold: 0.01 },
     );
@@ -333,8 +375,9 @@ export function SessionAtmosphere() {
     stage.addEventListener("pointermove", handlePointerMove, { passive: true });
     stage.addEventListener("pointerleave", handlePointerLeave);
     document.addEventListener("visibilitychange", handleVisibility);
-    canvas.addEventListener("webglcontextlost", handleContextLost);
-    canvas.addEventListener("webglcontextrestored", handleContextRestored);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    shaderCanvas.addEventListener("webglcontextlost", handleContextLost);
+    shaderCanvas.addEventListener("webglcontextrestored", handleContextRestored);
     reducedMotion.addEventListener("change", handleMotionPreference);
     finePointer.addEventListener("change", handleMotionPreference);
     resizeObserver.observe(canvas);
@@ -353,12 +396,16 @@ export function SessionAtmosphere() {
       stage.removeEventListener("pointermove", handlePointerMove);
       stage.removeEventListener("pointerleave", handlePointerLeave);
       document.removeEventListener("visibilitychange", handleVisibility);
-      canvas.removeEventListener("webglcontextlost", handleContextLost);
-      canvas.removeEventListener("webglcontextrestored", handleContextRestored);
+      window.removeEventListener("scroll", handleScroll);
+      shaderCanvas.removeEventListener("webglcontextlost", handleContextLost);
+      shaderCanvas.removeEventListener("webglcontextrestored", handleContextRestored);
       reducedMotion.removeEventListener("change", handleMotionPreference);
       finePointer.removeEventListener("change", handleMotionPreference);
       if (gl && buffer) gl.deleteBuffer(buffer);
       if (gl && program) gl.deleteProgram(program);
+      delete (
+        canvas as HTMLCanvasElement & { shaderCanvas?: HTMLCanvasElement }
+      ).shaderCanvas;
     };
   }, []);
 
@@ -367,6 +414,9 @@ export function SessionAtmosphere() {
       className="session-atmosphere"
       data-render-state="fallback"
       data-rendering="paused"
+      data-pointer-x="0.680"
+      data-pointer-y="0.200"
+      data-scroll-progress="0.500"
       data-testid="session-atmosphere"
       aria-hidden="true"
     >
