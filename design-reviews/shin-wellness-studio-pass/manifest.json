@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "runId": "shin-wellness-studio-pass",
   "title": "Shin Wellness Studio-Level Design Pass",
-  "status": "active",
+  "status": "complete",
   "createdAt": "2026-09-07T19:45:53.854517Z",
   "config": {
     "route": "/",
@@ -82,6 +82,21 @@
       "capturedAt": "2026-09-08T00:07:49.518675Z",
       "deliveredAt": "2026-09-08T00:11:59.015797Z",
       "failure": null
+    },
+    {
+      "number": 5,
+      "complete": true,
+      "sourceCommit": "683bd6d7e400d6cf34eedff0b08624990bf0abef",
+      "sourceTree": "b8d7208b0f6517e7ff674d45c628c650cd1b0f0b",
+      "sourceRef": "design/shin-wellness-studio-pass/critic-005",
+      "screenshot": "design-reviews/shin-wellness-studio-pass/screenshots/critic-005.png",
+      "review": "design-reviews/shin-wellness-studio-pass/reviews/critic-005.md",
+      "score": 7.8,
+      "model": "GPT-6 Astra",
+      "effort": "high",
+      "capturedAt": "2026-09-08T00:15:38.235610Z",
+      "deliveredAt": "2026-09-08T00:19:38.524225Z",
+      "failure": null
     }
   ],
   "managedPaths": [
@@ -95,5 +110,6 @@
     "iteration": 4,
     "score": 8.0,
     "sourceCommit": "d0a18b28218e922ce8fe0eea9d94c5f04be02691"
-  }
+  },
+  "finalizedAt": "2026-09-08T00:19:39.022977Z"
 }
