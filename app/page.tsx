@@ -332,11 +332,8 @@ export default function Home() {
             </div>
           </div>
           <div className="upcoming-grid">
-            {upcoming.map((item, index) => (
-              <article
-                className={`upcoming-card${index === 0 ? " upcoming-card-lead" : ""}`}
-                key={item.interest}
-              >
+            {upcoming.map((item) => (
+              <article className="upcoming-card" key={item.interest}>
                 <div className="upcoming-card-top">
                   <span className="offering-icon" aria-hidden="true">
                     {item.icon}
