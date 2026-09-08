@@ -127,6 +127,21 @@
       "capturedAt": "2026-09-08T00:49:44.096646Z",
       "deliveredAt": "2026-09-08T00:53:23.490006Z",
       "failure": null
+    },
+    {
+      "number": 8,
+      "complete": true,
+      "sourceCommit": "cbe1a3f4a452562f3cc31cb031917db2bfc98f61",
+      "sourceTree": "aca6d0c2a93024e437bb29f6960eebdc6f5fb2c4",
+      "sourceRef": "design/shin-wellness-studio-pass/critic-008",
+      "screenshot": "design-reviews/shin-wellness-studio-pass/screenshots/critic-008.png",
+      "review": "design-reviews/shin-wellness-studio-pass/reviews/critic-008.md",
+      "score": 8.0,
+      "model": "GPT-6 Astra",
+      "effort": "high",
+      "capturedAt": "2026-09-08T00:55:02.543294Z",
+      "deliveredAt": "2026-09-08T00:58:27.650427Z",
+      "failure": null
     }
   ],
   "managedPaths": [
@@ -137,8 +152,8 @@
     "tests/browser/landing.spec.ts"
   ],
   "winner": {
-    "iteration": 7,
+    "iteration": 8,
     "score": 8.0,
-    "sourceCommit": "1f321b6142098242e1d44c4f751ff767f3b61b9d"
+    "sourceCommit": "cbe1a3f4a452562f3cc31cb031917db2bfc98f61"
   }
 }
