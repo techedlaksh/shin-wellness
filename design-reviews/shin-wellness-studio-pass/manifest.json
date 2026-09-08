@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "runId": "shin-wellness-studio-pass",
   "title": "Shin Wellness Studio-Level Design Pass",
-  "status": "active",
+  "status": "complete",
   "createdAt": "2026-09-07T19:45:53.854517Z",
   "config": {
     "route": "/",
@@ -170,5 +170,6 @@
     "iteration": 9,
     "score": 8.1,
     "sourceCommit": "ca3e2343e2c04fbe85422af577426a24d4b0e834"
-  }
+  },
+  "finalizedAt": "2026-09-08T01:04:16.567812Z"
 }
