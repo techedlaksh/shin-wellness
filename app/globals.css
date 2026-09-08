@@ -2287,6 +2287,80 @@ svg {
   align-items: stretch;
 }
 
+.session-stage {
+  border-radius: 46px;
+  isolation: isolate;
+  margin-inline: -34px;
+  padding: 34px;
+  position: relative;
+}
+
+.session-atmosphere {
+  border-radius: inherit;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
+.session-atmosphere::after {
+  background: linear-gradient(
+    90deg,
+    var(--ivory) 0%,
+    transparent 14%,
+    transparent 86%,
+    var(--ivory) 100%
+  );
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+.session-atmosphere-fallback,
+.session-atmosphere canvas {
+  height: 100%;
+  inset: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.session-atmosphere-fallback {
+  background:
+    radial-gradient(circle at 28% 46%, #bdc8aa87, transparent 34%),
+    radial-gradient(circle at 70% 38%, #e9b89f70, transparent 25%),
+    radial-gradient(circle at 76% 70%, #d8cce160, transparent 29%);
+  opacity: 0.78;
+}
+
+.session-atmosphere canvas {
+  opacity: 0;
+  transition: opacity 700ms ease;
+}
+
+.session-atmosphere[data-render-state="ready"] canvas,
+.session-atmosphere[data-render-state="static"] canvas {
+  opacity: 1;
+}
+
+.session-stage .session-grid,
+.session-stage + .sessions-note {
+  position: relative;
+  z-index: 1;
+}
+
+.session-stage .session-card {
+  box-shadow: 0 26px 64px #34483f12;
+}
+
+.session-stage .single-session {
+  background: #eceee3f5;
+}
+
+.session-stage .pack-session {
+  background: #34483ff7;
+}
+
 .session-card {
   height: 100%;
 }
@@ -2524,6 +2598,11 @@ svg {
 }
 
 @media (max-width: 900px) {
+  .session-stage {
+    margin-inline: -22px;
+    padding: 22px;
+  }
+
   .single-session-art {
     min-height: 220px;
   }
@@ -2555,6 +2634,12 @@ svg {
 }
 
 @media (max-width: 600px) {
+  .session-stage {
+    border-radius: 24px;
+    margin-inline: 0;
+    padding: 10px;
+  }
+
   .hero-footnote {
     max-width: 230px;
   }

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Arrow, ResourceArt, Sprout } from "@/components/artwork";
 import { HeroVisual } from "@/components/hero-visual";
 import { PageMotion } from "@/components/page-motion";
+import { SessionAtmosphere } from "@/components/session-atmosphere";
 import {
   InterestButton,
   PurchaseButton,
@@ -160,8 +161,10 @@ export default function Home() {
               footing.
             </p>
           </div>
-          <div className="session-grid" data-reveal="spread">
-            <article className="session-card single-session">
+          <div className="session-stage" data-depth-scene="sessions">
+            <SessionAtmosphere />
+            <div className="session-grid" data-reveal="spread">
+              <article className="session-card single-session">
               <div className="card-topline">
                 <span className="pill">A MOMENT TO RECENTER</span>
                 <Sprout className="session-symbol" />
@@ -192,8 +195,8 @@ export default function Home() {
                 url={checkoutUrl(process.env.CHECKOUT_SINGLE_URL)}
               />
               <p className="card-footnote">A gentle place to begin.</p>
-            </article>
-            <article className="session-card pack-session">
+              </article>
+              <article className="session-card pack-session">
               <div className="card-topline">
                 <span className="pill">A LITTLE MORE CONTINUITY</span>
                 <span className="pack-symbol" aria-hidden="true">
@@ -227,7 +230,8 @@ export default function Home() {
                 pack
               />
               <p className="card-footnote">One small commitment to yourself.</p>
-            </article>
+              </article>
+            </div>
           </div>
           <p className="sessions-note">
             All prices in USD. A softer start is still a start.
